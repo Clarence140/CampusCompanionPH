@@ -1221,317 +1221,309 @@ function App() {
   };
 
   return (
-    <div
-      className={`min-h-screen ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"
-      }`}
-    >
-      <div className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
-        <header className="bg-blue-600 dark:bg-blue-800 text-white p-4 shadow-md">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              <img
-                src="/images/CampusCalcu.png"
-                alt="Campus Companion PH"
-                className="w-10 h-10 rounded-full"
-              />
-              <h1 className="text-2xl font-bold font-chicle">
-                Campus Companion PH
-              </h1>
-            </div>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <header className="bg-blue-600 dark:bg-blue-800 text-white p-4 shadow-md">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <img
+              src="/placeholder.svg?height=40&width=40"
+              alt="Campus Companion PH"
+              className="w-10 h-10 rounded-full"
+            />
+            <h1 className="text-2xl font-bold font-chicle">
+              Campus Companion PH
+            </h1>
+          </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-4">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-4">
+            <button
+              onClick={() => setCurrentView("calculator")}
+              className={`px-3 py-2 rounded transition-colors ${
+                currentView === "calculator"
+                  ? "bg-blue-700 dark:bg-blue-900"
+                  : "hover:bg-blue-700 dark:hover:bg-blue-900"
+              }`}
+            >
+              Calculator
+            </button>
+            <button
+              onClick={() => setCurrentView("about")}
+              className={`px-3 py-2 rounded transition-colors ${
+                currentView === "about"
+                  ? "bg-blue-700 dark:bg-blue-900"
+                  : "hover:bg-blue-700 dark:hover:bg-blue-900"
+              }`}
+            >
+              About
+            </button>
+            <button
+              onClick={() => setCurrentView("faq")}
+              className={`px-3 py-2 rounded transition-colors ${
+                currentView === "faq"
+                  ? "bg-blue-700 dark:bg-blue-900"
+                  : "hover:bg-blue-700 dark:hover:bg-blue-900"
+              }`}
+            >
+              FAQ
+            </button>
+            <button
+              onClick={() => setCurrentView("support")}
+              className={`px-3 py-2 rounded transition-colors flex items-center ${
+                currentView === "support"
+                  ? "bg-blue-700 dark:bg-blue-900"
+                  : "hover:bg-blue-700 dark:hover:bg-blue-900"
+              }`}
+            >
+              <FiCoffee className="mr-1" /> Support
+            </button>
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
+              aria-label={
+                darkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
+            >
+              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </button>
+          </nav>
+
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
+              aria-label={
+                darkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
+            >
+              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <div className="flex flex-col gap-1">
+                <div
+                  className={`w-5 h-0.5 bg-white transition-all duration-300 ${
+                    mobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
+                  }`}
+                ></div>
+                <div
+                  className={`w-5 h-0.5 bg-white transition-all duration-300 ${
+                    mobileMenuOpen ? "opacity-0" : ""
+                  }`}
+                ></div>
+                <div
+                  className={`w-5 h-0.5 bg-white transition-all duration-300 ${
+                    mobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+                  }`}
+                ></div>
+              </div>
+            </button>
+          </div>
+
+          {mobileMenuOpen && (
+            <div className="absolute top-16 right-4 bg-blue-700 dark:bg-blue-900 rounded-lg shadow-lg py-2 z-50 min-w-[150px] md:hidden">
               <button
-                onClick={() => setCurrentView("calculator")}
-                className={`px-3 py-2 rounded transition-colors ${
+                onClick={() => {
+                  setCurrentView("calculator");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors ${
                   currentView === "calculator"
-                    ? "bg-blue-700 dark:bg-blue-900"
-                    : "hover:bg-blue-700 dark:hover:bg-blue-900"
+                    ? "bg-blue-800 dark:bg-blue-950"
+                    : ""
                 }`}
               >
                 Calculator
               </button>
               <button
-                onClick={() => setCurrentView("about")}
-                className={`px-3 py-2 rounded transition-colors ${
-                  currentView === "about"
-                    ? "bg-blue-700 dark:bg-blue-900"
-                    : "hover:bg-blue-700 dark:hover:bg-blue-900"
+                onClick={() => {
+                  setCurrentView("about");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors ${
+                  currentView === "about" ? "bg-blue-800 dark:bg-blue-950" : ""
                 }`}
               >
                 About
               </button>
               <button
-                onClick={() => setCurrentView("faq")}
-                className={`px-3 py-2 rounded transition-colors ${
-                  currentView === "faq"
-                    ? "bg-blue-700 dark:bg-blue-900"
-                    : "hover:bg-blue-700 dark:hover:bg-blue-900"
+                onClick={() => {
+                  setCurrentView("faq");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors ${
+                  currentView === "faq" ? "bg-blue-800 dark:bg-blue-950" : ""
                 }`}
               >
                 FAQ
               </button>
               <button
-                onClick={() => setCurrentView("support")}
-                className={`px-3 py-2 rounded transition-colors flex items-center ${
+                onClick={() => {
+                  setCurrentView("support");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors flex items-center ${
                   currentView === "support"
-                    ? "bg-blue-700 dark:bg-blue-900"
-                    : "hover:bg-blue-700 dark:hover:bg-blue-900"
+                    ? "bg-blue-800 dark:bg-blue-950"
+                    : ""
                 }`}
               >
-                <FiCoffee className="mr-1" /> Support
-              </button>
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
-                aria-label={
-                  darkMode ? "Switch to light mode" : "Switch to dark mode"
-                }
-              >
-                {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-              </button>
-            </nav>
-
-            <div className="md:hidden flex items-center space-x-2">
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
-                aria-label={
-                  darkMode ? "Switch to light mode" : "Switch to dark mode"
-                }
-              >
-                {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-              </button>
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
-                aria-label="Toggle menu"
-              >
-                <div className="flex flex-col gap-1">
-                  <div
-                    className={`w-5 h-0.5 bg-white transition-all duration-300 ${
-                      mobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-                    }`}
-                  ></div>
-                  <div
-                    className={`w-5 h-0.5 bg-white transition-all duration-300 ${
-                      mobileMenuOpen ? "opacity-0" : ""
-                    }`}
-                  ></div>
-                  <div
-                    className={`w-5 h-0.5 bg-white transition-all duration-300 ${
-                      mobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-                    }`}
-                  ></div>
-                </div>
+                <FiCoffee className="mr-2" /> Support
               </button>
             </div>
+          )}
+        </div>
+      </header>
 
-            {mobileMenuOpen && (
-              <div className="absolute top-16 right-4 bg-blue-700 dark:bg-blue-900 rounded-lg shadow-lg py-2 z-50 min-w-[150px] md:hidden">
-                <button
-                  onClick={() => {
-                    setCurrentView("calculator");
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors ${
-                    currentView === "calculator"
-                      ? "bg-blue-800 dark:bg-blue-950"
-                      : ""
-                  }`}
-                >
-                  Calculator
-                </button>
-                <button
-                  onClick={() => {
-                    setCurrentView("about");
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors ${
-                    currentView === "about"
-                      ? "bg-blue-800 dark:bg-blue-950"
-                      : ""
-                  }`}
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => {
-                    setCurrentView("faq");
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors ${
-                    currentView === "faq" ? "bg-blue-800 dark:bg-blue-950" : ""
-                  }`}
-                >
-                  FAQ
-                </button>
-                <button
-                  onClick={() => {
-                    setCurrentView("support");
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-2 hover:bg-blue-800 dark:hover:bg-blue-950 transition-colors flex items-center ${
-                    currentView === "support"
-                      ? "bg-blue-800 dark:bg-blue-950"
-                      : ""
-                  }`}
-                >
-                  <FiCoffee className="mr-2" /> Support
-                </button>
-              </div>
-            )}
+      <main className="container mx-auto p-4">
+        {currentView === "about" ? (
+          <div className="py-8">
+            <About darkMode={darkMode} />
           </div>
-        </header>
-
-        <main className="container mx-auto p-4">
-          {currentView === "about" ? (
-            <div className="py-8">
-              <About darkMode={darkMode} />
-            </div>
-          ) : currentView === "faq" ? (
-            <div className="py-8">
-              <FAQ darkMode={darkMode} />
-            </div>
-          ) : currentView === "support" ? (
-            <div className="py-8">
-              <Support darkMode={darkMode} />
-            </div>
-          ) : (
-            <>
-              {showInstructions && (
-                <div
-                  className={`mb-8 p-6 rounded-lg shadow-md border relative ${
-                    darkMode
-                      ? "bg-gray-800 border-gray-700 text-gray-100"
-                      : "bg-blue-50 border-blue-200 text-gray-900"
-                  }`}
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <h2
-                      className={`text-xl font-semibold ${
-                        darkMode ? "text-blue-300" : "text-blue-800"
-                      }`}
-                    >
-                      Welcome to Campus Companion PH
-                    </h2>
-                    <button
-                      onClick={() => setShowInstructions(false)}
-                      className={`${
-                        darkMode
-                          ? "text-gray-400 hover:text-gray-300"
-                          : "text-gray-500 hover:text-gray-700"
-                      }`}
-                    >
-                      Close
-                    </button>
-                  </div>
-                  <p className="mb-4">
-                    This calculator uses the official DepEd K-12 guidelines
-                    (DepEd Order No. 8, s. 2015) for Grades 1-12 and provides
-                    flexible tools for tertiary-level grading.
-                  </p>
-
-                  <h3
-                    className={`font-semibold mb-2 ${
-                      darkMode ? "text-blue-400" : "text-blue-700"
+        ) : currentView === "faq" ? (
+          <div className="py-8">
+            <FAQ darkMode={darkMode} />
+          </div>
+        ) : currentView === "support" ? (
+          <div className="py-8">
+            <Support darkMode={darkMode} />
+          </div>
+        ) : (
+          <>
+            {showInstructions && (
+              <div
+                className={`mb-8 p-6 rounded-lg shadow-md border relative ${
+                  darkMode
+                    ? "bg-gray-800 border-gray-700 text-gray-100"
+                    : "bg-blue-50 border-blue-200 text-gray-900"
+                }`}
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <h2
+                    className={`text-xl font-semibold ${
+                      darkMode ? "text-blue-300" : "text-blue-800"
                     }`}
                   >
-                    How to use:
-                  </h3>
-                  <ol className="list-decimal pl-5 space-y-2">
-                    <li>
-                      <strong>Choose Your Education Level</strong> - Select
-                      between K-12 or Tertiary (College)
-                    </li>
-                    <li>
-                      <strong>Select Your Context</strong> - K-12 students
-                      select Grade Level and Subject, college students select
-                      their grading system
-                    </li>
-                    <li>
-                      <strong>Enter Your Scores</strong> - Input raw scores and
-                      highest possible scores (K-12) or final grades and units
-                      (Tertiary)
-                    </li>
-                    <li>
-                      <strong>View Your Grade</strong> - See your calculated
-                      grade with detailed breakdown
-                    </li>
-                  </ol>
+                    Welcome to Campus Companion PH
+                  </h2>
+                  <button
+                    onClick={() => setShowInstructions(false)}
+                    className={`${
+                      darkMode
+                        ? "text-gray-400 hover:text-gray-300"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    Close
+                  </button>
                 </div>
-              )}
+                <p className="mb-4">
+                  This calculator uses the official DepEd K-12 guidelines (DepEd
+                  Order No. 8, s. 2015) for Grades 1-12 and provides flexible
+                  tools for tertiary-level grading.
+                </p>
 
-              {!showInstructions && (
-                <button
-                  onClick={() => setShowInstructions(true)}
-                  className="mb-6 flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  <FiInfo className="mr-1" /> Show Instructions
-                </button>
-              )}
-
-              <div className="flex border-b border-gray-300 dark:border-gray-700 mb-6">
-                <button
-                  className={`px-4 py-2 font-medium ${
-                    activeTab === "k12"
-                      ? "border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
-                      : "text-gray-600 dark:text-gray-400"
+                <h3
+                  className={`font-semibold mb-2 ${
+                    darkMode ? "text-blue-400" : "text-blue-700"
                   }`}
-                  onClick={() => setActiveTab("k12")}
                 >
-                  K-12 Calculator
-                </button>
-                <button
-                  className={`px-4 py-2 font-medium ${
-                    activeTab === "tertiary"
-                      ? "border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
-                      : "text-gray-600 dark:text-gray-400"
-                  }`}
-                  onClick={() => setActiveTab("tertiary")}
-                >
-                  Tertiary (College) Calculator
-                </button>
-                <button
-                  className={`px-4 py-2 font-medium ${
-                    activeTab === "term-based"
-                      ? "border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
-                      : "text-gray-600 dark:text-gray-400"
-                  }`}
-                  onClick={() => setActiveTab("term-based")}
-                >
-                  Term-Based Calculator
-                </button>
+                  How to use:
+                </h3>
+                <ol className="list-decimal pl-5 space-y-2">
+                  <li>
+                    <strong>Choose Your Education Level</strong> - Select
+                    between K-12 or Tertiary (College)
+                  </li>
+                  <li>
+                    <strong>Select Your Context</strong> - K-12 students select
+                    Grade Level and Subject, college students select their
+                    grading system
+                  </li>
+                  <li>
+                    <strong>Enter Your Scores</strong> - Input raw scores and
+                    highest possible scores (K-12) or final grades and units
+                    (Tertiary)
+                  </li>
+                  <li>
+                    <strong>View Your Grade</strong> - See your calculated grade
+                    with detailed breakdown
+                  </li>
+                </ol>
               </div>
+            )}
 
-              {activeTab === "k12" ? (
-                <K12Calculator
-                  darkMode={darkMode}
-                  getMotivationalMessage={getMotivationalMessage}
-                />
-              ) : activeTab === "tertiary" ? (
-                <TertiaryCalculator
-                  darkMode={darkMode}
-                  getMotivationalMessage={getMotivationalMessage}
-                />
-              ) : (
-                <TermBasedCalculator
-                  darkMode={darkMode}
-                  getMotivationalMessage={getMotivationalMessage}
-                />
-              )}
-            </>
-          )}
-        </main>
+            {!showInstructions && (
+              <button
+                onClick={() => setShowInstructions(true)}
+                className="mb-6 flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                <FiInfo className="mr-1" /> Show Instructions
+              </button>
+            )}
 
-        <footer className="bg-gray-200 dark:bg-gray-800 p-4 text-center text-sm text-gray-600 dark:text-gray-400">
-          <p>
-            © {new Date().getFullYear()} Campus Companion PH | Developed by
-            CodeWithClarence
-          </p>
-        </footer>
-      </div>
+            <div className="flex border-b border-gray-300 dark:border-gray-700 mb-6">
+              <button
+                className={`px-4 py-2 font-medium ${
+                  activeTab === "k12"
+                    ? "border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
+                    : "text-gray-600 dark:text-gray-400"
+                }`}
+                onClick={() => setActiveTab("k12")}
+              >
+                K-12 Calculator
+              </button>
+              <button
+                className={`px-4 py-2 font-medium ${
+                  activeTab === "tertiary"
+                    ? "border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
+                    : "text-gray-600 dark:text-gray-400"
+                }`}
+                onClick={() => setActiveTab("tertiary")}
+              >
+                Tertiary (College) Calculator
+              </button>
+              <button
+                className={`px-4 py-2 font-medium ${
+                  activeTab === "term-based"
+                    ? "border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
+                    : "text-gray-600 dark:text-gray-400"
+                }`}
+                onClick={() => setActiveTab("term-based")}
+              >
+                Term-Based Calculator
+              </button>
+            </div>
+
+            {activeTab === "k12" ? (
+              <K12Calculator
+                darkMode={darkMode}
+                getMotivationalMessage={getMotivationalMessage}
+              />
+            ) : activeTab === "tertiary" ? (
+              <TertiaryCalculator
+                darkMode={darkMode}
+                getMotivationalMessage={getMotivationalMessage}
+              />
+            ) : (
+              <TermBasedCalculator
+                darkMode={darkMode}
+                getMotivationalMessage={getMotivationalMessage}
+              />
+            )}
+          </>
+        )}
+      </main>
+
+      <footer className="bg-gray-200 dark:bg-gray-800 p-4 text-center text-sm text-gray-600 dark:text-gray-400">
+        <p>
+          © {new Date().getFullYear()} Campus Companion PH | Developed by
+          CodeWithClarence
+        </p>
+      </footer>
     </div>
   );
 }

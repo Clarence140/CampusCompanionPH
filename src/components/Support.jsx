@@ -61,7 +61,7 @@ export default function Support({ darkMode }) {
                 onClick={() => setZoomedImage("/images/Gcash.jpg")}
               >
                 <img
-                  src="/images/Gcash.jpg"
+                  src="/placeholder.svg?height=256&width=256"
                   alt="GCash QR Code"
                   className="w-full h-full object-contain group-hover:opacity-90 transition-opacity duration-200"
                 />
@@ -87,7 +87,7 @@ export default function Support({ darkMode }) {
                 onClick={() => setZoomedImage("/images/Maya.jpg")}
               >
                 <img
-                  src="/images/Maya.jpg"
+                  src="/placeholder.svg?height=256&width=256"
                   alt="Maya QR Code"
                   className="w-full h-full object-contain group-hover:opacity-90 transition-opacity duration-200"
                 />
