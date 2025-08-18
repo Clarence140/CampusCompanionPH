@@ -1226,7 +1226,7 @@ function App() {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img
-              src="/placeholder.svg?height=40&width=40"
+              src="/images/CampusCalcu.png"
               alt="Campus Companion PH"
               className="w-10 h-10 rounded-full"
             />
