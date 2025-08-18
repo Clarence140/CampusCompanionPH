@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Chicle&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.font-chicle {
+  font-family: "Chicle", cursive;
+}
+
+/* Dark mode transitions */
+html.dark {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-200 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500 dark:bg-gray-500;
+}
+
+/* Input fields in dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+  @apply bg-gray-800 text-gray-100;
+}
+
+/* Tooltip styles */
+[tooltip] {
+  position: relative;
+}
+
+[tooltip]:hover::after {
+  content: attr(tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.dark [tooltip]:hover::after {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+
+/* Grade weight indicators */
+.weight-indicator {
+  @apply flex items-center mb-2;
+}
+
+.weight-bar {
+  @apply h-4 rounded-full;
+}
+
+.weight-label {
+  @apply ml-2 text-sm;
+}
+
+/* Responsive table */
+.responsive-table {
+  @apply w-full;
+}
+
+.responsive-table th,
+.responsive-table td {
+  @apply px-4 py-2 text-left;
+}
+
+/* Validation error styles */
+.input-error {
+  @apply border-red-500 dark:border-red-500;
+}
+
+.error-message {
+  @apply text-red-500 text-sm mt-1;
+}
+
+/* Custom transitions */
+.transition-slow {
+  transition: all 0.5s ease;
+}
+
+/* Custom animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
