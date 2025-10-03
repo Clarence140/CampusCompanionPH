@@ -1,8 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class", // Enable class-based dark mode
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        heading: ["Poppins", "sans-serif"],
+        display: ["Chicle", "cursive"],
+      },
+    },
   },
   plugins: [],
 };

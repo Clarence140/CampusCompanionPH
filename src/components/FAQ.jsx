@@ -454,46 +454,32 @@ export default function FAQ({ darkMode }) {
   };
 
   return (
-    <div
-      className={`max-w-4xl mx-auto bg-white dark:bg-gray-900 ${
-        darkMode ? "text-gray-100" : "text-gray-900"
-      }`}
-    >
-      <h2
-        className={`text-2xl font-bold mb-6 text-center ${
-          darkMode ? "text-gray-100" : "text-gray-900"
-        }`}
-      >
-        Frequently Asked Questions
-      </h2>
+    <div className="max-w-5xl mx-auto">
+      {/* Hero Header */}
+      <div className="mb-8 text-center">
+        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600 dark:text-blue-400">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400">
+          Everything you need to know about using Campus Companion PH
+        </p>
+      </div>
 
       {/* Search Box */}
       <div className="mb-6">
         <div className="relative">
-          <FiSearch
-            className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${
-              darkMode ? "text-gray-400" : "text-gray-500"
-            }`}
-          />
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" />
           <input
             type="text"
             placeholder="Search FAQs..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`w-full pl-10 pr-10 py-3 rounded-lg border ${
-              darkMode
-                ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
+            className="w-full pl-10 pr-10 py-3 rounded-lg border bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           />
           {searchTerm && (
             <button
               onClick={clearSearch}
-              className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${
-                darkMode
-                  ? "text-gray-400 hover:text-white"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
             >
               <FiX />
             </button>
@@ -501,11 +487,7 @@ export default function FAQ({ darkMode }) {
         </div>
 
         {searchTerm && (
-          <p
-            className={`mt-2 text-sm ${
-              darkMode ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
             {filteredFaqs.length} result{filteredFaqs.length !== 1 ? "s" : ""}{" "}
             found
             {filteredFaqs.length === 0 && " - try different keywords"}
@@ -523,16 +505,10 @@ export default function FAQ({ darkMode }) {
           return (
             <div
               key={originalIndex}
-              className={`border rounded-lg overflow-hidden ${
-                darkMode ? "border-gray-700" : "border-gray-200"
-              }`}
+              className="border rounded-lg overflow-hidden border-gray-200 dark:border-gray-700"
             >
               <button
-                className={`w-full p-4 text-left flex justify-between items-center ${
-                  darkMode
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "bg-white hover:bg-gray-50"
-                }`}
+                className="w-full p-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700"
                 onClick={() => toggleFAQ(originalIndex)}
               >
                 <span className="font-medium">{faq.question}</span>
@@ -544,18 +520,14 @@ export default function FAQ({ darkMode }) {
               </button>
 
               {activeIndex === originalIndex && (
-                <div
-                  className={`p-4 ${darkMode ? "bg-gray-700" : "bg-gray-50"}`}
-                >
+                <div className="p-4 bg-gray-50 dark:bg-gray-700">
                   <p className="mb-3">{faq.answer}</p>
 
                   {faq.details && (
                     <div className="mt-3">
                       <button
                         onClick={() => toggleDetails(originalIndex)}
-                        className={`text-sm flex items-center ${
-                          darkMode ? "text-blue-400" : "text-blue-600"
-                        }`}
+                        className="text-sm flex items-center text-blue-600 dark:text-blue-400"
                       >
                         <FiInfo className="mr-1" />
                         {showDetails[originalIndex]
@@ -564,11 +536,7 @@ export default function FAQ({ darkMode }) {
                       </button>
 
                       {showDetails[originalIndex] && (
-                        <div
-                          className={`mt-2 p-3 rounded ${
-                            darkMode ? "bg-gray-800" : "bg-gray-100"
-                          }`}
-                        >
+                        <div className="mt-2 p-3 rounded bg-gray-100 dark:bg-gray-800">
                           {typeof faq.details === "string" ? (
                             <p>{faq.details}</p>
                           ) : (
@@ -587,11 +555,7 @@ export default function FAQ({ darkMode }) {
 
       {/* No Results Message */}
       {searchTerm && filteredFaqs.length === 0 && (
-        <div
-          className={`text-center py-8 ${
-            darkMode ? "text-gray-400" : "text-gray-600"
-          }`}
-        >
+        <div className="text-center py-8 text-gray-600 dark:text-gray-400">
           <p className="text-lg mb-2">No FAQs found matching "{searchTerm}"</p>
           <p className="text-sm">
             Try searching for terms like "grade", "calculator", "DepEd", "GPA",
