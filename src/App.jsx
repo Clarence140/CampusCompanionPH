@@ -3679,7 +3679,7 @@ function App() {
       <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
           {/* Logo and Title - Left Side */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 -ml-2 sm:-ml-4">
             <img
               src="/images/CampusCalcu.png"
               alt="Campus Companion PH"
