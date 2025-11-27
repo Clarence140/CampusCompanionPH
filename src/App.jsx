@@ -3838,7 +3838,7 @@ function App() {
       </header>
 
       {/* Main Content - Flex grow to push footer down */}
-      <main className="flex-1 container mx-auto px-4 py-8 max-w-7xl w-full">
+      <main className="flex-1 w-full px-4 py-8">
         {currentView === "about" ? (
           <div className="py-8">
             <About />
