@@ -3677,7 +3677,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
-        <div className="container mx-auto pl-0 pr-4 py-4 flex justify-between items-center max-w-7xl">
+        <div className="w-full pl-2 pr-4 py-4 flex justify-between items-center sm:pl-3">
           {/* Logo and Title - Left Side */}
           <div className="flex items-center space-x-3 ml-2 sm:ml-3">
             <img
