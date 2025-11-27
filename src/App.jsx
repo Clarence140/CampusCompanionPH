@@ -3678,6 +3678,23 @@ function App() {
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+          {/* Logo and Title - Left Side */}
+          <div className="flex items-center space-x-3">
+            <img
+              src="/images/CampusCalcu.png"
+              alt="Campus Companion PH"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white/20"
+            />
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold font-display leading-tight">
+                Campus Companion PH
+              </h1>
+              <p className="text-xs text-blue-100 hidden sm:block">
+                Your Grade Calculation Companion 🇵🇭
+              </p>
+            </div>
+          </div>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             <button
@@ -3759,23 +3776,6 @@ function App() {
                 ></div>
               </div>
             </button>
-          </div>
-
-          {/* Logo and Title - Right Side */}
-          <div className="flex items-center space-x-3">
-            <img
-              src="/images/CampusCalcu.png"
-              alt="Campus Companion PH"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white/20"
-            />
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold font-display leading-tight">
-                Campus Companion PH
-              </h1>
-              <p className="text-xs text-blue-100 hidden sm:block">
-                Your Grade Calculation Companion 🇵🇭
-              </p>
-            </div>
           </div>
 
           {mobileMenuOpen && (
