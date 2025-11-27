@@ -3677,9 +3677,9 @@ function App() {
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+        <div className="container mx-auto pl-2 pr-4 py-4 flex justify-between items-center max-w-7xl sm:pl-3">
           {/* Logo and Title - Left Side */}
-          <div className="flex items-center space-x-3 -ml-2 sm:-ml-4">
+          <div className="flex items-center space-x-3">
             <img
               src="/images/CampusCalcu.png"
               alt="Campus Companion PH"
