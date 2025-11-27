@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import {
-  FiSun,
-  FiMoon,
   FiInfo,
   FiPlus,
   FiTrash2,
@@ -34,7 +32,7 @@ import FAQ from "./components/FAQ";
 import Support from "./components/Support";
 
 // Reusable Modal Component
-function Modal({ isOpen, onClose, title, message, type = "info", darkMode }) {
+function Modal({ isOpen, onClose, title, message, type = "info" }) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
@@ -55,35 +53,35 @@ function Modal({ isOpen, onClose, title, message, type = "info", darkMode }) {
 
   const typeStyles = {
     success: {
-      bg: "bg-green-50 dark:bg-green-900/30",
+      bg: "bg-green-50",
       border: "border-green-500",
       icon: "✅",
-      iconBg: "bg-green-100 dark:bg-green-900/50",
-      iconColor: "text-green-600 dark:text-green-400",
+      iconBg: "bg-green-100",
+      iconColor: "text-green-600",
       buttonBg: "bg-green-600 hover:bg-green-700",
     },
     error: {
-      bg: "bg-red-50 dark:bg-red-900/30",
+      bg: "bg-red-50",
       border: "border-red-500",
       icon: "❌",
-      iconBg: "bg-red-100 dark:bg-red-900/50",
-      iconColor: "text-red-600 dark:text-red-400",
+      iconBg: "bg-red-100",
+      iconColor: "text-red-600",
       buttonBg: "bg-red-600 hover:bg-red-700",
     },
     warning: {
-      bg: "bg-yellow-50 dark:bg-yellow-900/30",
+      bg: "bg-yellow-50",
       border: "border-yellow-500",
       icon: "⚠️",
-      iconBg: "bg-yellow-100 dark:bg-yellow-900/50",
-      iconColor: "text-yellow-600 dark:text-yellow-400",
+      iconBg: "bg-yellow-100",
+      iconColor: "text-yellow-600",
       buttonBg: "bg-yellow-600 hover:bg-yellow-700",
     },
     info: {
-      bg: "bg-blue-50 dark:bg-blue-900/30",
+      bg: "bg-blue-50",
       border: "border-blue-500",
       icon: "ℹ️",
-      iconBg: "bg-blue-100 dark:bg-blue-900/50",
-      iconColor: "text-blue-600 dark:text-blue-400",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
       buttonBg: "bg-blue-600 hover:bg-blue-700",
     },
   };
@@ -96,12 +94,12 @@ function Modal({ isOpen, onClose, title, message, type = "info", darkMode }) {
       onClick={onClose}
     >
       <div
-        className={`bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-scale-in ${style.border} border-t-4`}
+        className={`bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-scale-in ${style.border} border-t-4`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div
-          className={`${style.bg} p-6 border-b border-gray-200 dark:border-gray-700`}
+          className={`${style.bg} p-6 border-b border-gray-200`}
         >
           <div className="flex items-start gap-4">
             <div className={`${style.iconBg} p-3 rounded-full`}>
@@ -110,10 +108,10 @@ function Modal({ isOpen, onClose, title, message, type = "info", darkMode }) {
               </span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+              <h3 className="text-xl font-bold text-gray-900 mb-1">
                 {title}
               </h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
+              <p className="text-sm text-gray-700">
                 {message}
               </p>
             </div>
@@ -121,7 +119,7 @@ function Modal({ isOpen, onClose, title, message, type = "info", darkMode }) {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-gray-50 dark:bg-gray-900 flex justify-end">
+        <div className="p-4 bg-gray-50 flex justify-end">
           <button
             onClick={onClose}
             className={`px-6 py-2 text-white rounded-lg transition-colors shadow-md ${style.buttonBg}`}
@@ -141,7 +139,6 @@ function ConfirmModal({
   onConfirm,
   title,
   message,
-  darkMode,
 }) {
   useEffect(() => {
     const handleEscape = (e) => {
@@ -167,20 +164,20 @@ function ConfirmModal({
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-scale-in border-t-4 border-red-500"
+        className="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-scale-in border-t-4 border-red-500"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="bg-red-50 dark:bg-red-900/30 p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-red-50 p-6 border-b border-gray-200">
           <div className="flex items-start gap-4">
-            <div className="bg-red-100 dark:bg-red-900/50 p-3 rounded-full">
+            <div className="bg-red-100 p-3 rounded-full">
               <span className="text-3xl">⚠️</span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+              <h3 className="text-xl font-bold text-gray-900 mb-1">
                 {title}
               </h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
+              <p className="text-sm text-gray-700">
                 {message}
               </p>
             </div>
@@ -188,10 +185,10 @@ function ConfirmModal({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-gray-50 dark:bg-gray-900 flex justify-end gap-3">
+        <div className="p-4 bg-gray-50 flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors"
+            className="px-6 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg transition-colors"
           >
             Cancel
           </button>
@@ -210,7 +207,7 @@ function ConfirmModal({
   );
 }
 
-function K12Calculator({ darkMode, getMotivationalMessage }) {
+function K12Calculator({ getMotivationalMessage }) {
   // Load saved data from localStorage
   const [gradeLevel, setGradeLevel] = useState(() => {
     const saved = localStorage.getItem("k12_gradeLevel");
@@ -1134,28 +1131,28 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
   return (
     <div className="space-y-6">
       {/* Auto-save indicator */}
-      <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+      <div className="flex justify-between items-center p-3 bg-green-50 border border-green-200 rounded-lg">
         <div className="flex items-center gap-2">
-          <span className="text-green-600 dark:text-green-400">✓</span>
-          <span className="text-sm text-green-700 dark:text-green-300">
+          <span className="text-green-600">✓</span>
+          <span className="text-sm text-green-700">
             Your data is automatically saved
           </span>
         </div>
         <button
           onClick={clearAllData}
-          className="text-sm px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+          className="text-sm px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
         >
           Clear All Data
         </button>
       </div>
 
       {/* Quick Templates */}
-      <div className="border border-cyan-200 dark:border-cyan-800 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-lg p-4">
+      <div className="border border-cyan-200 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-4">
         <button
           onClick={() => setShowTemplates(!showTemplates)}
           className="w-full flex items-center justify-between mb-2"
         >
-          <h3 className="text-md font-bold text-cyan-800 dark:text-cyan-300 flex items-center gap-2">
+          <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
             ⚡ Quick Start Templates
           </h3>
           {showTemplates ? <FiChevronUp /> : <FiChevronDown />}
@@ -1163,52 +1160,52 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
 
         {showTemplates && (
           <div className="space-y-3 mt-4">
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-gray-700">
               Load sample data to try out the calculator instantly, or start
               fresh:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <button
                 onClick={() => loadTemplate("grade7_sample")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-cyan-300 dark:border-cyan-700 rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700 dark:text-cyan-300">
+                <p className="font-semibold text-cyan-700">
                   📚 Grade 7
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Sample scores for JHS
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("grade10_sample")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-cyan-300 dark:border-cyan-700 rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700 dark:text-cyan-300">
+                <p className="font-semibold text-cyan-700">
                   🎓 Grade 10
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   High performing data
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("shs_sample")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-cyan-300 dark:border-cyan-700 rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700 dark:text-cyan-300">
+                <p className="font-semibold text-cyan-700">
                   🏆 SHS
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Senior High School
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("empty")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
+                className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700 dark:text-gray-300">
+                <p className="font-semibold text-gray-700">
                   ✨ Start Fresh
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Empty template
                 </p>
               </button>
@@ -1223,11 +1220,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           <select
             value={gradeLevel}
             onChange={(e) => setGradeLevel(e.target.value)}
-            className={`w-full p-2 border rounded ${
-              darkMode
-                ? "border-gray-600 bg-gray-800 text-gray-100"
-                : "border-gray-300 bg-white text-gray-900"
-            }`}
+            className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
           >
             {Object.keys(gradeWeights).map((level) => (
               <option key={level} value={level}>
@@ -1241,11 +1234,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           <select
             value={subjectType}
             onChange={(e) => setSubjectType(e.target.value)}
-            className={`w-full p-2 border rounded ${
-              darkMode
-                ? "border-gray-600 bg-gray-800 text-gray-100"
-                : "border-gray-300 bg-white text-gray-900"
-            }`}
+            className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
           >
             <option value="core">Core Subject</option>
             <option value="applied">Applied Track</option>
@@ -1255,12 +1244,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       </div>
 
       {/* Written Works Section */}
-      <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-850 shadow-sm">
+      <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-bold text-xl text-blue-700 dark:text-blue-400 flex items-center gap-2">
+          <h3 className="font-heading font-bold text-xl text-blue-700 flex items-center gap-2">
             <span className="text-2xl">📝</span>
             Written Works
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+            <span className="text-sm font-normal text-gray-500">
               ({gradeWeights[gradeLevel].ww * 100}%)
             </span>
           </h3>
@@ -1275,11 +1264,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               placeholder="Assignment name"
               value={work.name}
               onChange={(e) => updateWrittenWork(index, "name", e.target.value)}
-              className={`p-2 border rounded ${
-                darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-100"
-                  : "border-gray-300 bg-white text-gray-900"
-              }`}
+              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
             />
             <input
               type="number"
@@ -1288,11 +1273,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               onChange={(e) =>
                 updateWrittenWork(index, "score", e.target.value)
               }
-              className={`p-2 border rounded ${
-                darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-100"
-                  : "border-gray-300 bg-white text-gray-900"
-              }`}
+              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
             />
             <input
               type="number"
@@ -1301,15 +1282,11 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               onChange={(e) =>
                 updateWrittenWork(index, "maxScore", e.target.value)
               }
-              className={`p-2 border rounded ${
-                darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-100"
-                  : "border-gray-300 bg-white text-gray-900"
-              }`}
+              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
             />
             <button
               onClick={() => removeWrittenWork(index)}
-              className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
+              className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
               title="Remove this item"
             >
               <FiTrash2
@@ -1325,24 +1302,24 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
         <div className="flex flex-wrap gap-2">
           <button
             onClick={addWrittenWork}
-            className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+            className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
           >
             <FiPlus className="inline mr-1" /> Add Written Work
           </button>
           <button
             onClick={() => setShowBulkWW(!showBulkWW)}
-            className="p-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-200 rounded hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors"
+            className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
           >
             📋 Bulk Add (Paste from Excel)
           </button>
         </div>
 
         {showBulkWW && (
-          <div className="mt-3 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-            <h4 className="font-semibold mb-2 text-purple-800 dark:text-purple-300">
+          <div className="mt-3 p-4 bg-purple-50/20 border border-purple-200 rounded-lg">
+            <h4 className="font-semibold mb-2 text-purple-800">
               Bulk Add Written Works
             </h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <p className="text-sm text-gray-600 mb-2">
               Paste from Excel/Google Sheets (Name, Score, Max Score - one per
               line):
             </p>
@@ -1350,7 +1327,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               value={bulkWWData}
               onChange={(e) => setBulkWWData(e.target.value)}
               placeholder={`Quiz 1\t18\t20\nQuiz 2\t22\t25\nLong Test\t38\t50`}
-              className="w-full h-24 p-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 font-mono text-sm"
+              className="w-full h-24 p-2 border rounded-lg bg-white border-gray-300 font-mono text-sm"
             />
             <div className="flex gap-2 mt-2">
               <button
@@ -1364,7 +1341,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   setShowBulkWW(false);
                   setBulkWWData("");
                 }}
-                className="px-4 py-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors"
+                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg transition-colors"
               >
                 Cancel
               </button>
@@ -1374,12 +1351,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       </div>
 
       {/* Performance Tasks Section */}
-      <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-850 shadow-sm">
+      <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-bold text-xl text-green-700 dark:text-green-400 flex items-center gap-2">
+          <h3 className="font-heading font-bold text-xl text-green-700 flex items-center gap-2">
             <span className="text-2xl">🎯</span>
             Performance Tasks
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+            <span className="text-sm font-normal text-gray-500">
               ({gradeWeights[gradeLevel].pt * 100}%)
             </span>
           </h3>
@@ -1396,11 +1373,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               onChange={(e) =>
                 updatePerformanceTask(index, "name", e.target.value)
               }
-              className={`p-2 border rounded ${
-                darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-100"
-                  : "border-gray-300 bg-white text-gray-900"
-              }`}
+              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
             />
             <input
               type="number"
@@ -1409,11 +1382,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               onChange={(e) =>
                 updatePerformanceTask(index, "score", e.target.value)
               }
-              className={`p-2 border rounded ${
-                darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-100"
-                  : "border-gray-300 bg-white text-gray-900"
-              }`}
+              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
             />
             <input
               type="number"
@@ -1422,15 +1391,11 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               onChange={(e) =>
                 updatePerformanceTask(index, "maxScore", e.target.value)
               }
-              className={`p-2 border rounded ${
-                darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-100"
-                  : "border-gray-300 bg-white text-gray-900"
-              }`}
+              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
             />
             <button
               onClick={() => removePerformanceTask(index)}
-              className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
+              className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
               title="Remove this item"
             >
               <FiTrash2
@@ -1446,24 +1411,24 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
         <div className="flex flex-wrap gap-2">
           <button
             onClick={addPerformanceTask}
-            className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+            className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
           >
             <FiPlus className="inline mr-1" /> Add Performance Task
           </button>
           <button
             onClick={() => setShowBulkPT(!showBulkPT)}
-            className="p-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-200 rounded hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors"
+            className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
           >
             📋 Bulk Add (Paste from Excel)
           </button>
         </div>
 
         {showBulkPT && (
-          <div className="mt-3 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-            <h4 className="font-semibold mb-2 text-purple-800 dark:text-purple-300">
+          <div className="mt-3 p-4 bg-purple-50/20 border border-purple-200 rounded-lg">
+            <h4 className="font-semibold mb-2 text-purple-800">
               Bulk Add Performance Tasks
             </h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <p className="text-sm text-gray-600 mb-2">
               Paste from Excel/Google Sheets (Name, Score, Max Score - one per
               line):
             </p>
@@ -1471,7 +1436,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               value={bulkPTData}
               onChange={(e) => setBulkPTData(e.target.value)}
               placeholder={`Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100`}
-              className="w-full h-24 p-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 font-mono text-sm"
+              className="w-full h-24 p-2 border rounded-lg bg-white border-gray-300 font-mono text-sm"
             />
             <div className="flex gap-2 mt-2">
               <button
@@ -1485,7 +1450,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   setShowBulkPT(false);
                   setBulkPTData("");
                 }}
-                className="px-4 py-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors"
+                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg transition-colors"
               >
                 Cancel
               </button>
@@ -1495,12 +1460,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       </div>
 
       {/* Quarterly Assessment Section */}
-      <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-850 shadow-sm">
+      <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-bold text-xl text-orange-700 dark:text-orange-400 flex items-center gap-2">
+          <h3 className="font-heading font-bold text-xl text-orange-700 flex items-center gap-2">
             <span className="text-2xl">📚</span>
             Quarterly Assessment
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+            <span className="text-sm font-normal text-gray-500">
               ({gradeWeights[gradeLevel].qa * 100}%)
             </span>
           </h3>
@@ -1516,11 +1481,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 score: e.target.value,
               })
             }
-            className={`p-2 border rounded ${
-              darkMode
-                ? "border-gray-600 bg-gray-800 text-gray-100"
-                : "border-gray-300 bg-white text-gray-900"
-            }`}
+            className="p-2 border rounded border-gray-300 bg-white text-gray-900"
           />
           <input
             type="number"
@@ -1532,11 +1493,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 maxScore: e.target.value,
               })
             }
-            className={`p-2 border rounded ${
-              darkMode
-                ? "border-gray-600 bg-gray-800 text-gray-100"
-                : "border-gray-300 bg-white text-gray-900"
-            }`}
+            className="p-2 border rounded border-gray-300 bg-white text-gray-900"
           />
         </div>
       </div>
@@ -1545,8 +1502,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       {grades.wwAverage > 0 &&
         grades.ptAverage > 0 &&
         !quarterlyAssessment.score && (
-          <div className="border border-yellow-200 dark:border-yellow-800 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-6">
-            <h3 className="text-lg font-bold text-yellow-800 dark:text-yellow-300 mb-4 flex items-center gap-2">
+          <div className="border border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+            <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center gap-2">
               🎯 Can I Still Pass? (75% Analysis)
             </h3>
 
@@ -1565,8 +1522,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   <div
                     className={`p-4 rounded-lg border-2 ${
                       canPass
-                        ? "border-green-500 bg-green-50 dark:bg-green-900/30"
-                        : "border-red-500 bg-red-50 dark:bg-red-900/30"
+                        ? "border-green-500 bg-green-50"
+                        : "border-red-500 bg-red-50"
                     }`}
                   >
                     <div className="text-center mb-3">
@@ -1580,7 +1537,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                       </p>
                     </div>
 
-                    <div className="bg-white dark:bg-gray-800 p-3 rounded-lg space-y-2 text-sm">
+                    <div className="bg-white p-3 rounded-lg space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span>Current Total:</span>
                         <span className="font-bold">
@@ -1602,8 +1559,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         <span
                           className={`font-bold text-lg ${
                             canPass
-                              ? "text-green-600 dark:text-green-400"
-                              : "text-red-600 dark:text-red-400"
+                              ? "text-green-600"
+                              : "text-red-600"
                           }`}
                         >
                           {requiredQA.toFixed(2)}%
@@ -1613,8 +1570,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   </div>
 
                   {canPass && (
-                    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-2 text-green-700 dark:text-green-300">
+                    <div className="bg-white p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2 text-green-700">
                         💪 Action Plan:
                       </h4>
                       <ul className="space-y-2 text-sm">
@@ -1675,8 +1632,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   )}
 
                   {!canPass && (
-                    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-2 text-red-700 dark:text-red-300">
+                    <div className="bg-white p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2 text-red-700">
                         ⚠️ Important Steps:
                       </h4>
                       <ul className="space-y-2 text-sm">
@@ -1719,12 +1676,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       {grades.wwAverage > 0 &&
         grades.ptAverage > 0 &&
         !quarterlyAssessment.score && (
-          <div className="border border-purple-200 dark:border-purple-800 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-6">
+          <div className="border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6">
             <button
               onClick={() => setShowWhatIf(!showWhatIf)}
               className="w-full flex items-center justify-between mb-4"
             >
-              <h3 className="text-lg font-bold text-purple-800 dark:text-purple-300 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-purple-800 flex items-center gap-2">
                 🎯 Goal Planner: "What If" Calculator
               </h3>
               {showWhatIf ? <FiChevronUp /> : <FiChevronDown />}
@@ -1732,7 +1689,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
 
             {showWhatIf && (
               <div className="space-y-4">
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="text-sm text-gray-700">
                   Set your target final grade and see what you need to score on
                   your Quarterly Assessment!
                 </p>
@@ -1750,7 +1707,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                       min="75"
                       max="100"
                       step="0.01"
-                      className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="w-full p-3 border rounded-lg bg-white border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                     />
                   </div>
 
@@ -1759,8 +1716,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                       <div
                         className={`text-center p-4 rounded-lg border-2 ${
                           calculateRequiredGrade().isPossible
-                            ? "border-green-500 bg-green-50 dark:bg-green-900/30"
-                            : "border-red-500 bg-red-50 dark:bg-red-900/30"
+                            ? "border-green-500 bg-green-50"
+                            : "border-red-500 bg-red-50"
                         }`}
                       >
                         <p className="text-sm font-medium mb-1">
@@ -1778,7 +1735,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 </div>
 
                 {targetGrade && calculateRequiredGrade() && (
-                  <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg">
+                  <div className="mt-4 p-4 bg-white rounded-lg">
                     <h4 className="font-semibold mb-2">Breakdown:</h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
@@ -1813,7 +1770,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                           points
                         </span>
                       </div>
-                      <div className="flex justify-between text-purple-700 dark:text-purple-300">
+                      <div className="flex justify-between text-purple-700">
                         <span>Target Final Grade:</span>
                         <span className="font-bold">{targetGrade}</span>
                       </div>
@@ -1824,8 +1781,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         <span
                           className={
                             calculateRequiredGrade().isPossible
-                              ? "text-green-600 dark:text-green-400"
-                              : "text-red-600 dark:text-red-400"
+                              ? "text-green-600"
+                              : "text-red-600"
                           }
                         >
                           {calculateRequiredGrade().required.toFixed(2)}%
@@ -1834,12 +1791,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                     </div>
 
                     {!calculateRequiredGrade().isPossible && (
-                      <div className="mt-4 p-3 bg-red-100 dark:bg-red-900/30 rounded-lg text-sm">
-                        <p className="font-semibold text-red-800 dark:text-red-300">
+                      <div className="mt-4 p-3 bg-red-100 rounded-lg text-sm">
+                        <p className="font-semibold text-red-800">
                           💡 Tip: Your target grade may be too high given your
                           current performance.
                         </p>
-                        <p className="text-red-700 dark:text-red-400 mt-1">
+                        <p className="text-red-700 mt-1">
                           Try setting a more realistic target or focus on
                           improving your Written Works and Performance Tasks.
                         </p>
@@ -1848,11 +1805,11 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
 
                     {calculateRequiredGrade().isPossible &&
                       calculateRequiredGrade().required > 90 && (
-                        <div className="mt-4 p-3 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg text-sm">
-                          <p className="font-semibold text-yellow-800 dark:text-yellow-300">
+                        <div className="mt-4 p-3 bg-yellow-100 rounded-lg text-sm">
+                          <p className="font-semibold text-yellow-800">
                             ⚡ Challenge Ahead!
                           </p>
-                          <p className="text-yellow-700 dark:text-yellow-400 mt-1">
+                          <p className="text-yellow-700 mt-1">
                             You'll need to score very high on the Quarterly
                             Assessment. Start reviewing now and prepare
                             thoroughly!
@@ -1869,42 +1826,38 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       {/* Results Section */}
       {grades.finalGrade > 0 && (
         <div
-          className={`border rounded-lg p-6 mt-6 ${
-            darkMode
-              ? "border-blue-800 bg-blue-900/20"
-              : "border-blue-200 bg-blue-50"
-          }`}
+          className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50"
         >
-          <h2 className="text-2xl font-bold text-center mb-4 text-blue-800 dark:text-blue-200">
+          <h2 className="text-2xl font-bold text-center mb-4 text-blue-800">
             Final Grade: {grades.finalGrade}
           </h2>
 
           {/* Grade Breakdown Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
-            <div className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="p-3 bg-white rounded-lg shadow-sm">
+              <p className="text-sm text-gray-600">
                 Written Works
               </p>
               <p className="text-xl font-semibold">{grades.wwAverage}%</p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">
+              <p className="text-xs text-gray-500">
                 Weight: {gradeWeights[gradeLevel].ww * 100}%
               </p>
             </div>
-            <div className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="p-3 bg-white rounded-lg shadow-sm">
+              <p className="text-sm text-gray-600">
                 Performance Tasks
               </p>
               <p className="text-xl font-semibold">{grades.ptAverage}%</p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">
+              <p className="text-xs text-gray-500">
                 Weight: {gradeWeights[gradeLevel].pt * 100}%
               </p>
             </div>
-            <div className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="p-3 bg-white rounded-lg shadow-sm">
+              <p className="text-sm text-gray-600">
                 Quarterly Assessment
               </p>
               <p className="text-xl font-semibold">{grades.qaScore}%</p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">
+              <p className="text-xs text-gray-500">
                 Weight: {gradeWeights[gradeLevel].qa * 100}%
               </p>
             </div>
@@ -1913,8 +1866,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           {/* Visual Charts */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Pie Chart - Grade Contribution */}
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-              <h3 className="text-sm font-semibold text-center mb-2 text-gray-700 dark:text-gray-300">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <h3 className="text-sm font-semibold text-center mb-2 text-gray-700">
                 Grade Contribution Breakdown
               </h3>
               <ResponsiveContainer width="100%" height={200}>
@@ -1958,7 +1911,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   <Tooltip
                     formatter={(value) => value.toFixed(2)}
                     contentStyle={{
-                      backgroundColor: darkMode ? "#1f2937" : "#ffffff",
+                      backgroundColor: "#ffffff",
                       border: "1px solid #e5e7eb",
                       borderRadius: "0.5rem",
                     }}
@@ -1969,8 +1922,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
             </div>
 
             {/* Bar Chart - Component Comparison */}
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-              <h3 className="text-sm font-semibold text-center mb-2 text-gray-700 dark:text-gray-300">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <h3 className="text-sm font-semibold text-center mb-2 text-gray-700">
                 Component Performance
               </h3>
               <ResponsiveContainer width="100%" height={200}>
@@ -1992,20 +1945,20 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 >
                   <CartesianGrid
                     strokeDasharray="3 3"
-                    stroke={darkMode ? "#374151" : "#e5e7eb"}
+                    stroke="#e5e7eb"
                   />
                   <XAxis
                     dataKey="name"
-                    stroke={darkMode ? "#9ca3af" : "#6b7280"}
+                    stroke="#6b7280"
                   />
                   <YAxis
                     domain={[0, 100]}
-                    stroke={darkMode ? "#9ca3af" : "#6b7280"}
+                    stroke="#6b7280"
                   />
                   <Tooltip
                     formatter={(value) => `${value}%`}
                     contentStyle={{
-                      backgroundColor: darkMode ? "#1f2937" : "#ffffff",
+                      backgroundColor: "#ffffff",
                       border: "1px solid #e5e7eb",
                       borderRadius: "0.5rem",
                     }}
@@ -2016,7 +1969,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
             </div>
           </div>
 
-          <div className="mt-4 text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg">
+          <div className="mt-4 text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
             <p className="text-sm italic font-medium">
               {getMotivationalMessage(Number.parseFloat(grades.finalGrade))}
             </p>
@@ -2045,8 +1998,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           </div>
 
           {/* Smart Study Recommendations */}
-          <div className="mt-6 p-6 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-pink-900/20 dark:via-purple-900/20 dark:to-indigo-900/20 rounded-lg border border-pink-200 dark:border-pink-800">
-            <h4 className="font-semibold text-xl mb-4 text-purple-800 dark:text-purple-300 flex items-center gap-2">
+          <div className="mt-6 p-6 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 rounded-lg border border-pink-200">
+            <h4 className="font-semibold text-xl mb-4 text-purple-800 flex items-center gap-2">
               🧠 Smart Study Recommendations
             </h4>
 
@@ -2220,22 +2173,22 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                       key={idx}
                       className={`p-4 rounded-lg border-l-4 ${
                         rec.type === "urgent"
-                          ? "bg-red-50 dark:bg-red-900/20 border-red-500"
+                          ? "bg-red-50 border-red-500"
                           : rec.type === "warning"
-                          ? "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500"
+                          ? "bg-yellow-50 border-yellow-500"
                           : rec.type === "success"
-                          ? "bg-green-50 dark:bg-green-900/20 border-green-500"
-                          : "bg-blue-50 dark:bg-blue-900/20 border-blue-500"
+                          ? "bg-green-50 border-green-500"
+                          : "bg-blue-50 border-blue-500"
                       }`}
                     >
                       <h5 className="font-bold text-lg mb-2 flex items-center gap-2">
                         <span className="text-2xl">{rec.icon}</span>
                         {rec.title}
                       </h5>
-                      <p className="mb-3 text-gray-700 dark:text-gray-300">
+                      <p className="mb-3 text-gray-700">
                         {rec.message}
                       </p>
-                      <div className="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                      <div className="bg-white p-3 rounded-lg">
                         <p className="font-semibold text-sm mb-2">
                           Actionable Steps:
                         </p>
@@ -2245,7 +2198,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                               key={tipIdx}
                               className="flex items-start gap-2 text-sm"
                             >
-                              <span className="text-purple-600 dark:text-purple-400 mt-0.5">
+                              <span className="text-purple-600 mt-0.5">
                                 ✓
                               </span>
                               <span>{tip}</span>
@@ -2261,8 +2214,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           </div>
 
           {/* Save to History */}
-          <div className="mt-4 p-4 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-lg border border-indigo-200 dark:border-indigo-800">
-            <h4 className="font-semibold mb-2 text-indigo-800 dark:text-indigo-300">
+          <div className="mt-4 p-4 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg border border-indigo-200">
+            <h4 className="font-semibold mb-2 text-indigo-800">
               💾 Save to Grade History
             </h4>
             <div className="flex flex-col sm:flex-row gap-2">
@@ -2271,7 +2224,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 value={historyEntryName}
                 onChange={(e) => setHistoryEntryName(e.target.value)}
                 placeholder="Enter name (e.g., '1st Quarter', 'Midterm')"
-                className="flex-1 p-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600"
+                className="flex-1 p-2 border rounded-lg bg-white border-gray-300"
               />
               <button
                 onClick={saveToHistory}
@@ -2286,12 +2239,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
 
       {/* Grade History Section */}
       {gradeHistory.length > 0 && (
-        <div className="border border-indigo-200 dark:border-indigo-800 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg p-6">
+        <div className="border border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-6">
           <button
             onClick={() => setShowHistory(!showHistory)}
             className="w-full flex items-center justify-between mb-4"
           >
-            <h3 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-indigo-800 flex items-center gap-2">
               📊 Grade History & Progress ({gradeHistory.length} entries)
             </h3>
             {showHistory ? <FiChevronUp /> : <FiChevronDown />}
@@ -2301,7 +2254,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
             <div className="space-y-6">
               {/* Progress Line Chart */}
               {gradeHistory.length >= 2 && (
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                <div className="bg-white p-4 rounded-lg shadow-sm">
                   <h4 className="font-semibold mb-4 text-center">
                     Grade Progress Over Time
                   </h4>
@@ -2315,22 +2268,22 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                     >
                       <CartesianGrid
                         strokeDasharray="3 3"
-                        stroke={darkMode ? "#374151" : "#e5e7eb"}
+                        stroke="#e5e7eb"
                       />
                       <XAxis
                         dataKey="name"
-                        stroke={darkMode ? "#9ca3af" : "#6b7280"}
+                        stroke="#6b7280"
                         angle={-45}
                         textAnchor="end"
                         height={80}
                       />
                       <YAxis
                         domain={[75, 100]}
-                        stroke={darkMode ? "#9ca3af" : "#6b7280"}
+                        stroke="#6b7280"
                       />
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: darkMode ? "#1f2937" : "#ffffff",
+                          backgroundColor: "#ffffff",
                           border: "1px solid #e5e7eb",
                           borderRadius: "0.5rem",
                         }}
@@ -2351,10 +2304,10 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               )}
 
               {/* History Table */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead className="bg-indigo-600 dark:bg-indigo-900">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-indigo-600">
                       <tr>
                         <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                           Name
@@ -2379,11 +2332,11 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="bg-white divide-y divide-gray-200">
                       {gradeHistory.map((entry) => (
                         <tr
                           key={entry.id}
-                          className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                          className="hover:bg-gray-50 transition-colors"
                         >
                           <td className="px-4 py-3 whitespace-nowrap font-medium">
                             {entry.name}
@@ -2392,7 +2345,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                             {new Date(entry.date).toLocaleDateString("en-PH")}
                           </td>
                           <td className="px-4 py-3 whitespace-nowrap">
-                            <span className="px-2 py-1 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                            <span className="px-2 py-1 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               {entry.finalGrade.toFixed(2)}
                             </span>
                           </td>
@@ -2408,7 +2361,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                           <td className="px-4 py-3 whitespace-nowrap text-sm">
                             <button
                               onClick={() => deleteHistoryEntry(entry.id)}
-                              className="px-2 py-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 group flex items-center gap-1"
+                              className="px-2 py-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1"
                               title="Delete this entry"
                             >
                               <FiTrash2
@@ -2429,11 +2382,11 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
 
               {/* Statistics */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+                  <p className="text-sm text-gray-600">
                     Average Grade
                   </p>
-                  <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                  <p className="text-2xl font-bold text-indigo-600">
                     {(
                       gradeHistory.reduce(
                         (sum, entry) => sum + entry.finalGrade,
@@ -2442,21 +2395,21 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                     ).toFixed(2)}
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+                  <p className="text-sm text-gray-600">
                     Highest Grade
                   </p>
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                  <p className="text-2xl font-bold text-green-600">
                     {Math.max(
                       ...gradeHistory.map((entry) => entry.finalGrade)
                     ).toFixed(2)}
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+                  <p className="text-sm text-gray-600">
                     Lowest Grade
                   </p>
-                  <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                  <p className="text-2xl font-bold text-orange-600">
                     {Math.min(
                       ...gradeHistory.map((entry) => entry.finalGrade)
                     ).toFixed(2)}
@@ -2484,7 +2437,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
         title={modal.title}
         message={modal.message}
         type={modal.type}
-        darkMode={darkMode}
       />
       <ConfirmModal
         isOpen={confirmModal.isOpen}
@@ -2492,13 +2444,12 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
         onConfirm={confirmModal.onConfirm}
         title={confirmModal.title}
         message={confirmModal.message}
-        darkMode={darkMode}
       />
     </div>
   );
 }
 
-function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
+function TertiaryCalculator({ getMotivationalMessage }) {
   const [subjects, setSubjects] = useState(() => {
     const saved = localStorage.getItem("tertiary_subjects");
     return saved ? JSON.parse(saved) : [{ name: "", grade: "", units: "" }];
@@ -2654,28 +2605,28 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
   return (
     <div className="space-y-6">
       {/* Auto-save indicator */}
-      <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+      <div className="flex justify-between items-center p-3 bg-green-50 border border-green-200 rounded-lg">
         <div className="flex items-center gap-2">
-          <span className="text-green-600 dark:text-green-400">✓</span>
-          <span className="text-sm text-green-700 dark:text-green-300">
+          <span className="text-green-600">✓</span>
+          <span className="text-sm text-green-700">
             Your data is automatically saved
           </span>
         </div>
         <button
           onClick={clearAllData}
-          className="text-sm px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+          className="text-sm px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
         >
           Clear All Data
         </button>
       </div>
 
       {/* Quick Templates */}
-      <div className="border border-cyan-200 dark:border-cyan-800 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-lg p-4">
+      <div className="border border-cyan-200 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-4">
         <button
           onClick={() => setShowTemplates(!showTemplates)}
           className="w-full flex items-center justify-between mb-2"
         >
-          <h3 className="text-md font-bold text-cyan-800 dark:text-cyan-300 flex items-center gap-2">
+          <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
             ⚡ Quick Start Templates
           </h3>
           {showTemplates ? <FiChevronUp /> : <FiChevronDown />}
@@ -2683,51 +2634,51 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
 
         {showTemplates && (
           <div className="space-y-3 mt-4">
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-gray-700">
               Load sample GPA data to see the calculator in action:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <button
                 onClick={() => loadTemplate("excellent_student")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-green-300 dark:border-green-700 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left"
               >
-                <p className="font-semibold text-green-700 dark:text-green-300">
+                <p className="font-semibold text-green-700">
                   🏆 Summa Level
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   GPA ~1.15 (Excellent)
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("good_student")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-blue-300 dark:border-blue-700 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50/30 transition-colors text-left"
               >
-                <p className="font-semibold text-blue-700 dark:text-blue-300">
+                <p className="font-semibold text-blue-700">
                   🎓 Cum Laude
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   GPA ~1.80 (Very Good)
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("average_student")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg hover:bg-yellow-50 dark:hover:bg-yellow-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-yellow-300 rounded-lg hover:bg-yellow-50 transition-colors text-left"
               >
-                <p className="font-semibold text-yellow-700 dark:text-yellow-300">
+                <p className="font-semibold text-yellow-700">
                   📚 Passing
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   GPA ~2.44 (Average)
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("empty")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
+                className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700 dark:text-gray-300">
+                <p className="font-semibold text-gray-700">
                   ✨ Start Fresh
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Empty template
                 </p>
               </button>
@@ -2737,14 +2688,14 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-heading font-bold text-2xl text-blue-700 dark:text-blue-400 mb-6 flex items-center gap-2">
+        <h3 className="font-heading font-bold text-2xl text-blue-700 mb-6 flex items-center gap-2">
           <span className="text-3xl">🎓</span>
           Your Subjects
         </h3>
         {subjects.map((subject, index) => (
           <div
             key={index}
-            className="border border-gray-200 dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-850 shadow-sm hover:shadow-md transition-shadow"
+            className="border border-gray-200 rounded-xl p-5 bg-gradient-to-br from-white to-gray-50 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
               <input
@@ -2752,11 +2703,7 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
                 placeholder="Subject name"
                 value={subject.name}
                 onChange={(e) => updateSubject(index, "name", e.target.value)}
-                className={`p-2 border rounded ${
-                  darkMode
-                    ? "border-gray-600 bg-gray-800 text-gray-100"
-                    : "border-gray-300 bg-white text-gray-900"
-                }`}
+                className="p-2 border rounded border-gray-300 bg-white text-gray-900"
               />
               <input
                 type="number"
@@ -2766,11 +2713,7 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
                 step="0.25"
                 min="1.0"
                 max="5.0"
-                className={`p-2 border rounded ${
-                  darkMode
-                    ? "border-gray-600 bg-gray-800 text-gray-100"
-                    : "border-gray-300 bg-white text-gray-900"
-                }`}
+                className="p-2 border rounded border-gray-300 bg-white text-gray-900"
               />
               <input
                 type="number"
@@ -2779,15 +2722,11 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
                 onChange={(e) => updateSubject(index, "units", e.target.value)}
                 min="0"
                 step="0.5"
-                className={`p-2 border rounded ${
-                  darkMode
-                    ? "border-gray-600 bg-gray-800 text-gray-100"
-                    : "border-gray-300 bg-white text-gray-900"
-                }`}
+                className="p-2 border rounded border-gray-300 bg-white text-gray-900"
               />
               <button
                 onClick={() => removeSubject(index)}
-                className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
+                className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
                 title="Remove this subject"
               >
                 <FiTrash2
@@ -2803,7 +2742,7 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
         ))}
         <button
           onClick={addSubject}
-          className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+          className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
         >
           <FiPlus className="inline mr-1" /> Add Subject
         </button>
@@ -2811,22 +2750,18 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
 
       {gpa > 0 && (
         <div
-          className={`border rounded-lg p-6 mt-6 ${
-            darkMode
-              ? "border-blue-800 bg-blue-900/20"
-              : "border-blue-200 bg-blue-50"
-          }`}
+          className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50"
         >
-          <h2 className="text-3xl font-bold text-center mb-6 text-blue-800 dark:text-blue-200">
+          <h2 className="text-3xl font-bold text-center mb-6 text-blue-800">
             GPA: {gpa.toFixed(2)}
           </h2>
 
           {/* GPA Performance Chart - Inverted for Visual Clarity */}
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm mb-6">
-            <h3 className="text-sm font-semibold text-center mb-2 text-gray-700 dark:text-gray-300">
+          <div className="bg-white p-4 rounded-lg shadow-sm mb-6">
+            <h3 className="text-sm font-semibold text-center mb-2 text-gray-700">
               Subject Performance Overview
             </h3>
-            <p className="text-xs text-center text-gray-500 dark:text-gray-400 mb-4">
+            <p className="text-xs text-center text-gray-500 mb-4">
               📊 Taller bars = Better grades (inverted scale for clarity)
             </p>
             <ResponsiveContainer width="100%" height={250}>
@@ -2857,18 +2792,18 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
               >
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke={darkMode ? "#374151" : "#e5e7eb"}
+                  stroke="#e5e7eb"
                 />
                 <XAxis
                   dataKey="name"
-                  stroke={darkMode ? "#9ca3af" : "#6b7280"}
+                  stroke="#6b7280"
                   angle={-45}
                   textAnchor="end"
                   height={80}
                 />
                 <YAxis
                   domain={[0, 5]}
-                  stroke={darkMode ? "#9ca3af" : "#6b7280"}
+                  stroke="#6b7280"
                   label={{
                     value: "Performance (Higher = Better)",
                     angle: -90,
@@ -2888,7 +2823,7 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
                   ]}
                   labelFormatter={(label) => `Subject: ${label}`}
                   contentStyle={{
-                    backgroundColor: darkMode ? "#1f2937" : "#ffffff",
+                    backgroundColor: "#ffffff",
                     border: "1px solid #e5e7eb",
                     borderRadius: "0.5rem",
                   }}
@@ -2939,7 +2874,7 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
             </div>
           </div>
 
-          <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/30 dark:to-blue-900/30 rounded-lg">
+          <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
             <p className="text-sm italic font-medium">
               {getMotivationalMessage(gpa, true)}
             </p>
@@ -2954,7 +2889,6 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
         title={modal.title}
         message={modal.message}
         type={modal.type}
-        darkMode={darkMode}
       />
       <ConfirmModal
         isOpen={confirmModal.isOpen}
@@ -2962,13 +2896,12 @@ function TertiaryCalculator({ darkMode, getMotivationalMessage }) {
         onConfirm={confirmModal.onConfirm}
         title={confirmModal.title}
         message={confirmModal.message}
-        darkMode={darkMode}
       />
     </div>
   );
 }
 
-function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
+function TermBasedCalculator({ getMotivationalMessage }) {
   const [subjects, setSubjects] = useState(() => {
     const saved = localStorage.getItem("termbased_subjects");
     return saved
@@ -3290,28 +3223,28 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
   return (
     <div className="space-y-6">
       {/* Auto-save indicator */}
-      <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+      <div className="flex justify-between items-center p-3 bg-green-50 border border-green-200 rounded-lg">
         <div className="flex items-center gap-2">
-          <span className="text-green-600 dark:text-green-400">✓</span>
-          <span className="text-sm text-green-700 dark:text-green-300">
+          <span className="text-green-600">✓</span>
+          <span className="text-sm text-green-700">
             Your data is automatically saved
           </span>
         </div>
         <button
           onClick={clearAllData}
-          className="text-sm px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+          className="text-sm px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
         >
           Clear All Data
         </button>
       </div>
 
       {/* Quick Templates */}
-      <div className="border border-cyan-200 dark:border-cyan-800 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-lg p-4">
+      <div className="border border-cyan-200 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-4">
         <button
           onClick={() => setShowTemplates(!showTemplates)}
           className="w-full flex items-center justify-between mb-2"
         >
-          <h3 className="text-md font-bold text-cyan-800 dark:text-cyan-300 flex items-center gap-2">
+          <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
             ⚡ Quick Start Templates
           </h3>
           {showTemplates ? <FiChevronUp /> : <FiChevronDown />}
@@ -3319,51 +3252,51 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
         {showTemplates && (
           <div className="space-y-3 mt-4">
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-gray-700">
               Load sample semester data to see how term-based grading works:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <button
                 onClick={() => loadTemplate("consistent_performer")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-blue-300 dark:border-blue-700 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50/30 transition-colors text-left"
               >
-                <p className="font-semibold text-blue-700 dark:text-blue-300">
+                <p className="font-semibold text-blue-700">
                   📊 Consistent
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Steady performance
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("strong_finish")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-green-300 dark:border-green-700 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left"
               >
-                <p className="font-semibold text-green-700 dark:text-green-300">
+                <p className="font-semibold text-green-700">
                   🚀 Strong Finish
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Improved over time
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("planning_ahead")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-purple-300 dark:border-purple-700 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-left"
+                className="p-3 bg-white border-2 border-purple-300 rounded-lg hover:bg-purple-50 transition-colors text-left"
               >
-                <p className="font-semibold text-purple-700 dark:text-purple-300">
+                <p className="font-semibold text-purple-700">
                   🎯 Planning
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Partial grades + target
                 </p>
               </button>
               <button
                 onClick={() => loadTemplate("empty")}
-                className="p-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
+                className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700 dark:text-gray-300">
+                <p className="font-semibold text-gray-700">
                   ✨ Start Fresh
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Empty template
                 </p>
               </button>
@@ -3373,7 +3306,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-heading font-bold text-2xl text-indigo-700 dark:text-indigo-400 mb-6 flex items-center gap-2">
+        <h3 className="font-heading font-bold text-2xl text-indigo-700 mb-6 flex items-center gap-2">
           <span className="text-3xl">📅</span>
           Your Subjects
         </h3>
@@ -3384,7 +3317,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
           return (
             <div
               key={index}
-              className="border border-gray-200 dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-850 shadow-sm hover:shadow-md transition-shadow"
+              className="border border-gray-200 rounded-xl p-5 bg-gradient-to-br from-white to-gray-50 shadow-sm hover:shadow-md transition-shadow"
             >
               {/* Subject Header */}
               <div className="flex items-center justify-between mb-4">
@@ -3394,11 +3327,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => toggleSubjectCollapse(index)}
-                    className={`flex items-center px-3 py-1 rounded-lg transition-colors ${
-                      darkMode
-                        ? "bg-gray-700 hover:bg-gray-600 text-gray-300"
-                        : "bg-gray-100 hover:bg-gray-200 text-gray-600"
-                    }`}
+                    className="flex items-center px-3 py-1 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-600"
                   >
                     {subject.collapsed ? (
                       <>
@@ -3412,7 +3341,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                   </button>
                   <button
                     onClick={() => handleRemoveSubject(index)}
-                    className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
+                    className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
                     title="Remove this subject"
                   >
                     <FiTrash2
@@ -3435,11 +3364,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                       </label>
                       <input
                         type="text"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.name}
                         onChange={(e) =>
                           handleSubjectChange(index, "name", e.target.value)
@@ -3459,11 +3384,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                       </label>
                       <input
                         type="number"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.units}
                         onChange={(e) =>
                           handleSubjectChange(index, "units", e.target.value)
@@ -3479,11 +3400,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                       </label>
                       <input
                         type="number"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.targetGrade}
                         onChange={(e) =>
                           handleSubjectChange(
@@ -3509,11 +3426,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                         </label>
                         <input
                           type="number"
-                          className={`w-full p-2 border rounded ${
-                            darkMode
-                              ? "border-gray-600 bg-gray-800 text-gray-100"
-                              : "border-gray-300 bg-white text-gray-900"
-                          }`}
+                          className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                           value={subject.weights.prelim}
                           onChange={(e) =>
                             handleWeightChange(index, "prelim", e.target.value)
@@ -3529,11 +3442,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                         </label>
                         <input
                           type="number"
-                          className={`w-full p-2 border rounded ${
-                            darkMode
-                              ? "border-gray-600 bg-gray-800 text-gray-100"
-                              : "border-gray-300 bg-white text-gray-900"
-                          }`}
+                          className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                           value={subject.weights.midterm}
                           onChange={(e) =>
                             handleWeightChange(index, "midterm", e.target.value)
@@ -3549,11 +3458,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                         </label>
                         <input
                           type="number"
-                          className={`w-full p-2 border rounded ${
-                            darkMode
-                              ? "border-gray-600 bg-gray-800 text-gray-100"
-                              : "border-gray-300 bg-white text-gray-900"
-                          }`}
+                          className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                           value={subject.weights.prefinal}
                           onChange={(e) =>
                             handleWeightChange(
@@ -3573,11 +3478,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                         </label>
                         <input
                           type="number"
-                          className={`w-full p-2 border rounded ${
-                            darkMode
-                              ? "border-gray-600 bg-gray-800 text-gray-100"
-                              : "border-gray-300 bg-white text-gray-900"
-                          }`}
+                          className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                           value={subject.weights.final}
                           onChange={(e) =>
                             handleWeightChange(index, "final", e.target.value)
@@ -3596,17 +3497,13 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                   <div className="space-y-4">
                     <div
                       className={`p-3 rounded ${
-                        darkMode ? "bg-gray-800" : "bg-gray-100"
+                        "bg-gray-100"
                       }`}
                     >
                       <h4 className="font-medium mb-2">Prelim Grade</h4>
                       <input
                         type="number"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.grades.prelim}
                         onChange={(e) =>
                           handleGradeChange(index, "prelim", e.target.value)
@@ -3620,17 +3517,13 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
                     <div
                       className={`p-3 rounded ${
-                        darkMode ? "bg-gray-800" : "bg-gray-100"
+                        "bg-gray-100"
                       }`}
                     >
                       <h4 className="font-medium mb-2">Midterm Grade</h4>
                       <input
                         type="number"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.grades.midterm}
                         onChange={(e) =>
                           handleGradeChange(index, "midterm", e.target.value)
@@ -3644,17 +3537,13 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
                     <div
                       className={`p-3 rounded ${
-                        darkMode ? "bg-gray-800" : "bg-gray-100"
+                        "bg-gray-100"
                       }`}
                     >
                       <h4 className="font-medium mb-2">Pre-Final Grade</h4>
                       <input
                         type="number"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.grades.prefinal}
                         onChange={(e) =>
                           handleGradeChange(index, "prefinal", e.target.value)
@@ -3668,17 +3557,13 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
                     <div
                       className={`p-3 rounded ${
-                        darkMode ? "bg-gray-800" : "bg-gray-100"
+                        "bg-gray-100"
                       }`}
                     >
                       <h4 className="font-medium mb-2">Final Grade</h4>
                       <input
                         type="number"
-                        className={`w-full p-2 border rounded ${
-                          darkMode
-                            ? "border-gray-600 bg-gray-800 text-gray-100"
-                            : "border-gray-300 bg-white text-gray-900"
-                        }`}
+                        className="w-full p-2 border rounded border-gray-300 bg-white text-gray-900"
                         value={subject.grades.final}
                         onChange={(e) =>
                           handleGradeChange(index, "final", e.target.value)
@@ -3693,11 +3578,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
                   {(currentGrade || requiredFinal) && (
                     <div
-                      className={`mt-4 p-4 rounded-lg ${
-                        darkMode
-                          ? "bg-blue-900/20 border-blue-800"
-                          : "bg-blue-50 border-blue-200"
-                      } border`}
+                      className="mt-4 p-4 rounded-lg bg-blue-50 border-blue-200 border"
                     >
                       <h4 className="font-semibold mb-2">Grade Projection</h4>
 
@@ -3715,7 +3596,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                       {requiredFinal && (
                         <div
                           className={`p-3 rounded ${
-                            darkMode ? "bg-gray-800" : "bg-gray-100"
+                            "bg-gray-100"
                           }`}
                         >
                           <p>
@@ -3727,7 +3608,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                           </p>
                           <p className="text-xl font-bold mt-2">
                             {requiredFinal.isPossible ? (
-                              <span className="text-blue-600 dark:text-blue-400">
+                              <span className="text-blue-600">
                                 {requiredFinal.required.toFixed(2)}% in Final
                               </span>
                             ) : (
@@ -3752,7 +3633,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
               {/* Collapsed Summary */}
               {subject.collapsed && currentGrade && (
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-gray-600">
                   Current Grade: {currentGrade.currentGrade.toFixed(2)}%
                   {subject.targetGrade && requiredFinal && (
                     <span className="ml-4">
@@ -3770,7 +3651,7 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
         <button
           onClick={handleAddSubject}
-          className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+          className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
         >
           <FiPlus className="inline mr-1" /> Add Subject
         </button>
@@ -3778,27 +3659,23 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
       {subjects.some((subject) => calculateCurrentGrade(subject)) && (
         <div
-          className={`border rounded-lg p-6 mt-6 ${
-            darkMode
-              ? "border-blue-800 bg-blue-900/20"
-              : "border-blue-200 bg-blue-50"
-          }`}
+          className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50"
         >
-          <h2 className="text-2xl font-bold text-center mb-4 text-blue-800 dark:text-blue-200">
+          <h2 className="text-2xl font-bold text-center mb-4 text-blue-800">
             Semester Summary
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
               className={`p-4 rounded-lg shadow ${
-                darkMode ? "bg-gray-800" : "bg-white"
+                "bg-white"
               }`}
             >
               <h3 className="font-semibold text-lg mb-3">Subject Grades</h3>
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <table className="min-w-full divide-y divide-gray-200">
                   <thead
-                    className={`${darkMode ? "bg-gray-700" : "bg-gray-50"}`}
+                    className="bg-gray-50"
                   >
                     <tr>
                       <th className="px-4 py-2 text-left text-sm">Subject</th>
@@ -3809,8 +3686,8 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
                     </tr>
                   </thead>
                   <tbody
-                    className={`divide-y divide-gray-200 dark:divide-gray-700 ${
-                      darkMode ? "bg-gray-800" : "bg-white"
+                    className={`divide-y divide-gray-200 ${
+                      "bg-white"
                     }`}
                   >
                     {subjects.map((subject, index) => {
@@ -3840,14 +3717,14 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
             <div
               className={`p-4 rounded-lg shadow ${
-                darkMode ? "bg-gray-800" : "bg-white"
+                "bg-white"
               }`}
             >
               <h3 className="font-semibold text-lg mb-3">
                 Semester GPA Projection
               </h3>
               <div className="text-center py-4">
-                <p className="text-5xl font-bold text-blue-600 dark:text-blue-400">
+                <p className="text-5xl font-bold text-blue-600">
                   {(
                     subjects.reduce((sum, subject) => {
                       const current = calculateCurrentGrade(subject);
@@ -3885,7 +3762,6 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
         title={modal.title}
         message={modal.message}
         type={modal.type}
-        darkMode={darkMode}
       />
       <ConfirmModal
         isOpen={confirmModal.isOpen}
@@ -3893,7 +3769,6 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
         onConfirm={confirmModal.onConfirm}
         title={confirmModal.title}
         message={confirmModal.message}
-        darkMode={darkMode}
       />
     </div>
   );
@@ -3901,36 +3776,9 @@ function TermBasedCalculator({ darkMode, getMotivationalMessage }) {
 
 function App() {
   const [currentView, setCurrentView] = useState("calculator");
-  const [darkMode, setDarkMode] = useState(() => {
-    try {
-      const savedMode = localStorage.getItem("darkMode");
-      return savedMode ? JSON.parse(savedMode) : false;
-    } catch (error) {
-      console.warn("Failed to load dark mode preference:", error);
-      return false;
-    }
-  });
   const [activeTab, setActiveTab] = useState("k12");
   const [showInstructions, setShowInstructions] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    } catch (error) {
-      console.warn("Failed to save dark mode preference:", error);
-    }
-
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   const getMotivationalMessage = (grade, isTertiary = false) => {
     if (isTertiary) {
@@ -3956,9 +3804,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col">
+    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-blue-600 dark:bg-blue-800 text-white shadow-lg">
+      <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
           <div className="flex items-center space-x-3">
             <img
@@ -3970,7 +3818,7 @@ function App() {
               <h1 className="text-xl sm:text-2xl font-bold font-display leading-tight">
                 Campus Companion PH
               </h1>
-              <p className="text-xs text-blue-100 dark:text-blue-200 hidden sm:block">
+              <p className="text-xs text-blue-100 hidden sm:block">
                 Your Grade Calculation Companion 🇵🇭
               </p>
             </div>
@@ -4030,30 +3878,12 @@ function App() {
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"></span>
               )}
             </button>
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
-              aria-label={
-                darkMode ? "Switch to light mode" : "Switch to dark mode"
-              }
-            >
-              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </button>
           </nav>
 
           <div className="md:hidden flex items-center space-x-2">
             <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
-              aria-label={
-                darkMode ? "Switch to light mode" : "Switch to dark mode"
-              }
-            >
-              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </button>
-            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors"
+              className="p-2 rounded-full hover:bg-blue-700 transition-colors"
               aria-label="Toggle menu"
             >
               <div className="flex flex-col gap-1">
@@ -4077,7 +3907,7 @@ function App() {
           </div>
 
           {mobileMenuOpen && (
-            <div className="absolute top-16 right-4 bg-white dark:bg-gray-800 rounded-xl shadow-2xl py-2 z-50 min-w-[180px] md:hidden border border-gray-200 dark:border-gray-700">
+            <div className="absolute top-16 right-4 bg-white rounded-xl shadow-2xl py-2 z-50 min-w-[180px] md:hidden border border-gray-200">
               <button
                 onClick={() => {
                   setCurrentView("calculator");
@@ -4085,8 +3915,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "calculator"
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600"
                 }`}
               >
                 Calculator
@@ -4098,8 +3928,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "about"
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600"
                 }`}
               >
                 About
@@ -4111,8 +3941,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "faq"
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600"
                 }`}
               >
                 FAQ
@@ -4124,8 +3954,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium flex items-center ${
                   currentView === "support"
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600"
                 }`}
               >
                 <FiCoffee className="mr-2" /> Support
@@ -4139,28 +3969,28 @@ function App() {
       <main className="flex-1 container mx-auto px-4 py-8 max-w-7xl w-full">
         {currentView === "about" ? (
           <div className="py-8">
-            <About darkMode={darkMode} />
+            <About />
           </div>
         ) : currentView === "faq" ? (
           <div className="py-8">
-            <FAQ darkMode={darkMode} />
+            <FAQ />
           </div>
         ) : currentView === "support" ? (
           <div className="py-8">
-            <Support darkMode={darkMode} />
+            <Support />
           </div>
         ) : (
           <>
             {/* Hero Welcome Section */}
             {showInstructions && (
-              <div className="mb-8 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 dark:from-blue-800 dark:via-blue-900 dark:to-indigo-900 rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+              <div className="mb-8 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
                 <div className="p-8 text-white">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h2 className="text-3xl font-heading font-bold mb-2">
                         Welcome to Campus Companion PH! 🎓
                       </h2>
-                      <p className="text-blue-100 dark:text-blue-200 text-sm">
+                      <p className="text-blue-100 text-sm">
                         The Philippines' most comprehensive grade calculator
                       </p>
                     </div>
@@ -4232,9 +4062,6 @@ function App() {
                           📱 Mobile Friendly
                         </span>
                         <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                          🌓 Dark Mode
-                        </span>
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
                           🆓 100% Free
                         </span>
                       </div>
@@ -4247,19 +4074,19 @@ function App() {
             {!showInstructions && (
               <button
                 onClick={() => setShowInstructions(true)}
-                className="mb-6 flex items-center gap-2 px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-md"
+                className="mb-6 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
               >
                 <FiInfo /> Show Welcome Guide
               </button>
             )}
 
             {/* Calculator Tabs - Better Design */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md mb-8 p-1.5 flex flex-wrap gap-2">
+            <div className="bg-white rounded-xl shadow-md mb-8 p-1.5 flex flex-wrap gap-2">
               <button
                 className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
                   activeTab === "k12"
                     ? "bg-blue-600 text-white shadow-md transform scale-105"
-                    : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
                 onClick={() => setActiveTab("k12")}
               >
@@ -4269,7 +4096,7 @@ function App() {
                 className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
                   activeTab === "tertiary"
                     ? "bg-blue-600 text-white shadow-md transform scale-105"
-                    : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
                 onClick={() => setActiveTab("tertiary")}
               >
@@ -4279,7 +4106,7 @@ function App() {
                 className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
                   activeTab === "term-based"
                     ? "bg-blue-600 text-white shadow-md transform scale-105"
-                    : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
                 onClick={() => setActiveTab("term-based")}
               >
@@ -4288,20 +4115,17 @@ function App() {
             </div>
 
             {/* Calculator Content with better padding */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 min-h-[500px]">
+            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 min-h-[500px]">
               {activeTab === "k12" ? (
                 <K12Calculator
-                  darkMode={darkMode}
                   getMotivationalMessage={getMotivationalMessage}
                 />
               ) : activeTab === "tertiary" ? (
                 <TertiaryCalculator
-                  darkMode={darkMode}
                   getMotivationalMessage={getMotivationalMessage}
                 />
               ) : (
                 <TermBasedCalculator
-                  darkMode={darkMode}
                   getMotivationalMessage={getMotivationalMessage}
                 />
               )}
@@ -4311,7 +4135,7 @@ function App() {
       </main>
 
       {/* Footer - Always at bottom */}
-      <footer className="mt-auto bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black text-gray-300 dark:text-gray-400 border-t-4 border-blue-600 dark:border-blue-500">
+      <footer className="mt-auto bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300 border-t-4 border-blue-600">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
             {/* About Section */}

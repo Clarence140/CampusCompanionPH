@@ -96,26 +96,26 @@ const faqs = [
         <p className="mb-2">
           <strong>K-12 Final Grade Formula:</strong>
         </p>
-        <p className="mb-2 font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded">
+        <p className="mb-2 font-mono bg-gray-100 p-2 rounded">
           Final Grade = (WW Average × WW Weight) + (PT Average × PT Weight) +
           (QA Score × QA Weight)
         </p>
         <p className="mb-2">
           <strong>Component Average Formula:</strong>
         </p>
-        <p className="mb-2 font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded">
+        <p className="mb-2 font-mono bg-gray-100 p-2 rounded">
           Component Average = Σ(Score/Max Score × 100) ÷ Number of Activities
         </p>
         <p className="mb-2">
           <strong>Tertiary GPA Formula:</strong>
         </p>
-        <p className="mb-2 font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded">
+        <p className="mb-2 font-mono bg-gray-100 p-2 rounded">
           GPA = Σ(Grade × Units) ÷ Total Units
         </p>
         <p className="mb-2">
           <strong>Term-Based Formula:</strong>
         </p>
-        <p className="font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded">
+        <p className="font-mono bg-gray-100 p-2 rounded">
           Final Grade = (Prelim × Prelim%) + (Midterm × Midterm%) + (PreFinal ×
           PreFinal%) + (Final × Final%)
         </p>
@@ -404,7 +404,7 @@ const faqs = [
             qualifications
           </li>
         </ul>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <p className="text-sm text-gray-600">
           <strong>Note:</strong> The subject type selection helps the calculator
           apply appropriate assessment methods and expectations, though the core
           calculation formula remains the same across all types.
@@ -414,7 +414,7 @@ const faqs = [
   },
 ];
 
-export default function FAQ({ darkMode }) {
+export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [showDetails, setShowDetails] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -457,10 +457,10 @@ export default function FAQ({ darkMode }) {
     <div className="max-w-5xl mx-auto">
       {/* Hero Header */}
       <div className="mb-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600 dark:text-blue-400">
+        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600">
           Frequently Asked Questions
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg text-gray-600">
           Everything you need to know about using Campus Companion PH
         </p>
       </div>
@@ -468,18 +468,18 @@ export default function FAQ({ darkMode }) {
       {/* Search Box */}
       <div className="mb-6">
         <div className="relative">
-          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" />
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
             type="text"
             placeholder="Search FAQs..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-10 py-3 rounded-lg border bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full pl-10 pr-10 py-3 rounded-lg border bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           />
           {searchTerm && (
             <button
               onClick={clearSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
             >
               <FiX />
             </button>
@@ -487,7 +487,7 @@ export default function FAQ({ darkMode }) {
         </div>
 
         {searchTerm && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-600">
             {filteredFaqs.length} result{filteredFaqs.length !== 1 ? "s" : ""}{" "}
             found
             {filteredFaqs.length === 0 && " - try different keywords"}
@@ -505,10 +505,10 @@ export default function FAQ({ darkMode }) {
           return (
             <div
               key={originalIndex}
-              className="border rounded-lg overflow-hidden border-gray-200 dark:border-gray-700"
+              className="border rounded-lg overflow-hidden border-gray-200"
             >
               <button
-                className="w-full p-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="w-full p-4 text-left flex justify-between items-center bg-white hover:bg-gray-50"
                 onClick={() => toggleFAQ(originalIndex)}
               >
                 <span className="font-medium">{faq.question}</span>
@@ -520,14 +520,14 @@ export default function FAQ({ darkMode }) {
               </button>
 
               {activeIndex === originalIndex && (
-                <div className="p-4 bg-gray-50 dark:bg-gray-700">
+                <div className="p-4 bg-gray-50">
                   <p className="mb-3">{faq.answer}</p>
 
                   {faq.details && (
                     <div className="mt-3">
                       <button
                         onClick={() => toggleDetails(originalIndex)}
-                        className="text-sm flex items-center text-blue-600 dark:text-blue-400"
+                        className="text-sm flex items-center text-blue-600"
                       >
                         <FiInfo className="mr-1" />
                         {showDetails[originalIndex]
@@ -536,7 +536,7 @@ export default function FAQ({ darkMode }) {
                       </button>
 
                       {showDetails[originalIndex] && (
-                        <div className="mt-2 p-3 rounded bg-gray-100 dark:bg-gray-800">
+                        <div className="mt-2 p-3 rounded bg-gray-100">
                           {typeof faq.details === "string" ? (
                             <p>{faq.details}</p>
                           ) : (
@@ -555,7 +555,7 @@ export default function FAQ({ darkMode }) {
 
       {/* No Results Message */}
       {searchTerm && filteredFaqs.length === 0 && (
-        <div className="text-center py-8 text-gray-600 dark:text-gray-400">
+        <div className="text-center py-8 text-gray-600">
           <p className="text-lg mb-2">No FAQs found matching "{searchTerm}"</p>
           <p className="text-sm">
             Try searching for terms like "grade", "calculator", "DepEd", "GPA",

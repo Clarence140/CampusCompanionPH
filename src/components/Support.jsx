@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FiHeart, FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-export default function Support({ darkMode }) {
+export default function Support() {
   const [zoomedImage, setZoomedImage] = useState(null);
   const [showPaymentOptions, setShowPaymentOptions] = useState(false);
 
@@ -11,19 +11,19 @@ export default function Support({ darkMode }) {
     <div className="max-w-5xl mx-auto">
       {/* Hero Header */}
       <div className="mb-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600 dark:text-blue-400">
+        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600">
           Support This Project
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg text-gray-600">
           Help keep Campus Companion PH free for all Filipino students
         </p>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+      <div className="bg-white rounded-xl shadow-lg p-8">
         <div className="mb-8">
-          <h3 className="text-2xl font-heading font-bold mb-4 flex items-center text-gray-900 dark:text-gray-100">
+          <h3 className="text-2xl font-heading font-bold mb-4 flex items-center text-gray-900">
             <FiHeart
-              className="mr-3 text-red-500 dark:text-red-400"
+              className="mr-3 text-red-500"
               size={28}
             />{" "}
             Buy Me a Coffee
@@ -38,7 +38,7 @@ export default function Support({ darkMode }) {
             <h4 className="font-medium">Payment Options</h4>
             <button
               onClick={() => setShowPaymentOptions(!showPaymentOptions)}
-              className="flex items-center px-3 py-1 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300"
+              className="flex items-center px-3 py-1 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-600"
             >
               {showPaymentOptions ? (
                 <>
@@ -54,7 +54,7 @@ export default function Support({ darkMode }) {
 
           {showPaymentOptions && (
             <div className="flex flex-wrap gap-6 justify-center mt-6">
-              <div className="p-4 rounded-lg bg-gray-100 dark:bg-gray-700 text-center w-full max-w-xs">
+              <div className="p-4 rounded-lg bg-gray-100 text-center w-full max-w-xs">
                 <div
                   className="w-full h-64 relative cursor-pointer overflow-hidden group"
                   onClick={() => setZoomedImage("/images/Gcash.jpg")}
@@ -71,12 +71,12 @@ export default function Support({ darkMode }) {
                   </div>
                 </div>
                 <p className="font-medium mt-2">GCash: 09692234028</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-500">
                   Clarence Sumagang
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-gray-100 dark:bg-gray-700 text-center w-full max-w-xs">
+              <div className="p-4 rounded-lg bg-gray-100 text-center w-full max-w-xs">
                 <div
                   className="w-full h-64 relative cursor-pointer overflow-hidden group"
                   onClick={() => setZoomedImage("/images/Maya.jpg")}
@@ -93,7 +93,7 @@ export default function Support({ darkMode }) {
                   </div>
                 </div>
                 <p className="font-medium mt-2">Maya: 09692234028</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-500">
                   Clarence Sumagang
                 </p>
               </div>
@@ -101,7 +101,7 @@ export default function Support({ darkMode }) {
           )}
         </div>
 
-        <div className="text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+        <div className="text-center text-sm text-gray-500 border-t border-gray-200 pt-6 mt-8">
           <p className="mb-2">
             Your support, no matter how small, makes a huge difference in
             keeping this project alive and improving it for all Filipino
@@ -126,7 +126,7 @@ export default function Support({ darkMode }) {
               className="w-full max-h-[90vh] object-contain"
             />
             <button
-              className="absolute top-4 right-4 rounded-full p-2 shadow-lg bg-white text-gray-800 dark:bg-gray-800 dark:text-white"
+              className="absolute top-4 right-4 rounded-full p-2 shadow-lg bg-white text-gray-800"
               onClick={(e) => {
                 e.stopPropagation();
                 setZoomedImage(null);
