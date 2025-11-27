@@ -2,17 +2,6 @@
 
 import { useState, useEffect } from "react";
 import {
-  FiInfo,
-  FiPlus,
-  FiTrash2,
-  FiCoffee,
-  FiChevronDown,
-  FiChevronUp,
-  FiDownload,
-  FiPrinter,
-  FiShare2,
-} from "react-icons/fi";
-import {
   PieChart,
   Pie,
   Cell,
@@ -55,7 +44,6 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
     success: {
       bg: "bg-green-50",
       border: "border-green-500",
-      icon: "✅",
       iconBg: "bg-green-100",
       iconColor: "text-green-600",
       buttonBg: "bg-green-600 hover:bg-green-700",
@@ -63,7 +51,6 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
     error: {
       bg: "bg-red-50",
       border: "border-red-500",
-      icon: "❌",
       iconBg: "bg-red-100",
       iconColor: "text-red-600",
       buttonBg: "bg-red-600 hover:bg-red-700",
@@ -71,7 +58,6 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
     warning: {
       bg: "bg-yellow-50",
       border: "border-yellow-500",
-      icon: "⚠️",
       iconBg: "bg-yellow-100",
       iconColor: "text-yellow-600",
       buttonBg: "bg-yellow-600 hover:bg-yellow-700",
@@ -79,7 +65,6 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
     info: {
       bg: "bg-blue-50",
       border: "border-blue-500",
-      icon: "ℹ️",
       iconBg: "bg-blue-100",
       iconColor: "text-blue-600",
       buttonBg: "bg-blue-600 hover:bg-blue-700",
@@ -100,11 +85,6 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
         {/* Modal Header */}
         <div className={`${style.bg} p-6 border-b border-gray-200`}>
           <div className="flex items-start gap-4">
-            <div className={`${style.iconBg} p-3 rounded-full`}>
-              <span className={`text-3xl ${style.iconColor}`}>
-                {style.icon}
-              </span>
-            </div>
             <div className="flex-1">
               <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
               <p className="text-sm text-gray-700">{message}</p>
@@ -158,9 +138,6 @@ function ConfirmModal({ isOpen, onClose, onConfirm, title, message }) {
         {/* Modal Header */}
         <div className="bg-red-50 p-6 border-b border-gray-200">
           <div className="flex items-start gap-4">
-            <div className="bg-red-100 p-3 rounded-full">
-              <span className="text-3xl">⚠️</span>
-            </div>
             <div className="flex-1">
               <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
               <p className="text-sm text-gray-700">{message}</p>
@@ -578,7 +555,7 @@ function K12Calculator({ getMotivationalMessage }) {
 </head>
 <body>
   <div class="header">
-    <h1>🎓 Grade Report</h1>
+    <h1>Grade Report</h1>
     <p><strong>Campus Companion PH</strong></p>
     <p>Generated: ${date}</p>
   </div>
@@ -960,20 +937,20 @@ function K12Calculator({ getMotivationalMessage }) {
 
   const shareResults = async () => {
     const grades = calculateFinalGrade();
-    const shareText = `🎓 My Grade Report - Campus Companion PH
+    const shareText = `My Grade Report - Campus Companion PH
 
-📊 Final Grade: ${grades.finalGrade}
+Final Grade: ${grades.finalGrade}
 
 Component Breakdown:
-📝 Written Works: ${grades.wwAverage}%
-🎯 Performance Tasks: ${grades.ptAverage}%
-📚 Quarterly Assessment: ${grades.qaScore}%
+Written Works: ${grades.wwAverage}%
+Performance Tasks: ${grades.ptAverage}%
+Quarterly Assessment: ${grades.qaScore}%
 
 Grade Level: ${
       gradeLevel === "shs" ? "Senior High School" : `Grade ${gradeLevel}`
     }
 
-Calculate your grades too at Campus Companion PH! 🇵🇭`;
+Calculate your grades too at Campus Companion PH!`;
 
     if (navigator.share) {
       // Use Web Share API (mobile/modern browsers)
@@ -1060,7 +1037,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
         </head>
         <body>
           <div class="header">
-            <h1>🎓 Grade Report</h1>
+            <h1>Grade Report</h1>
             <p><strong>Campus Companion PH</strong></p>
             <p>Generated: ${date}</p>
           </div>
@@ -1137,9 +1114,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           className="w-full flex items-center justify-between mb-2"
         >
           <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
-            ⚡ Quick Start Templates
+            Quick Start Templates
           </h3>
-          {showTemplates ? <FiChevronUp /> : <FiChevronDown />}
         </button>
 
         {showTemplates && (
@@ -1153,7 +1129,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 onClick={() => loadTemplate("grade7_sample")}
                 className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700">📚 Grade 7</p>
+                <p className="font-semibold text-cyan-700">Grade 7</p>
                 <p className="text-xs text-gray-600 mt-1">
                   Sample scores for JHS
                 </p>
@@ -1162,7 +1138,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 onClick={() => loadTemplate("grade10_sample")}
                 className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700">🎓 Grade 10</p>
+                <p className="font-semibold text-cyan-700">Grade 10</p>
                 <p className="text-xs text-gray-600 mt-1">
                   High performing data
                 </p>
@@ -1171,7 +1147,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 onClick={() => loadTemplate("shs_sample")}
                 className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700">🏆 SHS</p>
+                <p className="font-semibold text-cyan-700">SHS</p>
                 <p className="text-xs text-gray-600 mt-1">Senior High School</p>
               </button>
               <button
@@ -1219,7 +1195,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-heading font-bold text-xl text-blue-700 flex items-center gap-2">
-            <span className="text-2xl">📝</span>
             Written Works
             <span className="text-sm font-normal text-gray-500">
               ({gradeWeights[gradeLevel].ww * 100}%)
@@ -1261,7 +1236,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
               title="Remove this item"
             >
-              <FiTrash2
+              <button
                 size={16}
                 className="group-hover:scale-110 transition-transform"
               />
@@ -1276,13 +1251,13 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
             onClick={addWrittenWork}
             className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
           >
-            <FiPlus className="inline mr-1" /> Add Written Work
+            Add Written Work
           </button>
           <button
             onClick={() => setShowBulkWW(!showBulkWW)}
             className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
           >
-            📋 Bulk Add (Paste from Excel)
+            Bulk Add (Paste from Excel)
           </button>
         </div>
 
@@ -1326,7 +1301,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-heading font-bold text-xl text-green-700 flex items-center gap-2">
-            <span className="text-2xl">🎯</span>
             Performance Tasks
             <span className="text-sm font-normal text-gray-500">
               ({gradeWeights[gradeLevel].pt * 100}%)
@@ -1370,7 +1344,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
               title="Remove this item"
             >
-              <FiTrash2
+              <button
                 size={16}
                 className="group-hover:scale-110 transition-transform"
               />
@@ -1385,13 +1359,13 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
             onClick={addPerformanceTask}
             className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
           >
-            <FiPlus className="inline mr-1" /> Add Performance Task
+            Add Performance Task
           </button>
           <button
             onClick={() => setShowBulkPT(!showBulkPT)}
             className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
           >
-            📋 Bulk Add (Paste from Excel)
+            Bulk Add (Paste from Excel)
           </button>
         </div>
 
@@ -1435,7 +1409,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
       <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-heading font-bold text-xl text-orange-700 flex items-center gap-2">
-            <span className="text-2xl">📚</span>
             Quarterly Assessment
             <span className="text-sm font-normal text-gray-500">
               ({gradeWeights[gradeLevel].qa * 100}%)
@@ -1476,7 +1449,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
         !quarterlyAssessment.score && (
           <div className="border border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
             <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center gap-2">
-              🎯 Can I Still Pass? (75% Analysis)
+              Can I Still Pass? (75% Analysis)
             </h3>
 
             {(() => {
@@ -1500,7 +1473,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   >
                     <div className="text-center mb-3">
                       <p className="text-3xl font-bold mb-2">
-                        {canPass ? "✅ YES!" : "⚠️ CRITICAL"}
+                        {canPass ? "YES!" : "CRITICAL"}
                       </p>
                       <p className="text-lg">
                         {canPass
@@ -1542,12 +1515,11 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   {canPass && (
                     <div className="bg-white p-4 rounded-lg">
                       <h4 className="font-semibold mb-2 text-green-700">
-                        💪 Action Plan:
+                        Action Plan:
                       </h4>
                       <ul className="space-y-2 text-sm">
                         {requiredQA < 60 && (
                           <li className="flex items-start gap-2">
-                            <span>🎉</span>
                             <span>
                               Great news! You only need {requiredQA.toFixed(2)}%
                               on the QA. This is very achievable with basic
@@ -1558,7 +1530,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         {requiredQA >= 60 && requiredQA < 80 && (
                           <>
                             <li className="flex items-start gap-2">
-                              <span>📚</span>
                               <span>
                                 You need {requiredQA.toFixed(2)}% on the QA.
                                 Start reviewing now and focus on key topics.
@@ -1576,7 +1547,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         {requiredQA >= 80 && requiredQA <= 100 && (
                           <>
                             <li className="flex items-start gap-2">
-                              <span>⚡</span>
                               <span>
                                 You need {requiredQA.toFixed(2)}% on the QA.
                                 This requires excellent performance!
@@ -1589,7 +1559,6 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                               </span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span>📝</span>
                               <span>
                                 Review all lessons thoroughly and practice past
                                 exam questions.
@@ -1604,7 +1573,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   {!canPass && (
                     <div className="bg-white p-4 rounded-lg">
                       <h4 className="font-semibold mb-2 text-red-700">
-                        ⚠️ Important Steps:
+                        Important Steps:
                       </h4>
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
@@ -1615,20 +1584,17 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span>📋</span>
                           <span>
                             Ask if any scores can be improved through remedial
                             activities.
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span>💪</span>
                           <span>
                             Still give your best on the QA - every point counts!
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span>📱</span>
                           <span>
                             Inform your parents and seek their support.
                           </span>
@@ -1652,9 +1618,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               className="w-full flex items-center justify-between mb-4"
             >
               <h3 className="text-lg font-bold text-purple-800 flex items-center gap-2">
-                🎯 Goal Planner: "What If" Calculator
+                Goal Planner: "What If" Calculator
               </h3>
-              {showWhatIf ? <FiChevronUp /> : <FiChevronDown />}
             </button>
 
             {showWhatIf && (
@@ -1692,8 +1657,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                       >
                         <p className="text-sm font-medium mb-1">
                           {calculateRequiredGrade().isPossible
-                            ? "✅ Achievable!"
-                            : "⚠️ Very Difficult"}
+                            ? "Achievable!"
+                            : "Very Difficult"}
                         </p>
                         <p className="text-2xl font-bold">
                           {calculateRequiredGrade().required.toFixed(2)}%
@@ -1777,7 +1742,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                       calculateRequiredGrade().required > 90 && (
                         <div className="mt-4 p-3 bg-yellow-100 rounded-lg text-sm">
                           <p className="font-semibold text-yellow-800">
-                            ⚡ Challenge Ahead!
+                            Challenge Ahead!
                           </p>
                           <p className="text-yellow-700 mt-1">
                             You'll need to score very high on the Quarterly
@@ -1934,26 +1899,26 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               onClick={exportToHTML}
               className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors shadow-md"
             >
-              <FiDownload /> Download HTML
+              Download HTML
             </button>
             <button
               onClick={printReport}
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-md"
             >
-              <FiPrinter /> Print Report
+              Print Report
             </button>
             <button
               onClick={shareResults}
               className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors shadow-md"
             >
-              <FiShare2 /> Share Results
+              Share Results
             </button>
           </div>
 
           {/* Smart Study Recommendations */}
           <div className="mt-6 p-6 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 rounded-lg border border-pink-200">
             <h4 className="font-semibold text-xl mb-4 text-purple-800 flex items-center gap-2">
-              🧠 Smart Study Recommendations
+              Smart Study Recommendations
             </h4>
 
             {(() => {
@@ -1970,7 +1935,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   name: "Written Works",
                   score: wwScore,
                   weight: weights.ww,
-                  icon: "📝",
+                  icon: "",
                   tips: [
                     "Review your quiz mistakes and understand why answers were wrong",
                     "Create summary notes after each lesson",
@@ -1982,7 +1947,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   name: "Performance Tasks",
                   score: ptScore,
                   weight: weights.pt,
-                  icon: "🎯",
+                  icon: "",
                   tips: [
                     "Start projects early - don't wait until the deadline",
                     "Ask your teacher for the rubric and follow it exactly",
@@ -1995,7 +1960,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   name: "Quarterly Assessment",
                   score: qaScore,
                   weight: weights.qa,
-                  icon: "📚",
+                  icon: "",
                   tips: [
                     "Create a comprehensive review schedule 2 weeks before",
                     "Focus on topics that appeared most frequently in WW and PT",
@@ -2014,7 +1979,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               if (weakest.score < 75) {
                 recommendations.push({
                   type: "urgent",
-                  icon: "🚨",
+                  icon: "",
                   title: `${weakest.name} Needs Immediate Attention!`,
                   message: `Your ${
                     weakest.name
@@ -2028,7 +1993,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               } else if (weakest.score < 80) {
                 recommendations.push({
                   type: "warning",
-                  icon: "⚠️",
+                  icon: "",
                   title: `${weakest.name} Could Be Improved`,
                   message: `Your ${
                     weakest.name
@@ -2043,7 +2008,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               if (strongest.score >= 90) {
                 recommendations.push({
                   type: "success",
-                  icon: "⭐",
+                  icon: "",
                   title: `Excellent ${strongest.name}!`,
                   message: `You're excelling in ${
                     strongest.name
@@ -2062,7 +2027,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               if (finalScore >= 90) {
                 recommendations.push({
                   type: "success",
-                  icon: "🏆",
+                  icon: "",
                   title: "Outstanding Performance!",
                   message: `Your final grade of ${finalScore} is excellent! You're on track for honors.`,
                   tips: [
@@ -2074,7 +2039,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               } else if (finalScore >= 85) {
                 recommendations.push({
                   type: "info",
-                  icon: "👍",
+                  icon: "",
                   title: "Great Work!",
                   message: `Your final grade of ${finalScore} is very satisfactory. A little more effort could push you to outstanding!`,
                   tips: [
@@ -2088,7 +2053,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               } else if (finalScore >= 75) {
                 recommendations.push({
                   type: "warning",
-                  icon: "💪",
+                  icon: "",
                   title: "Room for Improvement",
                   message: `Your final grade of ${finalScore} shows you're passing, but you have potential for much more!`,
                   tips: [
@@ -2107,7 +2072,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               if (imbalance > 15) {
                 recommendations.push({
                   type: "info",
-                  icon: "⚖️",
+                  icon: "",
                   title: "Balance Your Performance",
                   message:
                     "There's a significant gap between your best and worst components. Balanced performance leads to better overall grades.",
@@ -2165,7 +2130,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           {/* Save to History */}
           <div className="mt-4 p-4 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg border border-indigo-200">
             <h4 className="font-semibold mb-2 text-indigo-800">
-              💾 Save to Grade History
+              Save to Grade History
             </h4>
             <div className="flex flex-col sm:flex-row gap-2">
               <input
@@ -2194,9 +2159,8 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
             className="w-full flex items-center justify-between mb-4"
           >
             <h3 className="text-lg font-bold text-indigo-800 flex items-center gap-2">
-              📊 Grade History & Progress ({gradeHistory.length} entries)
+              Grade History & Progress ({gradeHistory.length} entries)
             </h3>
-            {showHistory ? <FiChevronUp /> : <FiChevronDown />}
           </button>
 
           {showHistory && (
@@ -2307,7 +2271,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                               className="px-2 py-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1"
                               title="Delete this entry"
                             >
-                              <FiTrash2
+                              <button
                                 size={14}
                                 className="group-hover:scale-110 transition-transform"
                               />
@@ -2564,9 +2528,8 @@ function TertiaryCalculator({ getMotivationalMessage }) {
           className="w-full flex items-center justify-between mb-2"
         >
           <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
-            ⚡ Quick Start Templates
+            Quick Start Templates
           </h3>
-          {showTemplates ? <FiChevronUp /> : <FiChevronDown />}
         </button>
 
         {showTemplates && (
@@ -2579,7 +2542,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("excellent_student")}
                 className="p-3 bg-white border-2 border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left"
               >
-                <p className="font-semibold text-green-700">🏆 Summa Level</p>
+                <p className="font-semibold text-green-700">Summa Level</p>
                 <p className="text-xs text-gray-600 mt-1">
                   GPA ~1.15 (Excellent)
                 </p>
@@ -2588,7 +2551,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("good_student")}
                 className="p-3 bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50/30 transition-colors text-left"
               >
-                <p className="font-semibold text-blue-700">🎓 Cum Laude</p>
+                <p className="font-semibold text-blue-700">Cum Laude</p>
                 <p className="text-xs text-gray-600 mt-1">
                   GPA ~1.80 (Very Good)
                 </p>
@@ -2597,7 +2560,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("average_student")}
                 className="p-3 bg-white border-2 border-yellow-300 rounded-lg hover:bg-yellow-50 transition-colors text-left"
               >
-                <p className="font-semibold text-yellow-700">📚 Passing</p>
+                <p className="font-semibold text-yellow-700">Passing</p>
                 <p className="text-xs text-gray-600 mt-1">
                   GPA ~2.44 (Average)
                 </p>
@@ -2616,7 +2579,6 @@ function TertiaryCalculator({ getMotivationalMessage }) {
 
       <div className="space-y-4">
         <h3 className="font-heading font-bold text-2xl text-blue-700 mb-6 flex items-center gap-2">
-          <span className="text-3xl">🎓</span>
           Your Subjects
         </h3>
         {subjects.map((subject, index) => (
@@ -2656,7 +2618,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
                 title="Remove this subject"
               >
-                <FiTrash2
+                <button
                   size={16}
                   className="group-hover:scale-110 transition-transform"
                 />
@@ -2671,7 +2633,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
           onClick={addSubject}
           className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
         >
-          <FiPlus className="inline mr-1" /> Add Subject
+          Add Subject
         </button>
       </div>
 
@@ -3167,9 +3129,8 @@ function TermBasedCalculator({ getMotivationalMessage }) {
           className="w-full flex items-center justify-between mb-2"
         >
           <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
-            ⚡ Quick Start Templates
+            Quick Start Templates
           </h3>
-          {showTemplates ? <FiChevronUp /> : <FiChevronDown />}
         </button>
 
         {showTemplates && (
@@ -3237,22 +3198,14 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                     onClick={() => toggleSubjectCollapse(index)}
                     className="flex items-center px-3 py-1 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-600"
                   >
-                    {subject.collapsed ? (
-                      <>
-                        <FiChevronDown className="mr-1" /> Show Details
-                      </>
-                    ) : (
-                      <>
-                        <FiChevronUp className="mr-1" /> Hide Details
-                      </>
-                    )}
+                    {subject.collapsed ? <>Show Details</> : <>Hide Details</>}
                   </button>
                   <button
                     onClick={() => handleRemoveSubject(index)}
                     className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
                     title="Remove this subject"
                   >
-                    <FiTrash2
+                    <button
                       size={16}
                       className="group-hover:scale-110 transition-transform"
                     />
@@ -3286,9 +3239,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                         <span
                           className="ml-1 cursor-help"
                           title="Credit units for this subject"
-                        >
-                          <FiInfo size={14} />
-                        </span>
+                        ></span>
                       </label>
                       <input
                         type="number"
@@ -3539,7 +3490,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
           onClick={handleAddSubject}
           className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
         >
-          <FiPlus className="inline mr-1" /> Add Subject
+          Add Subject
         </button>
       </div>
 
@@ -3744,7 +3695,7 @@ function App() {
                   : "text-blue-100 hover:text-white"
               }`}
             >
-              <FiCoffee className="mr-1" /> Support
+              Support
               {currentView === "support" && (
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"></span>
               )}
@@ -3948,7 +3899,7 @@ function App() {
                 onClick={() => setShowInstructions(true)}
                 className="mb-6 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
               >
-                <FiInfo /> Show Welcome Guide
+                Show Welcome Guide
               </button>
             )}
 
