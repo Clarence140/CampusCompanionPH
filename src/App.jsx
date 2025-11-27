@@ -98,9 +98,7 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div
-          className={`${style.bg} p-6 border-b border-gray-200`}
-        >
+        <div className={`${style.bg} p-6 border-b border-gray-200`}>
           <div className="flex items-start gap-4">
             <div className={`${style.iconBg} p-3 rounded-full`}>
               <span className={`text-3xl ${style.iconColor}`}>
@@ -108,12 +106,8 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
               </span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
-                {title}
-              </h3>
-              <p className="text-sm text-gray-700">
-                {message}
-              </p>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
+              <p className="text-sm text-gray-700">{message}</p>
             </div>
           </div>
         </div>
@@ -133,13 +127,7 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
 }
 
 // Confirmation Modal Component
-function ConfirmModal({
-  isOpen,
-  onClose,
-  onConfirm,
-  title,
-  message,
-}) {
+function ConfirmModal({ isOpen, onClose, onConfirm, title, message }) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
@@ -174,12 +162,8 @@ function ConfirmModal({
               <span className="text-3xl">⚠️</span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
-                {title}
-              </h3>
-              <p className="text-sm text-gray-700">
-                {message}
-              </p>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
+              <p className="text-sm text-gray-700">{message}</p>
             </div>
           </div>
         </div>
@@ -1169,9 +1153,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 onClick={() => loadTemplate("grade7_sample")}
                 className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700">
-                  📚 Grade 7
-                </p>
+                <p className="font-semibold text-cyan-700">📚 Grade 7</p>
                 <p className="text-xs text-gray-600 mt-1">
                   Sample scores for JHS
                 </p>
@@ -1180,9 +1162,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 onClick={() => loadTemplate("grade10_sample")}
                 className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700">
-                  🎓 Grade 10
-                </p>
+                <p className="font-semibold text-cyan-700">🎓 Grade 10</p>
                 <p className="text-xs text-gray-600 mt-1">
                   High performing data
                 </p>
@@ -1191,23 +1171,15 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                 onClick={() => loadTemplate("shs_sample")}
                 className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
               >
-                <p className="font-semibold text-cyan-700">
-                  🏆 SHS
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Senior High School
-                </p>
+                <p className="font-semibold text-cyan-700">🏆 SHS</p>
+                <p className="text-xs text-gray-600 mt-1">Senior High School</p>
               </button>
               <button
                 onClick={() => loadTemplate("empty")}
                 className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700">
-                  ✨ Start Fresh
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Empty template
-                </p>
+                <p className="font-semibold text-gray-700">✨ Start Fresh</p>
+                <p className="text-xs text-gray-600 mt-1">Empty template</p>
               </button>
             </div>
           </div>
@@ -1558,9 +1530,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         <span>Required QA Score:</span>
                         <span
                           className={`font-bold text-lg ${
-                            canPass
-                              ? "text-green-600"
-                              : "text-red-600"
+                            canPass ? "text-green-600" : "text-red-600"
                           }`}
                         >
                           {requiredQA.toFixed(2)}%
@@ -1825,9 +1795,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
 
       {/* Results Section */}
       {grades.finalGrade > 0 && (
-        <div
-          className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50"
-        >
+        <div className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50">
           <h2 className="text-2xl font-bold text-center mb-4 text-blue-800">
             Final Grade: {grades.finalGrade}
           </h2>
@@ -1835,27 +1803,21 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
           {/* Grade Breakdown Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
             <div className="p-3 bg-white rounded-lg shadow-sm">
-              <p className="text-sm text-gray-600">
-                Written Works
-              </p>
+              <p className="text-sm text-gray-600">Written Works</p>
               <p className="text-xl font-semibold">{grades.wwAverage}%</p>
               <p className="text-xs text-gray-500">
                 Weight: {gradeWeights[gradeLevel].ww * 100}%
               </p>
             </div>
             <div className="p-3 bg-white rounded-lg shadow-sm">
-              <p className="text-sm text-gray-600">
-                Performance Tasks
-              </p>
+              <p className="text-sm text-gray-600">Performance Tasks</p>
               <p className="text-xl font-semibold">{grades.ptAverage}%</p>
               <p className="text-xs text-gray-500">
                 Weight: {gradeWeights[gradeLevel].pt * 100}%
               </p>
             </div>
             <div className="p-3 bg-white rounded-lg shadow-sm">
-              <p className="text-sm text-gray-600">
-                Quarterly Assessment
-              </p>
+              <p className="text-sm text-gray-600">Quarterly Assessment</p>
               <p className="text-xl font-semibold">{grades.qaScore}%</p>
               <p className="text-xs text-gray-500">
                 Weight: {gradeWeights[gradeLevel].qa * 100}%
@@ -1943,18 +1905,9 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                     },
                   ]}
                 >
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="#e5e7eb"
-                  />
-                  <XAxis
-                    dataKey="name"
-                    stroke="#6b7280"
-                  />
-                  <YAxis
-                    domain={[0, 100]}
-                    stroke="#6b7280"
-                  />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="name" stroke="#6b7280" />
+                  <YAxis domain={[0, 100]} stroke="#6b7280" />
                   <Tooltip
                     formatter={(value) => `${value}%`}
                     contentStyle={{
@@ -2185,9 +2138,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         <span className="text-2xl">{rec.icon}</span>
                         {rec.title}
                       </h5>
-                      <p className="mb-3 text-gray-700">
-                        {rec.message}
-                      </p>
+                      <p className="mb-3 text-gray-700">{rec.message}</p>
                       <div className="bg-white p-3 rounded-lg">
                         <p className="font-semibold text-sm mb-2">
                           Actionable Steps:
@@ -2198,9 +2149,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                               key={tipIdx}
                               className="flex items-start gap-2 text-sm"
                             >
-                              <span className="text-purple-600 mt-0.5">
-                                ✓
-                              </span>
+                              <span className="text-purple-600 mt-0.5">✓</span>
                               <span>{tip}</span>
                             </li>
                           ))}
@@ -2266,10 +2215,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         index: index + 1,
                       }))}
                     >
-                      <CartesianGrid
-                        strokeDasharray="3 3"
-                        stroke="#e5e7eb"
-                      />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                       <XAxis
                         dataKey="name"
                         stroke="#6b7280"
@@ -2277,10 +2223,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                         textAnchor="end"
                         height={80}
                       />
-                      <YAxis
-                        domain={[75, 100]}
-                        stroke="#6b7280"
-                      />
+                      <YAxis domain={[75, 100]} stroke="#6b7280" />
                       <Tooltip
                         contentStyle={{
                           backgroundColor: "#ffffff",
@@ -2383,9 +2326,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
               {/* Statistics */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-                  <p className="text-sm text-gray-600">
-                    Average Grade
-                  </p>
+                  <p className="text-sm text-gray-600">Average Grade</p>
                   <p className="text-2xl font-bold text-indigo-600">
                     {(
                       gradeHistory.reduce(
@@ -2396,9 +2337,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   </p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-                  <p className="text-sm text-gray-600">
-                    Highest Grade
-                  </p>
+                  <p className="text-sm text-gray-600">Highest Grade</p>
                   <p className="text-2xl font-bold text-green-600">
                     {Math.max(
                       ...gradeHistory.map((entry) => entry.finalGrade)
@@ -2406,9 +2345,7 @@ Calculate your grades too at Campus Companion PH! 🇵🇭`;
                   </p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-                  <p className="text-sm text-gray-600">
-                    Lowest Grade
-                  </p>
+                  <p className="text-sm text-gray-600">Lowest Grade</p>
                   <p className="text-2xl font-bold text-orange-600">
                     {Math.min(
                       ...gradeHistory.map((entry) => entry.finalGrade)
@@ -2642,9 +2579,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("excellent_student")}
                 className="p-3 bg-white border-2 border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left"
               >
-                <p className="font-semibold text-green-700">
-                  🏆 Summa Level
-                </p>
+                <p className="font-semibold text-green-700">🏆 Summa Level</p>
                 <p className="text-xs text-gray-600 mt-1">
                   GPA ~1.15 (Excellent)
                 </p>
@@ -2653,9 +2588,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("good_student")}
                 className="p-3 bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50/30 transition-colors text-left"
               >
-                <p className="font-semibold text-blue-700">
-                  🎓 Cum Laude
-                </p>
+                <p className="font-semibold text-blue-700">🎓 Cum Laude</p>
                 <p className="text-xs text-gray-600 mt-1">
                   GPA ~1.80 (Very Good)
                 </p>
@@ -2664,9 +2597,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("average_student")}
                 className="p-3 bg-white border-2 border-yellow-300 rounded-lg hover:bg-yellow-50 transition-colors text-left"
               >
-                <p className="font-semibold text-yellow-700">
-                  📚 Passing
-                </p>
+                <p className="font-semibold text-yellow-700">📚 Passing</p>
                 <p className="text-xs text-gray-600 mt-1">
                   GPA ~2.44 (Average)
                 </p>
@@ -2675,12 +2606,8 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("empty")}
                 className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700">
-                  ✨ Start Fresh
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Empty template
-                </p>
+                <p className="font-semibold text-gray-700">✨ Start Fresh</p>
+                <p className="text-xs text-gray-600 mt-1">Empty template</p>
               </button>
             </div>
           </div>
@@ -2749,9 +2676,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
       </div>
 
       {gpa > 0 && (
-        <div
-          className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50"
-        >
+        <div className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50">
           <h2 className="text-3xl font-bold text-center mb-6 text-blue-800">
             GPA: {gpa.toFixed(2)}
           </h2>
@@ -2790,10 +2715,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                     };
                   })}
               >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  stroke="#e5e7eb"
-                />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
                   dataKey="name"
                   stroke="#6b7280"
@@ -3260,31 +3182,21 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("consistent_performer")}
                 className="p-3 bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50/30 transition-colors text-left"
               >
-                <p className="font-semibold text-blue-700">
-                  📊 Consistent
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Steady performance
-                </p>
+                <p className="font-semibold text-blue-700">📊 Consistent</p>
+                <p className="text-xs text-gray-600 mt-1">Steady performance</p>
               </button>
               <button
                 onClick={() => loadTemplate("strong_finish")}
                 className="p-3 bg-white border-2 border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left"
               >
-                <p className="font-semibold text-green-700">
-                  🚀 Strong Finish
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Improved over time
-                </p>
+                <p className="font-semibold text-green-700">🚀 Strong Finish</p>
+                <p className="text-xs text-gray-600 mt-1">Improved over time</p>
               </button>
               <button
                 onClick={() => loadTemplate("planning_ahead")}
                 className="p-3 bg-white border-2 border-purple-300 rounded-lg hover:bg-purple-50 transition-colors text-left"
               >
-                <p className="font-semibold text-purple-700">
-                  🎯 Planning
-                </p>
+                <p className="font-semibold text-purple-700">🎯 Planning</p>
                 <p className="text-xs text-gray-600 mt-1">
                   Partial grades + target
                 </p>
@@ -3293,12 +3205,8 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("empty")}
                 className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700">
-                  ✨ Start Fresh
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Empty template
-                </p>
+                <p className="font-semibold text-gray-700">✨ Start Fresh</p>
+                <p className="text-xs text-gray-600 mt-1">Empty template</p>
               </button>
             </div>
           </div>
@@ -3495,11 +3403,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                   </div>
 
                   <div className="space-y-4">
-                    <div
-                      className={`p-3 rounded ${
-                        "bg-gray-100"
-                      }`}
-                    >
+                    <div className={`p-3 rounded ${"bg-gray-100"}`}>
                       <h4 className="font-medium mb-2">Prelim Grade</h4>
                       <input
                         type="number"
@@ -3515,11 +3419,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                       />
                     </div>
 
-                    <div
-                      className={`p-3 rounded ${
-                        "bg-gray-100"
-                      }`}
-                    >
+                    <div className={`p-3 rounded ${"bg-gray-100"}`}>
                       <h4 className="font-medium mb-2">Midterm Grade</h4>
                       <input
                         type="number"
@@ -3535,11 +3435,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                       />
                     </div>
 
-                    <div
-                      className={`p-3 rounded ${
-                        "bg-gray-100"
-                      }`}
-                    >
+                    <div className={`p-3 rounded ${"bg-gray-100"}`}>
                       <h4 className="font-medium mb-2">Pre-Final Grade</h4>
                       <input
                         type="number"
@@ -3555,11 +3451,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                       />
                     </div>
 
-                    <div
-                      className={`p-3 rounded ${
-                        "bg-gray-100"
-                      }`}
-                    >
+                    <div className={`p-3 rounded ${"bg-gray-100"}`}>
                       <h4 className="font-medium mb-2">Final Grade</h4>
                       <input
                         type="number"
@@ -3577,9 +3469,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                   </div>
 
                   {(currentGrade || requiredFinal) && (
-                    <div
-                      className="mt-4 p-4 rounded-lg bg-blue-50 border-blue-200 border"
-                    >
+                    <div className="mt-4 p-4 rounded-lg bg-blue-50 border-blue-200 border">
                       <h4 className="font-semibold mb-2">Grade Projection</h4>
 
                       {currentGrade && (
@@ -3594,11 +3484,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                       )}
 
                       {requiredFinal && (
-                        <div
-                          className={`p-3 rounded ${
-                            "bg-gray-100"
-                          }`}
-                        >
+                        <div className={`p-3 rounded ${"bg-gray-100"}`}>
                           <p>
                             To achieve your target grade of{" "}
                             <span className="font-bold">
@@ -3658,25 +3544,17 @@ function TermBasedCalculator({ getMotivationalMessage }) {
       </div>
 
       {subjects.some((subject) => calculateCurrentGrade(subject)) && (
-        <div
-          className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50"
-        >
+        <div className="border rounded-lg p-6 mt-6 border-blue-200 bg-blue-50">
           <h2 className="text-2xl font-bold text-center mb-4 text-blue-800">
             Semester Summary
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div
-              className={`p-4 rounded-lg shadow ${
-                "bg-white"
-              }`}
-            >
+            <div className={`p-4 rounded-lg shadow ${"bg-white"}`}>
               <h3 className="font-semibold text-lg mb-3">Subject Grades</h3>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead
-                    className="bg-gray-50"
-                  >
+                  <thead className="bg-gray-50">
                     <tr>
                       <th className="px-4 py-2 text-left text-sm">Subject</th>
                       <th className="px-4 py-2 text-left text-sm">
@@ -3685,11 +3563,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                       <th className="px-4 py-2 text-left text-sm">Target</th>
                     </tr>
                   </thead>
-                  <tbody
-                    className={`divide-y divide-gray-200 ${
-                      "bg-white"
-                    }`}
-                  >
+                  <tbody className={`divide-y divide-gray-200 ${"bg-white"}`}>
                     {subjects.map((subject, index) => {
                       const current = calculateCurrentGrade(subject);
                       if (!current) return null;
@@ -3715,11 +3589,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
               </div>
             </div>
 
-            <div
-              className={`p-4 rounded-lg shadow ${
-                "bg-white"
-              }`}
-            >
+            <div className={`p-4 rounded-lg shadow ${"bg-white"}`}>
               <h3 className="font-semibold text-lg mb-3">
                 Semester GPA Projection
               </h3>
@@ -3808,22 +3678,6 @@ function App() {
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-          <div className="flex items-center space-x-3">
-            <img
-              src="/images/CampusCalcu.png"
-              alt="Campus Companion PH"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white/20"
-            />
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold font-display leading-tight">
-                Campus Companion PH
-              </h1>
-              <p className="text-xs text-blue-100 hidden sm:block">
-                Your Grade Calculation Companion 🇵🇭
-              </p>
-            </div>
-          </div>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             <button
@@ -3880,6 +3734,7 @@ function App() {
             </button>
           </nav>
 
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -3904,6 +3759,23 @@ function App() {
                 ></div>
               </div>
             </button>
+          </div>
+
+          {/* Logo and Title - Right Side */}
+          <div className="flex items-center space-x-3">
+            <img
+              src="/images/CampusCalcu.png"
+              alt="Campus Companion PH"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white/20"
+            />
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold font-display leading-tight">
+                Campus Companion PH
+              </h1>
+              <p className="text-xs text-blue-100 hidden sm:block">
+                Your Grade Calculation Companion 🇵🇭
+              </p>
+            </div>
           </div>
 
           {mobileMenuOpen && (
