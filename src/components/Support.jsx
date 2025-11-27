@@ -8,7 +8,7 @@ export default function Support() {
   const [showPaymentOptions, setShowPaymentOptions] = useState(false);
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="w-full">
       {/* Hero Header */}
       <div className="mb-8 text-center">
         <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600">
