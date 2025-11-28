@@ -456,38 +456,39 @@ export default function FAQ() {
   return (
     <div className="w-full">
       {/* Hero Header */}
-      <div className="mb-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600">
+      <div className="mb-8 sm:mb-10 lg:mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 sm:mb-6 text-blue-600">
           Frequently Asked Questions
         </h2>
-        <p className="text-lg text-gray-600">
+        <p className="text-base sm:text-lg text-gray-600 px-4">
           Everything you need to know about using Campus Companion PH
         </p>
       </div>
 
       {/* Search Box */}
-      <div className="mb-6">
+      <div className="mb-6 sm:mb-8">
         <div className="relative">
-          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          <FiSearch className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
             type="text"
             placeholder="Search FAQs..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-10 py-3 rounded-lg border bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-base rounded-xl border-2 bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 transition-all"
           />
           {searchTerm && (
             <button
               onClick={clearSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 p-1 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label="Clear search"
             >
-              <FiX />
+              <FiX className="w-5 h-5" />
             </button>
           )}
         </div>
 
         {searchTerm && (
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-sm sm:text-base text-gray-600 px-1">
             {filteredFaqs.length} result{filteredFaqs.length !== 1 ? "s" : ""}{" "}
             found
             {filteredFaqs.length === 0 && " - try different keywords"}
@@ -496,7 +497,7 @@ export default function FAQ() {
       </div>
 
       {/* FAQ List */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {filteredFaqs.map((faq) => {
           const originalIndex = faqs.findIndex(
             (originalFaq) => originalFaq.question === faq.question
@@ -505,42 +506,46 @@ export default function FAQ() {
           return (
             <div
               key={originalIndex}
-              className="border rounded-lg overflow-hidden border-gray-200"
+              className="border rounded-xl overflow-hidden border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
               <button
-                className="w-full p-4 text-left flex justify-between items-center bg-white hover:bg-gray-50"
+                className="w-full p-4 sm:p-5 lg:p-6 text-left flex justify-between items-start gap-4 bg-white hover:bg-gray-50 transition-colors"
                 onClick={() => toggleFAQ(originalIndex)}
               >
-                <span className="font-medium">{faq.question}</span>
-                {activeIndex === originalIndex ? (
-                  <FiChevronUp />
-                ) : (
-                  <FiChevronDown />
-                )}
+                <span className="font-medium text-sm sm:text-base text-gray-900 flex-1 text-left">{faq.question}</span>
+                <span className="flex-shrink-0 mt-0.5">
+                  {activeIndex === originalIndex ? (
+                    <FiChevronUp className="w-5 h-5 text-gray-500" />
+                  ) : (
+                    <FiChevronDown className="w-5 h-5 text-gray-500" />
+                  )}
+                </span>
               </button>
 
               {activeIndex === originalIndex && (
-                <div className="p-4 bg-gray-50">
-                  <p className="mb-3">{faq.answer}</p>
+                <div className="p-4 sm:p-5 lg:p-6 bg-gray-50 border-t border-gray-200">
+                  <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">{faq.answer}</p>
 
                   {faq.details && (
-                    <div className="mt-3">
+                    <div className="mt-4">
                       <button
                         onClick={() => toggleDetails(originalIndex)}
-                        className="text-sm flex items-center text-blue-600"
+                        className="text-sm sm:text-base flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors"
                       >
-                        <FiInfo className="mr-1" />
+                        <FiInfo className="mr-2 w-4 h-4" />
                         {showDetails[originalIndex]
                           ? "Hide details"
                           : "Show more details"}
                       </button>
 
                       {showDetails[originalIndex] && (
-                        <div className="mt-2 p-3 rounded bg-gray-100">
+                        <div className="mt-3 p-4 sm:p-5 rounded-lg bg-white border border-gray-200">
                           {typeof faq.details === "string" ? (
-                            <p>{faq.details}</p>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{faq.details}</p>
                           ) : (
-                            faq.details
+                            <div className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                              {faq.details}
+                            </div>
                           )}
                         </div>
                       )}
@@ -555,9 +560,9 @@ export default function FAQ() {
 
       {/* No Results Message */}
       {searchTerm && filteredFaqs.length === 0 && (
-        <div className="text-center py-8 text-gray-600">
-          <p className="text-lg mb-2">No FAQs found matching "{searchTerm}"</p>
-          <p className="text-sm">
+        <div className="text-center py-12 sm:py-16 text-gray-600">
+          <p className="text-lg sm:text-xl mb-3 font-medium">No FAQs found matching "{searchTerm}"</p>
+          <p className="text-sm sm:text-base">
             Try searching for terms like "grade", "calculator", "DepEd", "GPA",
             or "subject"
           </p>
