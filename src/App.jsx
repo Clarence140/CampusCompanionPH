@@ -3789,171 +3789,175 @@ function App() {
       </header>
 
       {/* Main Content - Flex grow to push footer down */}
-      <main className="flex-1 w-full px-4 py-8">
+      <main className="flex-1 w-full">
         {currentView === "about" ? (
-          <div className="py-8">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <About />
           </div>
         ) : currentView === "faq" ? (
-          <div className="py-8">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <FAQ />
           </div>
         ) : currentView === "support" ? (
-          <div className="py-8">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <Support />
           </div>
         ) : (
-          <>
-            {/* Hero Welcome Section */}
-            {showInstructions && (
-              <div className="mb-8 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
-                <div className="p-8 text-white">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h2 className="text-3xl font-heading font-bold mb-2">
-                        Welcome to Campus Companion PH! 🎓
-                      </h2>
-                      <p className="text-blue-100 text-sm">
-                        The Philippines' most comprehensive grade calculator
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => setShowInstructions(false)}
-                      className="text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
-                    >
-                      ✕
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    {/* Left column */}
-                    <div className="space-y-4">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                        <h3 className="font-heading font-semibold text-lg mb-3">
-                          ✨ What You Can Do:
-                        </h3>
-                        <ul className="space-y-2 text-sm">
-                          <li className="flex items-start gap-2">
-                            <span className="text-yellow-300">📊</span>
-                            <span>
-                              Calculate K-12, SHS, and College GPA with
-                              DepEd-compliant formulas
-                            </span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-yellow-300">🎯</span>
-                            <span>
-                              Plan ahead with "What If" goal calculator
-                            </span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-yellow-300">📈</span>
-                            <span>
-                              Track your progress with beautiful charts
-                            </span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-yellow-300">🧠</span>
-                            <span>Get personalized study recommendations</span>
-                          </li>
-                        </ul>
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+            <>
+              {/* Hero Welcome Section */}
+              {showInstructions && (
+                <div className="mb-8 sm:mb-12 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+                  <div className="p-6 sm:p-8 lg:p-10 text-white">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h2 className="text-3xl font-heading font-bold mb-2">
+                          Welcome to Campus Companion PH! 🎓
+                        </h2>
+                        <p className="text-blue-100 text-sm">
+                          The Philippines' most comprehensive grade calculator
+                        </p>
                       </div>
+                      <button
+                        onClick={() => setShowInstructions(false)}
+                        className="text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
+                      >
+                        ✕
+                      </button>
                     </div>
 
-                    {/* Right column */}
-                    <div className="space-y-4">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                        <h3 className="font-heading font-semibold text-lg mb-3">
-                          🚀 Quick Start:
-                        </h3>
-                        <ol className="list-decimal pl-5 space-y-2 text-sm">
-                          <li>
-                            Choose your calculator type (K-12, Tertiary, or
-                            Term-Based)
-                          </li>
-                          <li>Try Quick Templates for instant demo</li>
-                          <li>Enter your grades and see results</li>
-                          <li>Export, share, or save to history</li>
-                        </ol>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                      {/* Left column */}
+                      <div className="space-y-4">
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                          <h3 className="font-heading font-semibold text-lg mb-3">
+                            ✨ What You Can Do:
+                          </h3>
+                          <ul className="space-y-2 text-sm">
+                            <li className="flex items-start gap-2">
+                              <span className="text-yellow-300">📊</span>
+                              <span>
+                                Calculate K-12, SHS, and College GPA with
+                                DepEd-compliant formulas
+                              </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-yellow-300">🎯</span>
+                              <span>
+                                Plan ahead with "What If" goal calculator
+                              </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-yellow-300">📈</span>
+                              <span>
+                                Track your progress with beautiful charts
+                              </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-yellow-300">🧠</span>
+                              <span>
+                                Get personalized study recommendations
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                          💾 Auto-Save
-                        </span>
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                          📱 Mobile Friendly
-                        </span>
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                          🆓 100% Free
-                        </span>
+                      {/* Right column */}
+                      <div className="space-y-4">
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                          <h3 className="font-heading font-semibold text-lg mb-3">
+                            🚀 Quick Start:
+                          </h3>
+                          <ol className="list-decimal pl-5 space-y-2 text-sm">
+                            <li>
+                              Choose your calculator type (K-12, Tertiary, or
+                              Term-Based)
+                            </li>
+                            <li>Try Quick Templates for instant demo</li>
+                            <li>Enter your grades and see results</li>
+                            <li>Export, share, or save to history</li>
+                          </ol>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2">
+                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
+                            💾 Auto-Save
+                          </span>
+                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
+                            📱 Mobile Friendly
+                          </span>
+                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
+                            🆓 100% Free
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            {!showInstructions && (
-              <button
-                onClick={() => setShowInstructions(true)}
-                className="mb-6 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
-              >
-                Show Welcome Guide
-              </button>
-            )}
-
-            {/* Calculator Tabs - Better Design */}
-            <div className="bg-white rounded-xl shadow-md mb-8 p-1.5 flex flex-wrap gap-2">
-              <button
-                className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
-                  activeTab === "k12"
-                    ? "bg-blue-600 text-white shadow-md transform scale-105"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-                onClick={() => setActiveTab("k12")}
-              >
-                📚 K-12 Calculator
-              </button>
-              <button
-                className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
-                  activeTab === "tertiary"
-                    ? "bg-blue-600 text-white shadow-md transform scale-105"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-                onClick={() => setActiveTab("tertiary")}
-              >
-                🎓 Tertiary (College)
-              </button>
-              <button
-                className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
-                  activeTab === "term-based"
-                    ? "bg-blue-600 text-white shadow-md transform scale-105"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-                onClick={() => setActiveTab("term-based")}
-              >
-                📅 Term-Based
-              </button>
-            </div>
-
-            {/* Calculator Content with better padding */}
-            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 min-h-[500px]">
-              {activeTab === "k12" ? (
-                <K12Calculator
-                  getMotivationalMessage={getMotivationalMessage}
-                />
-              ) : activeTab === "tertiary" ? (
-                <TertiaryCalculator
-                  getMotivationalMessage={getMotivationalMessage}
-                />
-              ) : (
-                <TermBasedCalculator
-                  getMotivationalMessage={getMotivationalMessage}
-                />
               )}
-            </div>
-          </>
+
+              {!showInstructions && (
+                <button
+                  onClick={() => setShowInstructions(true)}
+                  className="mb-6 sm:mb-8 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+                >
+                  Show Welcome Guide
+                </button>
+              )}
+
+              {/* Calculator Tabs - Better Design */}
+              <div className="bg-white rounded-xl shadow-md mb-6 sm:mb-8 p-1.5 flex flex-wrap gap-2">
+                <button
+                  className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
+                    activeTab === "k12"
+                      ? "bg-blue-600 text-white shadow-md transform scale-105"
+                      : "text-gray-600 hover:bg-gray-100"
+                  }`}
+                  onClick={() => setActiveTab("k12")}
+                >
+                  📚 K-12 Calculator
+                </button>
+                <button
+                  className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
+                    activeTab === "tertiary"
+                      ? "bg-blue-600 text-white shadow-md transform scale-105"
+                      : "text-gray-600 hover:bg-gray-100"
+                  }`}
+                  onClick={() => setActiveTab("tertiary")}
+                >
+                  🎓 Tertiary (College)
+                </button>
+                <button
+                  className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
+                    activeTab === "term-based"
+                      ? "bg-blue-600 text-white shadow-md transform scale-105"
+                      : "text-gray-600 hover:bg-gray-100"
+                  }`}
+                  onClick={() => setActiveTab("term-based")}
+                >
+                  📅 Term-Based
+                </button>
+              </div>
+
+              {/* Calculator Content with better padding */}
+              <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 min-h-[500px]">
+                {activeTab === "k12" ? (
+                  <K12Calculator
+                    getMotivationalMessage={getMotivationalMessage}
+                  />
+                ) : activeTab === "tertiary" ? (
+                  <TertiaryCalculator
+                    getMotivationalMessage={getMotivationalMessage}
+                  />
+                ) : (
+                  <TermBasedCalculator
+                    getMotivationalMessage={getMotivationalMessage}
+                  />
+                )}
+              </div>
+            </>
+          </div>
         )}
       </main>
 

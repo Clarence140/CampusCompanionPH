@@ -15,14 +15,14 @@ export default function GradeLevelCard({
       hover={!disabled}
       elevation={isSelected ? "lg" : "md"}
       className={`
-        p-6 text-center cursor-pointer transition-all duration-200
+        p-6 sm:p-8 text-center cursor-pointer transition-all duration-200
         ${isSelected ? "border-2 border-primary-500 bg-primary-50/50" : ""}
         ${disabled ? "opacity-50 cursor-not-allowed" : ""}
       `}
       onClick={disabled ? undefined : onClick}
     >
-      <div className="text-5xl mb-4">{icon}</div>
-      <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
+      <div className="text-5xl sm:text-6xl mb-4">{icon}</div>
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{title}</h3>
       <p className="text-sm text-gray-600">{subtitle}</p>
       {isSelected && (
         <div className="mt-4">

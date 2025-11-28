@@ -57,13 +57,13 @@ export default function CalculatorSelector({
     selectedLevel === "custom";
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 sm:space-y-8">
       {/* Quick Calculate Card */}
       <ModernCard
         hover
         elevation="lg"
         gradient
-        className="p-6 border-l-4 border-primary-500"
+        className="p-6 sm:p-8 border-l-4 border-primary-500"
       >
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -116,11 +116,11 @@ export default function CalculatorSelector({
       )}
 
       {/* Primary Selection */}
-      <ModernCard className="p-6" elevation="md">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">
+      <ModernCard className="p-6 sm:p-8" elevation="md">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
           What is your educational level?
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           <GradeLevelCard
             icon="🏫"
             title="K-12 (DepEd)"
@@ -147,11 +147,11 @@ export default function CalculatorSelector({
 
       {/* Secondary Selection - K-12 */}
       {selectedLevel === "k12" && (
-        <ModernCard className="p-6 animate-fade-in" elevation="md">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
+        <ModernCard className="p-6 sm:p-8 animate-fade-in" elevation="md">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
             Select your Grade Level
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {k12GradeLevels.map((level) => (
               <GradeLevelCard
                 key={level.value}
@@ -168,11 +168,11 @@ export default function CalculatorSelector({
 
       {/* Secondary Selection - College */}
       {selectedLevel === "college" && (
-        <ModernCard className="p-6 animate-fade-in" elevation="md">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
+        <ModernCard className="p-6 sm:p-8 animate-fade-in" elevation="md">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
             What is your grading scale?
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {collegeScales.map((scale) => (
               <GradeLevelCard
                 key={scale.value}
@@ -189,7 +189,7 @@ export default function CalculatorSelector({
 
       {/* Proceed Button */}
       {canProceed && (
-        <div className="flex justify-center animate-fade-in">
+        <div className="flex justify-center animate-fade-in pt-4">
           <ModernButton variant="primary" size="lg" onClick={handleProceed}>
             Start Calculator →
           </ModernButton>
