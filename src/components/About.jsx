@@ -18,42 +18,42 @@ export default function About() {
   return (
     <div className="w-full">
       {/* Hero Header */}
-      <div className="mb-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600">
+      <div className="mb-8 sm:mb-10 lg:mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 sm:mb-6 text-blue-600">
           About Campus Companion PH
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
           Empowering Filipino students with accurate grade calculations and
           smart insights
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
         {/* About the Website */}
-        <div className="mb-8">
-          <h3 className="text-2xl font-heading font-bold mb-4 flex items-center text-gray-900">
+        <div className="mb-8 sm:mb-10">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
             <FiGlobe
               className="mr-3 text-blue-600"
               size={28}
             />{" "}
             About This Website
           </h3>
-          <p className="mb-4">
+          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             Campus Companion PH is a comprehensive Philippine grade calculator
             designed specifically for the Filipino educational system. This web
             application provides accurate grade calculations following official
             DepEd K-12 guidelines and supports various tertiary education
             grading systems used across Philippine universities and colleges.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             Built with modern web technologies, this tool offers three distinct
             calculators: K-12 Calculator for elementary and high school students
             following DepEd Order No. 8 s. 2015, Tertiary Calculator for college
             students using the 1.0-5.0 GPA scale, and Term-Based Calculator for
             semester-based grading systems with customizable weights.
           </p>
-          <p className="mb-4">
-            The application featuresresponsive design, responsive design for
+          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+            The application features responsive design for
             all devices, real-time grade calculations, motivational feedback,
             and detailed grade breakdowns to help students track their academic
             progress effectively.
@@ -61,40 +61,40 @@ export default function About() {
         </div>
 
         {/* Goals and Mission */}
-        <div className="mb-8">
-          <h3 className="text-2xl font-heading font-bold mb-6 flex items-center text-gray-900">
+        <div className="mb-8 sm:mb-10">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold mb-6 sm:mb-8 flex items-center text-gray-900">
             <FiTarget
               className="mr-3 text-purple-600"
               size={28}
             />{" "}
             Our Goals & Mission
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2">Educational Accessibility</h4>
-              <p className="text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Educational Accessibility</h4>
+              <p className="text-sm sm:text-base text-gray-700">
                 Make grade calculation tools freely accessible to all Filipino
                 students, regardless of their economic background or location.
               </p>
             </div>
-            <div className="p-4 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2">Academic Transparency</h4>
-              <p className="text-sm">
+            <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Academic Transparency</h4>
+              <p className="text-sm sm:text-base text-gray-700">
                 Provide clear, accurate calculations that help students
                 understand how their grades are computed according to official
                 guidelines.
               </p>
             </div>
-            <div className="p-4 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2">Student Empowerment</h4>
-              <p className="text-sm">
+            <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Student Empowerment</h4>
+              <p className="text-sm sm:text-base text-gray-700">
                 Enable students to track their progress, set realistic goals,
                 and make informed decisions about their academic journey.
               </p>
             </div>
-            <div className="p-4 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2">Continuous Innovation</h4>
-              <p className="text-sm">
+            <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Continuous Innovation</h4>
+              <p className="text-sm sm:text-base text-gray-700">
                 Regularly update and improve the platform based on user feedback
                 and changes in educational policies.
               </p>
@@ -103,9 +103,9 @@ export default function About() {
         </div>
 
         {/* Educational Tips */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-heading font-bold flex items-center text-gray-900">
+        <div className="mb-8 sm:mb-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold flex items-center text-gray-900">
               <FiBook
                 className="mr-3 text-green-600"
                 size={28}
@@ -129,12 +129,12 @@ export default function About() {
           </div>
 
           {showTips && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg bg-gray-100">
-                <h4 className="font-semibold mb-2 flex items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+                <h4 className="font-semibold mb-3 sm:mb-4 flex items-center text-gray-900">
                   <FiClock className="mr-2" /> Grade Tracking Tips
                 </h4>
-                <ul className="list-disc pl-5 space-y-1 text-sm">
+                <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-700">
                   <li>
                     Use this calculator after each assessment to monitor your
                     progress
@@ -157,11 +157,11 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="p-4 rounded-lg bg-gray-100">
-                <h4 className="font-semibold mb-2 flex items-center">
+              <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+                <h4 className="font-semibold mb-3 sm:mb-4 flex items-center text-gray-900">
                   <FiAward className="mr-2" /> Academic Excellence Strategies
                 </h4>
-                <ul className="list-disc pl-5 space-y-1 text-sm">
+                <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-700">
                   <li>
                     Focus more on Performance Tasks as they carry higher weight
                   </li>
@@ -172,11 +172,11 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="p-4 rounded-lg bg-gray-100">
-                <h4 className="font-semibold mb-2 flex items-center">
+              <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+                <h4 className="font-semibold mb-3 sm:mb-4 flex items-center text-gray-900">
                   <FiUsers className="mr-2" /> For Parents & Educators
                 </h4>
-                <ul className="list-disc pl-5 space-y-1 text-sm">
+                <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-700">
                   <li>
                     Use this tool to explain grade calculations to students
                   </li>
@@ -190,9 +190,9 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="p-4 rounded-lg bg-gray-100">
-                <h4 className="font-semibold mb-2">Calculator-Specific Tips</h4>
-                <ul className="list-disc pl-5 space-y-1 text-sm">
+              <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-900">Calculator-Specific Tips</h4>
+                <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-700">
                   <li>
                     K-12: Weights are automatically set per DepEd guidelines
                   </li>
@@ -212,20 +212,20 @@ export default function About() {
         </div>
 
         {/* About the Developer */}
-        <div className="mb-8">
-          <h3 className="text-2xl font-heading font-bold mb-4 flex items-center text-gray-900">
+        <div className="mb-8 sm:mb-10">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
             <FiUsers
               className="mr-3 text-indigo-600"
               size={28}
             />{" "}
             About the Developer
           </h3>
-          <p className="mb-4">
+          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             Hi! I'm Clarence, an aspiring full-stack web developer passionate
             about creating modern solutions that make our lives easier, or
             "mapadali" in Tagalog. This website is a manifestation of that goal.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             I developed Campus Companion PH after recognizing the need for a
             comprehensive, transparent, and user-friendly grade calculation tool
             specifically designed for the Philippine educational system. As a
@@ -248,8 +248,8 @@ export default function About() {
           </div>
         </div>
 
-        <div className="text-center text-sm text-gray-500 border-t border-gray-200 pt-6 mt-8">
-          <p className="mt-2">
+        <div className="text-center text-sm text-gray-500 border-t border-gray-200 pt-6 sm:pt-8 mt-8 sm:mt-10">
+          <p>
             © {new Date().getFullYear()} Campus Companion PH | Developed with
             Passion by CodeWithClarence
           </p>
