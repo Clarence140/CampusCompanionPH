@@ -10,90 +10,90 @@ export default function Support() {
   return (
     <div className="w-full">
       {/* Hero Header */}
-      <div className="mb-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4 text-blue-600">
+      <div className="mb-8 sm:mb-10 lg:mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 sm:mb-6 text-blue-600">
           Support This Project
         </h2>
-        <p className="text-lg text-gray-600">
+        <p className="text-base sm:text-lg text-gray-600 px-4">
           Help keep Campus Companion PH free for all Filipino students
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-lg p-8">
-        <div className="mb-8">
-          <h3 className="text-2xl font-heading font-bold mb-4 flex items-center text-gray-900">
+      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
+        <div className="mb-8 sm:mb-10">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
             <FiHeart
               className="mr-3 text-red-500"
               size={28}
             />{" "}
             Buy Me a Coffee
           </h3>
-          <p className="mb-4">
+          <p className="mb-6 text-sm sm:text-base text-gray-700 leading-relaxed">
             If you find this tool helpful and would like to support my
             development work, you can buy me a coffee! Your support helps me
             continue creating free, useful tools for students and educators.
           </p>
 
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="font-medium">Payment Options</h4>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 sm:mb-6">
+            <h4 className="font-semibold text-gray-900">Payment Options</h4>
             <button
               onClick={() => setShowPaymentOptions(!showPaymentOptions)}
-              className="flex items-center px-3 py-1 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-600"
+              className="flex items-center px-4 py-2 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium text-sm sm:text-base"
             >
               {showPaymentOptions ? (
                 <>
-                  <FiChevronUp className="mr-1" /> Hide Options
+                  <FiChevronUp className="mr-2" /> Hide Options
                 </>
               ) : (
                 <>
-                  <FiChevronDown className="mr-1" /> Show Options
+                  <FiChevronDown className="mr-2" /> Show Options
                 </>
               )}
             </button>
           </div>
 
           {showPaymentOptions && (
-            <div className="flex flex-wrap gap-6 justify-center mt-6">
-              <div className="p-4 rounded-lg bg-gray-100 text-center w-full max-w-xs">
+            <div className="flex flex-wrap gap-6 sm:gap-8 justify-center mt-6 sm:mt-8 animate-fade-in">
+              <div className="p-4 sm:p-6 rounded-xl bg-gray-100 border border-gray-200 text-center w-full max-w-xs shadow-sm hover:shadow-md transition-shadow">
                 <div
-                  className="w-full h-64 relative cursor-pointer overflow-hidden group"
+                  className="w-full h-64 sm:h-72 relative cursor-pointer overflow-hidden group rounded-lg bg-white"
                   onClick={() => setZoomedImage("/images/Gcash.jpg")}
                 >
                   <img
                     src="/images/Gcash.jpg"
                     alt="GCash QR Code"
-                    className="w-full h-full object-contain group-hover:opacity-90 transition-opacity duration-200"
+                    className="w-full h-full object-contain p-2 group-hover:opacity-90 transition-opacity duration-200"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <span className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-lg text-sm">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/40 rounded-lg">
+                    <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                       Click to enlarge
                     </span>
                   </div>
                 </div>
-                <p className="font-medium mt-2">GCash: 09692234028</p>
-                <p className="text-sm text-gray-500">
+                <p className="font-semibold mt-4 text-gray-900">GCash: 09692234028</p>
+                <p className="text-sm text-gray-600 mt-1">
                   Clarence Sumagang
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-gray-100 text-center w-full max-w-xs">
+              <div className="p-4 sm:p-6 rounded-xl bg-gray-100 border border-gray-200 text-center w-full max-w-xs shadow-sm hover:shadow-md transition-shadow">
                 <div
-                  className="w-full h-64 relative cursor-pointer overflow-hidden group"
+                  className="w-full h-64 sm:h-72 relative cursor-pointer overflow-hidden group rounded-lg bg-white"
                   onClick={() => setZoomedImage("/images/Maya.jpg")}
                 >
                   <img
                     src="/images/Maya.jpg"
                     alt="Maya QR Code"
-                    className="w-full h-full object-contain group-hover:opacity-90 transition-opacity duration-200"
+                    className="w-full h-full object-contain p-2 group-hover:opacity-90 transition-opacity duration-200"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <span className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-lg text-sm">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/40 rounded-lg">
+                    <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                       Click to enlarge
                     </span>
                   </div>
                 </div>
-                <p className="font-medium mt-2">Maya: 09692234028</p>
-                <p className="text-sm text-gray-500">
+                <p className="font-semibold mt-4 text-gray-900">Maya: 09692234028</p>
+                <p className="text-sm text-gray-600 mt-1">
                   Clarence Sumagang
                 </p>
               </div>
@@ -101,13 +101,13 @@ export default function Support() {
           )}
         </div>
 
-        <div className="text-center text-sm text-gray-500 border-t border-gray-200 pt-6 mt-8">
-          <p className="mb-2">
+        <div className="text-center text-sm sm:text-base text-gray-600 border-t border-gray-200 pt-6 sm:pt-8 mt-8 sm:mt-10">
+          <p className="mb-3 leading-relaxed">
             Your support, no matter how small, makes a huge difference in
             keeping this project alive and improving it for all Filipino
             students.
           </p>
-          <p>
+          <p className="font-medium">
             Thank you for being part of the Campus Companion PH community! 🇵🇭
           </p>
         </div>
@@ -116,24 +116,24 @@ export default function Support() {
       {/* Zoom Modal */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6 animate-fade-in"
           onClick={() => setZoomedImage(null)}
         >
-          <div className="relative max-w-2xl w-full">
+          <div className="relative max-w-2xl w-full animate-scale-in">
             <img
               src={zoomedImage || "/placeholder.svg"}
               alt="Zoomed QR Code"
-              className="w-full max-h-[90vh] object-contain"
+              className="w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
             />
             <button
-              className="absolute top-4 right-4 rounded-full p-2 shadow-lg bg-white text-gray-800"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 rounded-full p-2 sm:p-3 shadow-lg bg-white hover:bg-gray-100 text-gray-800 transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
                 setZoomedImage(null);
               }}
               aria-label="Close zoomed image"
             >
-              <FiX size={24} />
+              <FiX size={24} className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
