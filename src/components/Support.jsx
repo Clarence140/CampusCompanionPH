@@ -119,25 +119,23 @@ export default function Support() {
           className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6 animate-fade-in"
           onClick={() => setZoomedImage(null)}
         >
-          <div className="relative max-w-2xl w-full animate-scale-in">
+          <div className="relative max-w-2xl w-full bg-white rounded-lg shadow-2xl p-4 sm:p-6 animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full p-2 bg-gray-100 hover:bg-gray-200 text-gray-800 transition-colors z-10"
+              onClick={() => setZoomedImage(null)}
+              aria-label="Close zoomed image"
+            >
+              <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
             <img
               src={zoomedImage || "/placeholder.svg"}
               alt="Zoomed QR Code"
-              className="w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              className="w-full max-h-[85vh] object-contain rounded-lg"
             />
-            <button
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 rounded-full p-2 sm:p-3 shadow-lg bg-white hover:bg-gray-100 text-gray-800 transition-colors"
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomedImage(null);
-              }}
-              aria-label="Close zoomed image"
-            >
-              <FiX size={24} className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
           </div>
         </div>
       )}
     </div>
   );
 }
+
