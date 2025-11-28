@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiHeart, FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { AspectRatio } from "./ui/AspectRatio";
 
 export default function Support() {
   const [zoomedImage, setZoomedImage] = useState(null);
@@ -55,8 +56,11 @@ export default function Support() {
           {showPaymentOptions && (
             <div className="flex flex-wrap gap-6 sm:gap-8 justify-center mt-6 sm:mt-8 animate-fade-in">
               <div className="p-4 sm:p-6 rounded-xl bg-gray-100 border border-gray-200 text-center w-full max-w-xs shadow-sm hover:shadow-md transition-shadow">
-                <div
-                  className="w-full h-64 sm:h-72 relative cursor-pointer overflow-hidden group rounded-lg bg-white"
+                <AspectRatio
+                  preset="square"
+                  rounded="xl"
+                  objectFit="contain"
+                  className="cursor-pointer group bg-white"
                   onClick={() => setZoomedImage("/images/Gcash.jpg")}
                 >
                   <img
@@ -64,12 +68,12 @@ export default function Support() {
                     alt="GCash QR Code"
                     className="w-full h-full object-contain p-2 group-hover:opacity-90 transition-opacity duration-200"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/40 rounded-lg">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/40 rounded-xl">
                     <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                       Click to enlarge
                     </span>
                   </div>
-                </div>
+                </AspectRatio>
                 <p className="font-semibold mt-4 text-gray-900">GCash: 09692234028</p>
                 <p className="text-sm text-gray-600 mt-1">
                   Clarence Sumagang
@@ -77,8 +81,11 @@ export default function Support() {
               </div>
 
               <div className="p-4 sm:p-6 rounded-xl bg-gray-100 border border-gray-200 text-center w-full max-w-xs shadow-sm hover:shadow-md transition-shadow">
-                <div
-                  className="w-full h-64 sm:h-72 relative cursor-pointer overflow-hidden group rounded-lg bg-white"
+                <AspectRatio
+                  preset="square"
+                  rounded="xl"
+                  objectFit="contain"
+                  className="cursor-pointer group bg-white"
                   onClick={() => setZoomedImage("/images/Maya.jpg")}
                 >
                   <img
@@ -86,12 +93,12 @@ export default function Support() {
                     alt="Maya QR Code"
                     className="w-full h-full object-contain p-2 group-hover:opacity-90 transition-opacity duration-200"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/40 rounded-lg">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/40 rounded-xl">
                     <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                       Click to enlarge
                     </span>
                   </div>
-                </div>
+                </AspectRatio>
                 <p className="font-semibold mt-4 text-gray-900">Maya: 09692234028</p>
                 <p className="text-sm text-gray-600 mt-1">
                   Clarence Sumagang

@@ -19,6 +19,7 @@ import {
 import About from "./components/About";
 import FAQ from "./components/FAQ";
 import Support from "./components/Support";
+import { AspectRatio } from "./components/ui/AspectRatio";
 
 // Reusable Modal Component
 function Modal({ isOpen, onClose, title, message, type = "info" }) {
@@ -1797,55 +1798,63 @@ Calculate your grades too at Campus Companion PH!`;
               <h3 className="text-sm font-semibold text-center mb-2 text-gray-700">
                 Grade Contribution Breakdown
               </h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={[
-                      {
-                        name: "Written Works",
-                        value:
-                          parseFloat(grades.wwAverage) *
-                          gradeWeights[gradeLevel].ww,
-                        percent: gradeWeights[gradeLevel].ww * 100,
-                      },
-                      {
-                        name: "Performance Tasks",
-                        value:
-                          parseFloat(grades.ptAverage) *
-                          gradeWeights[gradeLevel].pt,
-                        percent: gradeWeights[gradeLevel].pt * 100,
-                      },
-                      {
-                        name: "Quarterly Assessment",
-                        value:
-                          parseFloat(grades.qaScore) *
-                          gradeWeights[gradeLevel].qa,
-                        percent: gradeWeights[gradeLevel].qa * 100,
-                      },
-                    ]}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={(entry) => `${entry.percent}%`}
-                    outerRadius={70}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    <Cell fill="#3b82f6" />
-                    <Cell fill="#10b981" />
-                    <Cell fill="#f59e0b" />
-                  </Pie>
-                  <Tooltip
-                    formatter={(value) => value.toFixed(2)}
-                    contentStyle={{
-                      backgroundColor: "#ffffff",
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "0.5rem",
-                    }}
-                  />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
+              <AspectRatio
+                presetResponsive={{
+                  mobile: "square",
+                  tablet: "video",
+                  desktop: "video",
+                }}
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={[
+                        {
+                          name: "Written Works",
+                          value:
+                            parseFloat(grades.wwAverage) *
+                            gradeWeights[gradeLevel].ww,
+                          percent: gradeWeights[gradeLevel].ww * 100,
+                        },
+                        {
+                          name: "Performance Tasks",
+                          value:
+                            parseFloat(grades.ptAverage) *
+                            gradeWeights[gradeLevel].pt,
+                          percent: gradeWeights[gradeLevel].pt * 100,
+                        },
+                        {
+                          name: "Quarterly Assessment",
+                          value:
+                            parseFloat(grades.qaScore) *
+                            gradeWeights[gradeLevel].qa,
+                          percent: gradeWeights[gradeLevel].qa * 100,
+                        },
+                      ]}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={(entry) => `${entry.percent}%`}
+                      outerRadius={70}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      <Cell fill="#3b82f6" />
+                      <Cell fill="#10b981" />
+                      <Cell fill="#f59e0b" />
+                    </Pie>
+                    <Tooltip
+                      formatter={(value) => value.toFixed(2)}
+                      contentStyle={{
+                        backgroundColor: "#ffffff",
+                        border: "1px solid #e5e7eb",
+                        borderRadius: "0.5rem",
+                      }}
+                    />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+              </AspectRatio>
             </div>
 
             {/* Bar Chart - Component Comparison */}
@@ -1853,37 +1862,45 @@ Calculate your grades too at Campus Companion PH!`;
               <h3 className="text-sm font-semibold text-center mb-2 text-gray-700">
                 Component Performance
               </h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <BarChart
-                  data={[
-                    {
-                      name: "WW",
-                      score: parseFloat(grades.wwAverage),
-                    },
-                    {
-                      name: "PT",
-                      score: parseFloat(grades.ptAverage),
-                    },
-                    {
-                      name: "QA",
-                      score: parseFloat(grades.qaScore),
-                    },
-                  ]}
-                >
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="name" stroke="#6b7280" />
-                  <YAxis domain={[0, 100]} stroke="#6b7280" />
-                  <Tooltip
-                    formatter={(value) => `${value}%`}
-                    contentStyle={{
-                      backgroundColor: "#ffffff",
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "0.5rem",
-                    }}
-                  />
-                  <Bar dataKey="score" fill="#3b82f6" radius={[8, 8, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
+              <AspectRatio
+                presetResponsive={{
+                  mobile: "portrait",
+                  tablet: "video",
+                  desktop: "video",
+                }}
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={[
+                      {
+                        name: "WW",
+                        score: parseFloat(grades.wwAverage),
+                      },
+                      {
+                        name: "PT",
+                        score: parseFloat(grades.ptAverage),
+                      },
+                      {
+                        name: "QA",
+                        score: parseFloat(grades.qaScore),
+                      },
+                    ]}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <XAxis dataKey="name" stroke="#6b7280" />
+                    <YAxis domain={[0, 100]} stroke="#6b7280" />
+                    <Tooltip
+                      formatter={(value) => `${value}%`}
+                      contentStyle={{
+                        backgroundColor: "#ffffff",
+                        border: "1px solid #e5e7eb",
+                        borderRadius: "0.5rem",
+                      }}
+                    />
+                    <Bar dataKey="score" fill="#3b82f6" radius={[8, 8, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </AspectRatio>
             </div>
           </div>
 
@@ -2171,42 +2188,50 @@ Calculate your grades too at Campus Companion PH!`;
                   <h4 className="font-semibold mb-4 text-center">
                     Grade Progress Over Time
                   </h4>
-                  <ResponsiveContainer width="100%" height={250}>
-                    <LineChart
-                      data={gradeHistory.map((entry, index) => ({
-                        name: entry.name,
-                        grade: entry.finalGrade,
-                        index: index + 1,
-                      }))}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                      <XAxis
-                        dataKey="name"
-                        stroke="#6b7280"
-                        angle={-45}
-                        textAnchor="end"
-                        height={80}
-                      />
-                      <YAxis domain={[75, 100]} stroke="#6b7280" />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: "#ffffff",
-                          border: "1px solid #e5e7eb",
-                          borderRadius: "0.5rem",
-                        }}
-                      />
-                      <Legend />
-                      <Line
-                        type="monotone"
-                        dataKey="grade"
-                        stroke="#6366f1"
-                        strokeWidth={3}
-                        dot={{ fill: "#6366f1", r: 6 }}
-                        activeDot={{ r: 8 }}
-                        name="Final Grade"
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                  <AspectRatio
+                    presetResponsive={{
+                      mobile: "portrait",
+                      tablet: "video",
+                      desktop: "widescreen",
+                    }}
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart
+                        data={gradeHistory.map((entry, index) => ({
+                          name: entry.name,
+                          grade: entry.finalGrade,
+                          index: index + 1,
+                        }))}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                        <XAxis
+                          dataKey="name"
+                          stroke="#6b7280"
+                          angle={-45}
+                          textAnchor="end"
+                          height={80}
+                        />
+                        <YAxis domain={[75, 100]} stroke="#6b7280" />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: "#ffffff",
+                            border: "1px solid #e5e7eb",
+                            borderRadius: "0.5rem",
+                          }}
+                        />
+                        <Legend />
+                        <Line
+                          type="monotone"
+                          dataKey="grade"
+                          stroke="#6366f1"
+                          strokeWidth={3}
+                          dot={{ fill: "#6366f1", r: 6 }}
+                          activeDot={{ r: 8 }}
+                          name="Final Grade"
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </AspectRatio>
                 </div>
               )}
 
@@ -2651,73 +2676,23 @@ function TertiaryCalculator({ getMotivationalMessage }) {
             <p className="text-xs text-center text-gray-500 mb-4">
               📊 Taller bars = Better grades (inverted scale for clarity)
             </p>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart
-                data={subjects
-                  .filter((s) => s.grade && s.units)
-                  .map((s) => {
-                    const gradeNum = parseFloat(s.grade);
-                    // Invert for visual clarity: 1.0 becomes 5, 5.0 becomes 1
-                    const visualScore = 6 - gradeNum;
-                    // Color based on performance
-                    let color = "#10b981"; // Green (good)
-                    if (gradeNum <= 1.5) color = "#10b981"; // Excellent - Green
-                    else if (gradeNum <= 2.0)
-                      color = "#3b82f6"; // Very Good - Blue
-                    else if (gradeNum <= 2.5)
-                      color = "#f59e0b"; // Good - Orange
-                    else if (gradeNum <= 3.0) color = "#ef4444"; // Fair - Red
-                    else color = "#991b1b"; // Poor - Dark Red
-
-                    return {
-                      name: s.name || "Subject",
-                      actualGrade: gradeNum,
-                      visualScore: visualScore,
-                      fill: color,
-                    };
-                  })}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis
-                  dataKey="name"
-                  stroke="#6b7280"
-                  angle={-45}
-                  textAnchor="end"
-                  height={80}
-                />
-                <YAxis
-                  domain={[0, 5]}
-                  stroke="#6b7280"
-                  label={{
-                    value: "Performance (Higher = Better)",
-                    angle: -90,
-                    position: "insideLeft",
-                    style: { fontSize: 12 },
-                  }}
-                  ticks={[1, 2, 3, 4, 5]}
-                  tickFormatter={(value) => {
-                    // Show actual grades: 5 = 1.0, 4 = 2.0, etc
-                    return (6 - value).toFixed(1);
-                  }}
-                />
-                <Tooltip
-                  formatter={(value, name, props) => [
-                    `Grade: ${props.payload.actualGrade.toFixed(2)}`,
-                    "",
-                  ]}
-                  labelFormatter={(label) => `Subject: ${label}`}
-                  contentStyle={{
-                    backgroundColor: "#ffffff",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "0.5rem",
-                  }}
-                />
-                <Bar dataKey="visualScore" radius={[8, 8, 0, 0]}>
-                  {subjects
+            <AspectRatio
+              presetResponsive={{
+                mobile: "portrait",
+                tablet: "video",
+                desktop: "widescreen",
+              }}
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={subjects
                     .filter((s) => s.grade && s.units)
-                    .map((s, index) => {
+                    .map((s) => {
                       const gradeNum = parseFloat(s.grade);
-                      let color = "#10b981"; // Default green
+                      // Invert for visual clarity: 1.0 becomes 5, 5.0 becomes 1
+                      const visualScore = 6 - gradeNum;
+                      // Color based on performance
+                      let color = "#10b981"; // Green (good)
                       if (gradeNum <= 1.5)
                         color = "#10b981"; // Excellent - Green
                       else if (gradeNum <= 2.0)
@@ -2727,11 +2702,71 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                       else if (gradeNum <= 3.0) color = "#ef4444"; // Fair - Red
                       else color = "#991b1b"; // Poor - Dark Red
 
-                      return <Cell key={`cell-${index}`} fill={color} />;
+                      return {
+                        name: s.name || "Subject",
+                        actualGrade: gradeNum,
+                        visualScore: visualScore,
+                        fill: color,
+                      };
                     })}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis
+                    dataKey="name"
+                    stroke="#6b7280"
+                    angle={-45}
+                    textAnchor="end"
+                    height={80}
+                  />
+                  <YAxis
+                    domain={[0, 5]}
+                    stroke="#6b7280"
+                    label={{
+                      value: "Performance (Higher = Better)",
+                      angle: -90,
+                      position: "insideLeft",
+                      style: { fontSize: 12 },
+                    }}
+                    ticks={[1, 2, 3, 4, 5]}
+                    tickFormatter={(value) => {
+                      // Show actual grades: 5 = 1.0, 4 = 2.0, etc
+                      return (6 - value).toFixed(1);
+                    }}
+                  />
+                  <Tooltip
+                    formatter={(value, name, props) => [
+                      `Grade: ${props.payload.actualGrade.toFixed(2)}`,
+                      "",
+                    ]}
+                    labelFormatter={(label) => `Subject: ${label}`}
+                    contentStyle={{
+                      backgroundColor: "#ffffff",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "0.5rem",
+                    }}
+                  />
+                  <Bar dataKey="visualScore" radius={[8, 8, 0, 0]}>
+                    {subjects
+                      .filter((s) => s.grade && s.units)
+                      .map((s, index) => {
+                        const gradeNum = parseFloat(s.grade);
+                        let color = "#10b981"; // Default green
+                        if (gradeNum <= 1.5)
+                          color = "#10b981"; // Excellent - Green
+                        else if (gradeNum <= 2.0)
+                          color = "#3b82f6"; // Very Good - Blue
+                        else if (gradeNum <= 2.5)
+                          color = "#f59e0b"; // Good - Orange
+                        else if (gradeNum <= 3.0)
+                          color = "#ef4444"; // Fair - Red
+                        else color = "#991b1b"; // Poor - Dark Red
+
+                        return <Cell key={`cell-${index}`} fill={color} />;
+                      })}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </AspectRatio>
 
             {/* Legend */}
             <div className="mt-4 flex flex-wrap justify-center gap-3 text-xs">
