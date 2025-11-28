@@ -28,7 +28,7 @@ function Modal({ isOpen, onClose, title, message, type = "info" }) {
       if (e.key === "Escape") onClose();
     };
 
-    if () {
+    if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden"; // Prevent background scrolling
     }
