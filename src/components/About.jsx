@@ -32,7 +32,7 @@ export default function About() {
         {/* About the Website */}
         <div className="mb-8 sm:mb-10">
           <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
-            <FiGlobe className="mr-3 text-red-600" size={28} /> About This
+            <FiGlobe className="mr-3 text-blue-600" size={28} /> About This
             Website
           </h3>
           <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
