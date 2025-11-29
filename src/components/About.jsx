@@ -32,11 +32,8 @@ export default function About() {
         {/* About the Website */}
         <div className="mb-8 sm:mb-10">
           <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
-            <FiGlobe
-              className="mr-3 text-blue-600"
-              size={28}
-            />{" "}
-            About This Website
+            <FiGlobe className="mr-3 text-red-600" size={28} /> About This
+            Website
           </h3>
           <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             Campus Companion PH is a comprehensive Philippine grade calculator
@@ -53,32 +50,33 @@ export default function About() {
             semester-based grading systems with customizable weights.
           </p>
           <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
-            The application features responsive design for
-            all devices, real-time grade calculations, motivational feedback,
-            and detailed grade breakdowns to help students track their academic
-            progress effectively.
+            The application features responsive design for all devices,
+            real-time grade calculations, motivational feedback, and detailed
+            grade breakdowns to help students track their academic progress
+            effectively.
           </p>
         </div>
 
         {/* Goals and Mission */}
         <div className="mb-8 sm:mb-10">
           <h3 className="text-xl sm:text-2xl font-heading font-bold mb-6 sm:mb-8 flex items-center text-gray-900">
-            <FiTarget
-              className="mr-3 text-purple-600"
-              size={28}
-            />{" "}
-            Our Goals & Mission
+            <FiTarget className="mr-3 text-purple-600" size={28} /> Our Goals &
+            Mission
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Educational Accessibility</h4>
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">
+                Educational Accessibility
+              </h4>
               <p className="text-sm sm:text-base text-gray-700">
                 Make grade calculation tools freely accessible to all Filipino
                 students, regardless of their economic background or location.
               </p>
             </div>
             <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Academic Transparency</h4>
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">
+                Academic Transparency
+              </h4>
               <p className="text-sm sm:text-base text-gray-700">
                 Provide clear, accurate calculations that help students
                 understand how their grades are computed according to official
@@ -86,14 +84,18 @@ export default function About() {
               </p>
             </div>
             <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Student Empowerment</h4>
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">
+                Student Empowerment
+              </h4>
               <p className="text-sm sm:text-base text-gray-700">
                 Enable students to track their progress, set realistic goals,
                 and make informed decisions about their academic journey.
               </p>
             </div>
             <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
-              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">Continuous Innovation</h4>
+              <h4 className="font-semibold mb-2 sm:mb-3 text-gray-900">
+                Continuous Innovation
+              </h4>
               <p className="text-sm sm:text-base text-gray-700">
                 Regularly update and improve the platform based on user feedback
                 and changes in educational policies.
@@ -106,11 +108,8 @@ export default function About() {
         <div className="mb-8 sm:mb-10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
             <h3 className="text-xl sm:text-2xl font-heading font-bold flex items-center text-gray-900">
-              <FiBook
-                className="mr-3 text-green-600"
-                size={28}
-              />{" "}
-              Study Tips & Academic Success
+              <FiBook className="mr-3 text-green-600" size={28} /> Study Tips &
+              Academic Success
             </h3>
             <button
               onClick={() => setShowTips(!showTips)}
@@ -191,7 +190,9 @@ export default function About() {
               </div>
 
               <div className="p-4 sm:p-6 rounded-lg bg-gray-100">
-                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-900">Calculator-Specific Tips</h4>
+                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-900">
+                  Calculator-Specific Tips
+                </h4>
                 <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-700">
                   <li>
                     K-12: Weights are automatically set per DepEd guidelines
@@ -214,11 +215,8 @@ export default function About() {
         {/* About the Developer */}
         <div className="mb-8 sm:mb-10">
           <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
-            <FiUsers
-              className="mr-3 text-indigo-600"
-              size={28}
-            />{" "}
-            About the Developer
+            <FiUsers className="mr-3 text-indigo-600" size={28} /> About the
+            Developer
           </h3>
           <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             Hi! I'm Clarence, an aspiring full-stack web developer passionate
