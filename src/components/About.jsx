@@ -42,13 +42,7 @@ export default function About() {
             DepEd K-12 guidelines and supports various tertiary education
             grading systems used across Philippine universities and colleges.
           </p>
-          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
-            Built with modern web technologies, this tool offers three distinct
-            calculators: K-12 Calculator for elementary and high school students
-            following DepEd Order No. 8 s. 2015, Tertiary Calculator for college
-            students using the 1.0-5.0 GPA scale, and Term-Based Calculator for
-            semester-based grading systems with customizable weights.
-          </p>
+
           <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             The application features responsive design for all devices,
             real-time grade calculations, motivational feedback, and detailed
