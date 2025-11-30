@@ -31,6 +31,10 @@ export default function About() {
       <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
         {/* About the Website */}
         <div className="mb-8 sm:mb-10">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
+            <FiGlobe className="mr-3 text-blue-600" size={28} /> About This
+            Website
+          </h3>
           <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             Campus Companion PH is a comprehensive Philippine grade calculator
             designed specifically for the Filipino educational system. This web
