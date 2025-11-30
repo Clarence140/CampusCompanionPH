@@ -49,6 +49,12 @@ export default function About() {
             students using the 1.0-5.0 GPA scale, and Term-Based Calculator for
             semester-based grading systems with customizable weights.
           </p>
+          <p className="mb-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+            The application features responsive design for all devices,
+            real-time grade calculations, motivational feedback, and detailed
+            grade breakdowns to help students track their academic progress
+            effectively.
+          </p>
         </div>
 
         {/* Goals and Mission */}
