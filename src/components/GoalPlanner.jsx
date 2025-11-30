@@ -3,13 +3,7 @@
 import { useState, useEffect } from "react";
 import ModernCard from "./ui/ModernCard";
 
-export default function GoalPlanner({
-  currentGrade,
-  weights,
-  wwAverage,
-  ptAverage,
-  qaScore = null,
-}) {
+
   const [targetGrade, setTargetGrade] = useState(85);
 
   // Calculate required QA score
