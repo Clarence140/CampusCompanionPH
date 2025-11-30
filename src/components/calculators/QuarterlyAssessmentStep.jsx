@@ -12,8 +12,7 @@ export default function QuarterlyAssessmentStep({
   onBack,
   onComplete,
 }) {
-  const updateQA = (field, value) => {
-    setQuarterlyAssessment({ ...quarterlyAssessment, [field]: value });
+  
   };
 
   // Calculate QA score
