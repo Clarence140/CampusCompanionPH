@@ -12,7 +12,8 @@ export default function QuarterlyAssessmentStep({
   onBack,
   onComplete,
 }) {
-  
+  const updateQA = (field, value) => {
+    setQuarterlyAssessment({ ...quarterlyAssessment, [field]: value });
   };
 
   // Calculate QA score
@@ -33,7 +34,9 @@ export default function QuarterlyAssessmentStep({
           <h3 className="font-bold text-xl text-gray-900">
             Quarterly Assessment
           </h3>
-          <p className="text-gray-600">Major examination at the end of the quarter</p>
+          <p className="text-gray-600">
+            Major examination at the end of the quarter
+          </p>
         </div>
       </div>
 
@@ -99,7 +102,3 @@ export default function QuarterlyAssessmentStep({
     </ModernCard>
   );
 }
-
-
-
-
