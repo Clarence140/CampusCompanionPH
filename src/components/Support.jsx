@@ -12,9 +12,6 @@ export default function Support() {
     <div className="w-full">
       {/* Hero Header */}
       <div className="mb-8 sm:mb-10 lg:mb-12 text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 sm:mb-6 text-blue-600">
-          Support This Project
-        </h2>
         <p className="text-base sm:text-lg text-gray-600 px-4">
           Help keep Campus Companion PH free for all Filipino students
         </p>
@@ -23,11 +20,7 @@ export default function Support() {
       <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
         <div className="mb-8 sm:mb-10">
           <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4 sm:mb-6 flex items-center text-gray-900">
-            <FiHeart
-              className="mr-3 text-red-500"
-              size={28}
-            />{" "}
-            Buy Me a Coffee
+            <FiHeart className="mr-3 text-red-500" size={28} /> Buy Me a Coffee
           </h3>
           <p className="mb-6 text-sm sm:text-base text-gray-700 leading-relaxed">
             If you find this tool helpful and would like to support my
@@ -74,10 +67,10 @@ export default function Support() {
                     </span>
                   </div>
                 </AspectRatio>
-                <p className="font-semibold mt-4 text-gray-900">GCash: 09692234028</p>
-                <p className="text-sm text-gray-600 mt-1">
-                  Clarence Sumagang
+                <p className="font-semibold mt-4 text-gray-900">
+                  GCash: 09692234028
                 </p>
+                <p className="text-sm text-gray-600 mt-1">Clarence Sumagang</p>
               </div>
 
               <div className="p-4 sm:p-6 rounded-xl bg-gray-100 border border-gray-200 text-center w-full max-w-xs shadow-sm hover:shadow-md transition-shadow">
@@ -99,10 +92,10 @@ export default function Support() {
                     </span>
                   </div>
                 </AspectRatio>
-                <p className="font-semibold mt-4 text-gray-900">Maya: 09692234028</p>
-                <p className="text-sm text-gray-600 mt-1">
-                  Clarence Sumagang
+                <p className="font-semibold mt-4 text-gray-900">
+                  Maya: 09692234028
                 </p>
+                <p className="text-sm text-gray-600 mt-1">Clarence Sumagang</p>
               </div>
             </div>
           )}
@@ -126,7 +119,10 @@ export default function Support() {
           className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6 animate-fade-in"
           onClick={() => setZoomedImage(null)}
         >
-          <div className="relative max-w-2xl w-full bg-white rounded-lg shadow-2xl p-4 sm:p-6 animate-scale-in" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="relative max-w-2xl w-full bg-white rounded-lg shadow-2xl p-4 sm:p-6 animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full p-2 bg-gray-100 hover:bg-gray-200 text-gray-800 transition-colors z-10"
               onClick={() => setZoomedImage(null)}
@@ -145,4 +141,3 @@ export default function Support() {
     </div>
   );
 }
-
