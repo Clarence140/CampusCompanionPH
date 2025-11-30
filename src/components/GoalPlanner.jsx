@@ -3,7 +3,13 @@
 import { useState, useEffect } from "react";
 import ModernCard from "./ui/ModernCard";
 
-
+export default function GoalPlanner({
+  currentGrade,
+  weights,
+  wwAverage,
+  ptAverage,
+  qaScore = null,
+}) {
   const [targetGrade, setTargetGrade] = useState(85);
 
   // Calculate required QA score
@@ -76,7 +82,8 @@ import ModernCard from "./ui/ModernCard";
     "very-hard": {
       emoji: "🚨",
       color: "red",
-      message: "Very difficult target. Consider adjusting goals or seeking help.",
+      message:
+        "Very difficult target. Consider adjusting goals or seeking help.",
       tips: [
         "Talk to your teacher ASAP about options",
         "Focus only on the most important topics",
@@ -103,8 +110,8 @@ import ModernCard from "./ui/ModernCard";
           </h3>
           <p className="text-gray-700 mb-6">
             Based on your current scores (WW: {wwAverage.toFixed(1)}%, PT:{" "}
-            {ptAverage.toFixed(1)}%), adjust your target final grade to see
-            what you need on your Quarterly Assessment.
+            {ptAverage.toFixed(1)}%), adjust your target final grade to see what
+            you need on your Quarterly Assessment.
           </p>
 
           {/* Target Grade Slider */}
@@ -158,19 +165,25 @@ import ModernCard from "./ui/ModernCard";
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Needed to reach {targetGrade}%:</span>
+                <span className="text-gray-600">
+                  Needed to reach {targetGrade}%:
+                </span>
                 <span className="font-semibold">
                   {requiredInfo.needed.toFixed(2)} points
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Available from QA ({weights.qa * 100}%):</span>
+                <span className="text-gray-600">
+                  Available from QA ({weights.qa * 100}%):
+                </span>
                 <span className="font-semibold">
                   {requiredQA.toFixed(1)} points
                 </span>
               </div>
               <div className="flex justify-between pt-2 border-t">
-                <span className="text-gray-900 font-semibold">Required QA Score:</span>
+                <span className="text-gray-900 font-semibold">
+                  Required QA Score:
+                </span>
                 <span className={`font-bold text-lg text-${info.color}-600`}>
                   {requiredQA.toFixed(1)}%
                 </span>
@@ -226,7 +239,3 @@ import ModernCard from "./ui/ModernCard";
     </ModernCard>
   );
 }
-
-
-
-
