@@ -46,8 +46,8 @@ export default function CalculatorSelector({
   ];
 
   const collegeScales = [
-    { value: "1-5", label: "1.0 - 5.0 Scale", icon: "📊" },
-    { value: "1-4", label: "1.0 - 4.0 Scale (UP System)", icon: "🏛️" },
+    { value: "1-5", label: "Standard 1.00 - 5.00 Scale", icon: "📊" },
+    { value: "1-4", label: "UP System (1.00 - 5.00)", icon: "🏛️" },
     { value: "percentage", label: "Percentage (%)", icon: "📈" },
   ];
 

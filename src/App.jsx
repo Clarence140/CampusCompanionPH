@@ -17,6 +17,8 @@ import {
   Line,
 } from "recharts";
 import About from "./components/About";
+import useK12Calculator from "./hooks/useK12Reducer";
+import { Helmet } from "react-helmet-async";
 import FAQ from "./components/FAQ";
 import Support from "./components/Support";
 import { AspectRatio } from "./components/ui/AspectRatio";
@@ -170,36 +172,20 @@ function ConfirmModal({ isOpen, onClose, onConfirm, title, message }) {
 }
 
 function K12Calculator({ getMotivationalMessage }) {
-  // Load saved data from localStorage
-  const [gradeLevel, setGradeLevel] = useState(() => {
-    const saved = localStorage.getItem("k12_gradeLevel");
-    return saved ? JSON.parse(saved) : "1";
-  });
-  const [subjectType, setSubjectType] = useState(() => {
-    const saved = localStorage.getItem("k12_subjectType");
-    return saved ? JSON.parse(saved) : "core";
-  });
-  const [writtenWorks, setWrittenWorks] = useState(() => {
-    const saved = localStorage.getItem("k12_writtenWorks");
-    return saved ? JSON.parse(saved) : [{ name: "", score: "", maxScore: "" }];
-  });
-  const [performanceTasks, setPerformanceTasks] = useState(() => {
-    const saved = localStorage.getItem("k12_performanceTasks");
-    return saved ? JSON.parse(saved) : [{ name: "", score: "", maxScore: "" }];
-  });
-  const [quarterlyAssessment, setQuarterlyAssessment] = useState(() => {
-    const saved = localStorage.getItem("k12_quarterlyAssessment");
-    return saved ? JSON.parse(saved) : { score: "", maxScore: "" };
-  });
-  const [targetGrade, setTargetGrade] = useState(() => {
-    const saved = localStorage.getItem("k12_targetGrade");
-    return saved || "";
-  });
+  // All persistent K-12 state managed by a single useReducer + 1 localStorage sync
+  const {
+    gradeLevel, setGradeLevel,
+    subjectType, setSubjectType,
+    writtenWorks, setWrittenWorks,
+    performanceTasks, setPerformanceTasks,
+    quarterlyAssessment, setQuarterlyAssessment,
+    targetGrade, setTargetGrade,
+    gradeHistory, setGradeHistory,
+    dispatch,
+  } = useK12Calculator();
+
+  // UI-only state (not persisted to localStorage)
   const [showWhatIf, setShowWhatIf] = useState(false);
-  const [gradeHistory, setGradeHistory] = useState(() => {
-    const saved = localStorage.getItem("k12_gradeHistory");
-    return saved ? JSON.parse(saved) : [];
-  });
   const [showHistory, setShowHistory] = useState(false);
   const [historyEntryName, setHistoryEntryName] = useState("");
   const [showTemplates, setShowTemplates] = useState(false);
@@ -207,6 +193,7 @@ function K12Calculator({ getMotivationalMessage }) {
   const [showBulkPT, setShowBulkPT] = useState(false);
   const [bulkWWData, setBulkWWData] = useState("");
   const [bulkPTData, setBulkPTData] = useState("");
+  const [defaultMaxScore, setDefaultMaxScore] = useState("");
 
   // Modal state
   const [modal, setModal] = useState({
@@ -242,41 +229,6 @@ function K12Calculator({ getMotivationalMessage }) {
       onConfirm: () => {},
     });
   };
-
-  // Save data to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("k12_gradeLevel", JSON.stringify(gradeLevel));
-  }, [gradeLevel]);
-
-  useEffect(() => {
-    localStorage.setItem("k12_subjectType", JSON.stringify(subjectType));
-  }, [subjectType]);
-
-  useEffect(() => {
-    localStorage.setItem("k12_writtenWorks", JSON.stringify(writtenWorks));
-  }, [writtenWorks]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      "k12_performanceTasks",
-      JSON.stringify(performanceTasks)
-    );
-  }, [performanceTasks]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      "k12_quarterlyAssessment",
-      JSON.stringify(quarterlyAssessment)
-    );
-  }, [quarterlyAssessment]);
-
-  useEffect(() => {
-    localStorage.setItem("k12_targetGrade", targetGrade);
-  }, [targetGrade]);
-
-  useEffect(() => {
-    localStorage.setItem("k12_gradeHistory", JSON.stringify(gradeHistory));
-  }, [gradeHistory]);
 
   // Grade level weights from DepEd Order No. 8, s. 2015
   const gradeWeights = {
@@ -380,18 +332,7 @@ function K12Calculator({ getMotivationalMessage }) {
       "Clear All Data?",
       "Are you sure you want to clear all data? This cannot be undone.",
       () => {
-        setGradeLevel("1");
-        setSubjectType("core");
-        setWrittenWorks([{ name: "", score: "", maxScore: "" }]);
-        setPerformanceTasks([{ name: "", score: "", maxScore: "" }]);
-        setQuarterlyAssessment({ score: "", maxScore: "" });
-        setTargetGrade("");
-        localStorage.removeItem("k12_gradeLevel");
-        localStorage.removeItem("k12_subjectType");
-        localStorage.removeItem("k12_writtenWorks");
-        localStorage.removeItem("k12_performanceTasks");
-        localStorage.removeItem("k12_quarterlyAssessment");
-        localStorage.removeItem("k12_targetGrade");
+        dispatch({ type: "CLEAR_ALL_DATA" });
         showModal(
           "Data Cleared",
           "All your data has been cleared successfully.",
@@ -744,8 +685,7 @@ function K12Calculator({ getMotivationalMessage }) {
       "Clear All History?",
       "Are you sure you want to clear all grade history? This cannot be undone.",
       () => {
-        setGradeHistory([]);
-        localStorage.removeItem("k12_gradeHistory");
+        dispatch({ type: "CLEAR_HISTORY" });
         showModal(
           "History Cleared",
           "All your grade history has been cleared.",
@@ -817,11 +757,7 @@ function K12Calculator({ getMotivationalMessage }) {
       "Load Template?",
       "This will replace your current data. Are you sure you want to continue?",
       () => {
-        setGradeLevel(template.gradeLevel);
-        setSubjectType(template.subjectType);
-        setWrittenWorks(template.writtenWorks);
-        setPerformanceTasks(template.performanceTasks);
-        setQuarterlyAssessment(template.quarterlyAssessment);
+        dispatch({ type: "LOAD_TEMPLATE", payload: template });
         setShowTemplates(false);
         showModal(
           "Template Loaded",
@@ -836,7 +772,7 @@ function K12Calculator({ getMotivationalMessage }) {
     try {
       const lines = bulkWWData.trim().split("\n");
       const parsed = lines
-        .map((line) => {
+        .map((line, idx) => {
           const parts = line.split("\t"); // Tab-separated
           if (parts.length >= 3) {
             return {
@@ -852,6 +788,14 @@ function K12Calculator({ getMotivationalMessage }) {
                 name: commaParts[0].trim(),
                 score: commaParts[1].trim(),
                 maxScore: commaParts[2].trim(),
+              };
+            }
+            // Score-only mode: if default max score is set, accept single numbers
+            if (defaultMaxScore && line.trim() && !isNaN(line.trim())) {
+              return {
+                name: `WW ${idx + 1}`,
+                score: line.trim(),
+                maxScore: defaultMaxScore,
               };
             }
           }
@@ -871,7 +815,9 @@ function K12Calculator({ getMotivationalMessage }) {
       } else {
         showModal(
           "Invalid Format",
-          "No valid data found. Please use format: Name [TAB] Score [TAB] MaxScore (one per line)",
+          defaultMaxScore
+            ? "No valid data found. Paste scores (one per line) or use format: Name [TAB] Score [TAB] MaxScore"
+            : "No valid data found. Please use format: Name [TAB] Score [TAB] MaxScore (one per line)",
           "warning"
         );
       }
@@ -888,7 +834,7 @@ function K12Calculator({ getMotivationalMessage }) {
     try {
       const lines = bulkPTData.trim().split("\n");
       const parsed = lines
-        .map((line) => {
+        .map((line, idx) => {
           const parts = line.split("\t"); // Tab-separated
           if (parts.length >= 3) {
             return {
@@ -904,6 +850,14 @@ function K12Calculator({ getMotivationalMessage }) {
                 name: commaParts[0].trim(),
                 score: commaParts[1].trim(),
                 maxScore: commaParts[2].trim(),
+              };
+            }
+            // Score-only mode: if default max score is set, accept single numbers
+            if (defaultMaxScore && line.trim() && !isNaN(line.trim())) {
+              return {
+                name: `PT ${idx + 1}`,
+                score: line.trim(),
+                maxScore: defaultMaxScore,
               };
             }
           }
@@ -923,7 +877,9 @@ function K12Calculator({ getMotivationalMessage }) {
       } else {
         showModal(
           "Invalid Format",
-          "No valid data found. Please use format: Name [TAB] Score [TAB] MaxScore (one per line)",
+          defaultMaxScore
+            ? "No valid data found. Paste scores (one per line) or use format: Name [TAB] Score [TAB] MaxScore"
+            : "No valid data found. Please use format: Name [TAB] Score [TAB] MaxScore (one per line)",
           "warning"
         );
       }
@@ -1255,6 +1211,12 @@ Calculate your grades too at Campus Companion PH!`;
             Add Written Work
           </button>
           <button
+            onClick={() => dispatch({ type: "ADD_MULTIPLE_WRITTEN_WORKS", payload: 5 })}
+            className="p-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors border border-blue-200"
+          >
+            + Add 5 Blank Rows
+          </button>
+          <button
             onClick={() => setShowBulkWW(!showBulkWW)}
             className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
           >
@@ -1269,12 +1231,35 @@ Calculate your grades too at Campus Companion PH!`;
             </h4>
             <p className="text-sm text-gray-600 mb-2">
               Paste from Excel/Google Sheets (Name, Score, Max Score - one per
-              line):
+              line){defaultMaxScore ? " or just scores (one per line)" : ""}:
             </p>
+            <div className="flex flex-wrap gap-2 mb-2">
+              <button
+                onClick={() => {
+                  const example = "Quiz 1\t18\t20\nQuiz 2\t22\t25\nLong Test\t38\t50";
+                  navigator.clipboard?.writeText(example).then(() =>
+                    showModal("Copied!", "Example format copied to clipboard. Paste it above.", "success")
+                  );
+                }}
+                className="px-3 py-1 text-xs bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
+              >
+                Copy Example Format
+              </button>
+              <div className="flex items-center gap-1">
+                <label className="text-xs text-gray-600">Default Max Score:</label>
+                <input
+                  type="number"
+                  value={defaultMaxScore}
+                  onChange={(e) => setDefaultMaxScore(e.target.value)}
+                  placeholder="e.g. 50"
+                  className="w-20 px-2 py-1 text-xs border rounded border-gray-300 bg-white"
+                />
+              </div>
+            </div>
             <textarea
               value={bulkWWData}
               onChange={(e) => setBulkWWData(e.target.value)}
-              placeholder={`Quiz 1\t18\t20\nQuiz 2\t22\t25\nLong Test\t38\t50`}
+              placeholder={defaultMaxScore ? `18\n22\n38` : `Quiz 1\t18\t20\nQuiz 2\t22\t25\nLong Test\t38\t50`}
               className="w-full h-24 p-2 border rounded-lg bg-white border-gray-300 font-mono text-sm"
             />
             <div className="flex gap-2 mt-2">
@@ -1363,6 +1348,12 @@ Calculate your grades too at Campus Companion PH!`;
             Add Performance Task
           </button>
           <button
+            onClick={() => dispatch({ type: "ADD_MULTIPLE_PERFORMANCE_TASKS", payload: 5 })}
+            className="p-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors border border-blue-200"
+          >
+            + Add 5 Blank Rows
+          </button>
+          <button
             onClick={() => setShowBulkPT(!showBulkPT)}
             className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
           >
@@ -1377,12 +1368,35 @@ Calculate your grades too at Campus Companion PH!`;
             </h4>
             <p className="text-sm text-gray-600 mb-2">
               Paste from Excel/Google Sheets (Name, Score, Max Score - one per
-              line):
+              line){defaultMaxScore ? " or just scores (one per line)" : ""}:
             </p>
+            <div className="flex flex-wrap gap-2 mb-2">
+              <button
+                onClick={() => {
+                  const example = "Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100";
+                  navigator.clipboard?.writeText(example).then(() =>
+                    showModal("Copied!", "Example format copied to clipboard. Paste it above.", "success")
+                  );
+                }}
+                className="px-3 py-1 text-xs bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
+              >
+                Copy Example Format
+              </button>
+              <div className="flex items-center gap-1">
+                <label className="text-xs text-gray-600">Default Max Score:</label>
+                <input
+                  type="number"
+                  value={defaultMaxScore}
+                  onChange={(e) => setDefaultMaxScore(e.target.value)}
+                  placeholder="e.g. 100"
+                  className="w-20 px-2 py-1 text-xs border rounded border-gray-300 bg-white"
+                />
+              </div>
+            </div>
             <textarea
               value={bulkPTData}
               onChange={(e) => setBulkPTData(e.target.value)}
-              placeholder={`Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100`}
+              placeholder={defaultMaxScore ? `45\n28\n95` : `Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100`}
               className="w-full h-24 p-2 border rounded-lg bg-white border-gray-300 font-mono text-sm"
             />
             <div className="flex gap-2 mt-2">
@@ -3659,8 +3673,22 @@ function App() {
     }
   };
 
+  const pageTitle = (() => {
+    if (currentView === "about") return "About | Campus Companion PH";
+    if (currentView === "faq") return "FAQ | Campus Companion PH";
+    if (currentView === "support") return "Support | Campus Companion PH";
+    if (activeTab === "k12") return "K-12 Grade Calculator | Campus Companion PH";
+    if (activeTab === "tertiary") return "College GPA Calculator | Campus Companion PH";
+    if (activeTab === "term-based") return "Term-Based Calculator | Campus Companion PH";
+    return "Campus Companion PH - Philippine Grade Calculator";
+  })();
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content="Free Philippine grade calculator for K-12, College, and Term-Based grading. DepEd-compliant formulas, GPA computation, and smart study recommendations." />
+      </Helmet>
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
         <div className="w-full pl-2 pr-4 py-4 flex justify-between items-center sm:pl-3">
@@ -3816,12 +3844,51 @@ function App() {
                     : "text-gray-700 hover:text-blue-600"
                 }`}
               >
-                <FiCoffee className="mr-2" /> Support
+                ☕ Support
               </button>
             </div>
           )}
         </div>
       </header>
+
+      {/* Sticky Calculator Switcher */}
+      {currentView === "calculator" && (
+        <div className="sticky top-[72px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-2 flex items-center gap-2 overflow-x-auto">
+            <span className="text-xs text-gray-500 font-medium whitespace-nowrap hidden sm:inline">Switch:</span>
+            <button
+              className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
+                activeTab === "k12"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+              onClick={() => setActiveTab("k12")}
+            >
+              K-12
+            </button>
+            <button
+              className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
+                activeTab === "tertiary"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+              onClick={() => setActiveTab("tertiary")}
+            >
+              Tertiary
+            </button>
+            <button
+              className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
+                activeTab === "term-based"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+              onClick={() => setActiveTab("term-based")}
+            >
+              Term-Based
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Main Content - Flex grow to push footer down */}
       <main className="flex-1 w-full">
