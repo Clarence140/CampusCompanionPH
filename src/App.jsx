@@ -1049,12 +1049,9 @@ Calculate your grades too at Campus Companion PH!`;
   return (
     <div className="space-y-6">
       {/* Auto-save indicator */}
-      <div className="flex justify-between items-center p-3 bg-green-50 border border-green-200 rounded-lg">
+      <div className="flex justify-between items-center p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
         <div className="flex items-center gap-2">
-          <span className="text-green-600">✓</span>
-          <span className="text-sm text-green-700">
-            Your data is automatically saved
-          </span>
+          <span className="text-emerald-600 text-sm">Auto-saved</span>
         </div>
         <button
           onClick={clearAllData}
@@ -1064,57 +1061,41 @@ Calculate your grades too at Campus Companion PH!`;
         </button>
       </div>
 
-      {/* Quick Templates */}
-      <div className="border border-cyan-200 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-4">
+      {/* Template Toggle Link */}
+      <div className="text-sm">
         <button
           onClick={() => setShowTemplates(!showTemplates)}
-          className="w-full flex items-center justify-between mb-2"
+          className="text-blue-800 hover:text-blue-900 underline"
         >
-          <h3 className="text-md font-bold text-cyan-800 flex items-center gap-2">
-            Quick Start Templates
-          </h3>
+          Want to try a sample? Load template data.
         </button>
 
         {showTemplates && (
-          <div className="space-y-3 mt-4">
-            <p className="text-sm text-gray-700">
-              Load sample data to try out the calculator instantly, or start
-              fresh:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              <button
-                onClick={() => loadTemplate("grade7_sample")}
-                className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
-              >
-                <p className="font-semibold text-cyan-700">Grade 7</p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Sample scores for JHS
-                </p>
-              </button>
-              <button
-                onClick={() => loadTemplate("grade10_sample")}
-                className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
-              >
-                <p className="font-semibold text-cyan-700">Grade 10</p>
-                <p className="text-xs text-gray-600 mt-1">
-                  High performing data
-                </p>
-              </button>
-              <button
-                onClick={() => loadTemplate("shs_sample")}
-                className="p-3 bg-white border-2 border-cyan-300 rounded-lg hover:bg-cyan-50 transition-colors text-left"
-              >
-                <p className="font-semibold text-cyan-700">SHS</p>
-                <p className="text-xs text-gray-600 mt-1">Senior High School</p>
-              </button>
-              <button
-                onClick={() => loadTemplate("empty")}
-                className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
-              >
-                <p className="font-semibold text-gray-700">✨ Start Fresh</p>
-                <p className="text-xs text-gray-600 mt-1">Empty template</p>
-              </button>
-            </div>
+          <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button
+              onClick={() => loadTemplate("grade7_sample")}
+              className="p-2 bg-white border border-slate-200 rounded-lg hover:border-blue-800 transition-colors text-left text-sm"
+            >
+              <p className="font-medium text-slate-700">Grade 7</p>
+            </button>
+            <button
+              onClick={() => loadTemplate("grade10_sample")}
+              className="p-2 bg-white border border-slate-200 rounded-lg hover:border-blue-800 transition-colors text-left text-sm"
+            >
+              <p className="font-medium text-slate-700">Grade 10</p>
+            </button>
+            <button
+              onClick={() => loadTemplate("shs_sample")}
+              className="p-2 bg-white border border-slate-200 rounded-lg hover:border-blue-800 transition-colors text-left text-sm"
+            >
+              <p className="font-medium text-slate-700">SHS</p>
+            </button>
+            <button
+              onClick={() => loadTemplate("empty")}
+              className="p-2 bg-white border border-slate-200 rounded-lg hover:border-blue-800 transition-colors text-left text-sm"
+            >
+              <p className="font-medium text-slate-700">Start Fresh</p>
+            </button>
           </div>
         )}
       </div>
@@ -1149,12 +1130,12 @@ Calculate your grades too at Campus Companion PH!`;
       </div>
 
       {/* Written Works Section */}
-      <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
+      <div className="border border-slate-200 rounded-xl p-6 bg-white">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-bold text-xl text-blue-700 flex items-center gap-2">
+          <h3 className="font-heading font-semibold text-lg text-slate-900">
             Written Works
-            <span className="text-sm font-normal text-gray-500">
-              ({gradeWeights[gradeLevel].ww * 100}%)
+            <span className="text-sm font-normal text-slate-500 ml-2">
+              ({gradeWeights[gradeLevel].ww * 100}% weight)
             </span>
           </h3>
         </div>
@@ -1168,7 +1149,7 @@ Calculate your grades too at Campus Companion PH!`;
               placeholder="Assignment name"
               value={work.name}
               onChange={(e) => updateWrittenWork(index, "name", e.target.value)}
-              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+              className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
             />
             <input
               type="number"
@@ -1177,7 +1158,7 @@ Calculate your grades too at Campus Companion PH!`;
               onChange={(e) =>
                 updateWrittenWork(index, "score", e.target.value)
               }
-              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+              className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
             />
             <input
               type="number"
@@ -1186,46 +1167,43 @@ Calculate your grades too at Campus Companion PH!`;
               onChange={(e) =>
                 updateWrittenWork(index, "maxScore", e.target.value)
               }
-              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+              className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
             />
             <button
               onClick={() => removeWrittenWork(index)}
-              className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
+              className="px-3 py-2 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm"
               title="Remove this item"
             >
-              <button
-                size={16}
-                className="group-hover:scale-110 transition-transform"
-              />
-              <span className="hidden sm:inline text-sm font-medium">
-                Remove
-              </span>
+              Remove
             </button>
           </div>
         ))}
         <div className="flex flex-wrap gap-2">
           <button
             onClick={addWrittenWork}
-            className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+            className="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors text-sm font-medium"
           >
             Add Written Work
           </button>
           <button
             onClick={() => dispatch({ type: "ADD_MULTIPLE_WRITTEN_WORKS", payload: 5 })}
-            className="p-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors border border-blue-200"
+            className="px-4 py-2 bg-white text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm"
           >
-            + Add 5 Blank Rows
-          </button>
-          <button
-            onClick={() => setShowBulkWW(!showBulkWW)}
-            className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
-          >
-            Bulk Add (Paste from Excel)
+            Add 5 Rows
           </button>
         </div>
 
-        {showBulkWW && (
-          <div className="mt-3 p-4 bg-purple-50/20 border border-purple-200 rounded-lg">
+        {/* Advanced: Bulk Import */}
+        <div className="mt-4">
+          <button
+            onClick={() => setShowBulkWW(!showBulkWW)}
+            className="text-sm text-slate-500 hover:text-blue-800 underline"
+          >
+            {showBulkWW ? "Hide bulk import" : "Bulk import from spreadsheet"}
+          </button>
+
+          {showBulkWW && (
+            <div className="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-lg">
             <h4 className="font-semibold mb-2 text-purple-800">
               Bulk Add Written Works
             </h4>
@@ -1262,34 +1240,35 @@ Calculate your grades too at Campus Companion PH!`;
               placeholder={defaultMaxScore ? `18\n22\n38` : `Quiz 1\t18\t20\nQuiz 2\t22\t25\nLong Test\t38\t50`}
               className="w-full h-24 p-2 border rounded-lg bg-white border-gray-300 font-mono text-sm"
             />
-            <div className="flex gap-2 mt-2">
-              <button
-                onClick={parseBulkWW}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
-              >
-                Import Data
-              </button>
-              <button
-                onClick={() => {
-                  setShowBulkWW(false);
-                  setBulkWWData("");
-                }}
-                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg transition-colors"
-              >
-                Cancel
-              </button>
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={parseBulkWW}
+                  className="px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition-colors text-sm"
+                >
+                  Import Data
+                </button>
+                <button
+                  onClick={() => {
+                    setShowBulkWW(false);
+                    setBulkWWData("");
+                  }}
+                  className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors text-sm"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {/* Performance Tasks Section */}
-      <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
+      <div className="border border-slate-200 rounded-xl p-6 bg-white">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-bold text-xl text-green-700 flex items-center gap-2">
+          <h3 className="font-heading font-semibold text-lg text-slate-900">
             Performance Tasks
-            <span className="text-sm font-normal text-gray-500">
-              ({gradeWeights[gradeLevel].pt * 100}%)
+            <span className="text-sm font-normal text-slate-500 ml-2">
+              ({gradeWeights[gradeLevel].pt * 100}% weight)
             </span>
           </h3>
         </div>
@@ -1305,7 +1284,7 @@ Calculate your grades too at Campus Companion PH!`;
               onChange={(e) =>
                 updatePerformanceTask(index, "name", e.target.value)
               }
-              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+              className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
             />
             <input
               type="number"
@@ -1314,7 +1293,7 @@ Calculate your grades too at Campus Companion PH!`;
               onChange={(e) =>
                 updatePerformanceTask(index, "score", e.target.value)
               }
-              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+              className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
             />
             <input
               type="number"
@@ -1323,110 +1302,105 @@ Calculate your grades too at Campus Companion PH!`;
               onChange={(e) =>
                 updatePerformanceTask(index, "maxScore", e.target.value)
               }
-              className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+              className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
             />
             <button
               onClick={() => removePerformanceTask(index)}
-              className="px-3 py-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group flex items-center gap-1.5"
+              className="px-3 py-2 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm"
               title="Remove this item"
             >
-              <button
-                size={16}
-                className="group-hover:scale-110 transition-transform"
-              />
-              <span className="hidden sm:inline text-sm font-medium">
-                Remove
-              </span>
+              Remove
             </button>
           </div>
         ))}
         <div className="flex flex-wrap gap-2">
           <button
             onClick={addPerformanceTask}
-            className="p-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+            className="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors text-sm font-medium"
           >
             Add Performance Task
           </button>
           <button
             onClick={() => dispatch({ type: "ADD_MULTIPLE_PERFORMANCE_TASKS", payload: 5 })}
-            className="p-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors border border-blue-200"
+            className="px-4 py-2 bg-white text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm"
           >
-            + Add 5 Blank Rows
-          </button>
-          <button
-            onClick={() => setShowBulkPT(!showBulkPT)}
-            className="p-2 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
-          >
-            Bulk Add (Paste from Excel)
+            Add 5 Rows
           </button>
         </div>
 
-        {showBulkPT && (
-          <div className="mt-3 p-4 bg-purple-50/20 border border-purple-200 rounded-lg">
-            <h4 className="font-semibold mb-2 text-purple-800">
-              Bulk Add Performance Tasks
-            </h4>
-            <p className="text-sm text-gray-600 mb-2">
-              Paste from Excel/Google Sheets (Name, Score, Max Score - one per
-              line){defaultMaxScore ? " or just scores (one per line)" : ""}:
-            </p>
-            <div className="flex flex-wrap gap-2 mb-2">
-              <button
-                onClick={() => {
-                  const example = "Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100";
-                  navigator.clipboard?.writeText(example).then(() =>
-                    showModal("Copied!", "Example format copied to clipboard. Paste it above.", "success")
-                  );
-                }}
-                className="px-3 py-1 text-xs bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
-              >
-                Copy Example Format
-              </button>
-              <div className="flex items-center gap-1">
-                <label className="text-xs text-gray-600">Default Max Score:</label>
-                <input
-                  type="number"
-                  value={defaultMaxScore}
-                  onChange={(e) => setDefaultMaxScore(e.target.value)}
-                  placeholder="e.g. 100"
-                  className="w-20 px-2 py-1 text-xs border rounded border-gray-300 bg-white"
-                />
+        {/* Advanced: Bulk Import */}
+        <div className="mt-4">
+          <button
+            onClick={() => setShowBulkPT(!showBulkPT)}
+            className="text-sm text-slate-500 hover:text-blue-800 underline"
+          >
+            {showBulkPT ? "Hide bulk import" : "Bulk import from spreadsheet"}
+          </button>
+
+          {showBulkPT && (
+            <div className="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-lg">
+              <p className="text-sm text-slate-600 mb-2">
+                Paste from Excel/Google Sheets (Name, Score, Max Score - one per
+                line){defaultMaxScore ? " or just scores (one per line)" : ""}:
+              </p>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <button
+                  onClick={() => {
+                    const example = "Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100";
+                    navigator.clipboard?.writeText(example).then(() =>
+                      showModal("Copied!", "Example format copied to clipboard. Paste it above.", "success")
+                    );
+                  }}
+                  className="px-3 py-1 text-xs bg-white border border-slate-300 text-slate-600 rounded hover:border-blue-800 transition-colors"
+                >
+                  Copy Example Format
+                </button>
+                <div className="flex items-center gap-1">
+                  <label className="text-xs text-slate-500">Default Max Score:</label>
+                  <input
+                    type="number"
+                    value={defaultMaxScore}
+                    onChange={(e) => setDefaultMaxScore(e.target.value)}
+                    placeholder="e.g. 100"
+                    className="w-20 px-2 py-1 text-xs border rounded border-slate-300 bg-white"
+                  />
+                </div>
+              </div>
+              <textarea
+                value={bulkPTData}
+                onChange={(e) => setBulkPTData(e.target.value)}
+                placeholder={defaultMaxScore ? "45\n28\n95" : "Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100"}
+                className="w-full h-24 p-2 border rounded-lg bg-white border-slate-300 font-mono text-sm"
+              />
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={parseBulkPT}
+                  className="px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition-colors text-sm"
+                >
+                  Import Data
+                </button>
+                <button
+                  onClick={() => {
+                    setShowBulkPT(false);
+                    setBulkPTData("");
+                  }}
+                  className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors text-sm"
+                >
+                  Cancel
+                </button>
               </div>
             </div>
-            <textarea
-              value={bulkPTData}
-              onChange={(e) => setBulkPTData(e.target.value)}
-              placeholder={defaultMaxScore ? `45\n28\n95` : `Project 1\t45\t50\nPresentation\t28\t30\nExperiment\t95\t100`}
-              className="w-full h-24 p-2 border rounded-lg bg-white border-gray-300 font-mono text-sm"
-            />
-            <div className="flex gap-2 mt-2">
-              <button
-                onClick={parseBulkPT}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
-              >
-                Import Data
-              </button>
-              <button
-                onClick={() => {
-                  setShowBulkPT(false);
-                  setBulkPTData("");
-                }}
-                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {/* Quarterly Assessment Section */}
-      <div className="border border-gray-200 rounded-xl p-6 bg-gradient-to-br from-white to-gray-50 shadow-sm">
+      <div className="border border-slate-200 rounded-xl p-6 bg-white">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-bold text-xl text-orange-700 flex items-center gap-2">
+          <h3 className="font-heading font-semibold text-lg text-slate-900">
             Quarterly Assessment
-            <span className="text-sm font-normal text-gray-500">
-              ({gradeWeights[gradeLevel].qa * 100}%)
+            <span className="text-sm font-normal text-slate-500 ml-2">
+              ({gradeWeights[gradeLevel].qa * 100}% weight)
             </span>
           </h3>
         </div>
@@ -1441,7 +1415,7 @@ Calculate your grades too at Campus Companion PH!`;
                 score: e.target.value,
               })
             }
-            className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+            className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
           />
           <input
             type="number"
@@ -1453,7 +1427,7 @@ Calculate your grades too at Campus Companion PH!`;
                 maxScore: e.target.value,
               })
             }
-            className="p-2 border rounded border-gray-300 bg-white text-gray-900"
+            className="p-2 border rounded border-slate-300 bg-white text-slate-900 text-base"
           />
         </div>
       </div>
@@ -1462,8 +1436,8 @@ Calculate your grades too at Campus Companion PH!`;
       {grades.wwAverage > 0 &&
         grades.ptAverage > 0 &&
         !quarterlyAssessment.score && (
-          <div className="border border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
-            <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center gap-2">
+          <div className="border border-slate-200 bg-slate-50 rounded-lg p-6">
+            <h3 className="font-heading font-semibold text-lg text-slate-900 mb-4">
               Can I Still Pass? (75% Analysis)
             </h3>
 
@@ -1551,7 +1525,6 @@ Calculate your grades too at Campus Companion PH!`;
                               </span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span>👥</span>
                               <span>
                                 Consider forming a study group or getting help
                                 from classmates.
@@ -1568,7 +1541,6 @@ Calculate your grades too at Campus Companion PH!`;
                               </span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span>👨‍🏫</span>
                               <span>
                                 Seek extra help from your teacher immediately.
                               </span>
@@ -1592,7 +1564,6 @@ Calculate your grades too at Campus Companion PH!`;
                       </h4>
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
-                          <span>👨‍🏫</span>
                           <span>
                             Talk to your teacher IMMEDIATELY about extra credit
                             opportunities.
@@ -2608,7 +2579,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("empty")}
                 className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700">✨ Start Fresh</p>
+                <p className="font-semibold text-gray-700">Start Fresh</p>
                 <p className="text-xs text-gray-600 mt-1">Empty template</p>
               </button>
             </div>
@@ -2688,7 +2659,7 @@ function TertiaryCalculator({ getMotivationalMessage }) {
               Subject Performance Overview
             </h3>
             <p className="text-xs text-center text-gray-500 mb-4">
-              📊 Taller bars = Better grades (inverted scale for clarity)
+              Taller bars = Better grades (inverted scale for clarity)
             </p>
             <AspectRatio
               presetResponsive={{
@@ -3192,21 +3163,21 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("consistent_performer")}
                 className="p-3 bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50/30 transition-colors text-left"
               >
-                <p className="font-semibold text-blue-700">📊 Consistent</p>
+                <p className="font-semibold text-blue-700">Consistent</p>
                 <p className="text-xs text-gray-600 mt-1">Steady performance</p>
               </button>
               <button
                 onClick={() => loadTemplate("strong_finish")}
                 className="p-3 bg-white border-2 border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left"
               >
-                <p className="font-semibold text-green-700">🚀 Strong Finish</p>
+                <p className="font-semibold text-green-700">Strong Finish</p>
                 <p className="text-xs text-gray-600 mt-1">Improved over time</p>
               </button>
               <button
                 onClick={() => loadTemplate("planning_ahead")}
                 className="p-3 bg-white border-2 border-purple-300 rounded-lg hover:bg-purple-50 transition-colors text-left"
               >
-                <p className="font-semibold text-purple-700">🎯 Planning</p>
+                <p className="font-semibold text-purple-700">Planning</p>
                 <p className="text-xs text-gray-600 mt-1">
                   Partial grades + target
                 </p>
@@ -3215,7 +3186,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                 onClick={() => loadTemplate("empty")}
                 className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <p className="font-semibold text-gray-700">✨ Start Fresh</p>
+                <p className="font-semibold text-gray-700">Start Fresh</p>
                 <p className="text-xs text-gray-600 mt-1">Empty template</p>
               </button>
             </div>
@@ -3224,8 +3195,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-heading font-bold text-2xl text-indigo-700 mb-6 flex items-center gap-2">
-          <span className="text-3xl">📅</span>
+        <h3 className="font-heading font-semibold text-xl text-slate-900 mb-6">
           Your Subjects
         </h3>
         {subjects.map((subject, index) => {
@@ -3684,84 +3654,67 @@ function App() {
   })();
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-slate-600 flex flex-col">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content="Free Philippine grade calculator for K-12, College, and Term-Based grading. DepEd-compliant formulas, GPA computation, and smart study recommendations." />
       </Helmet>
       {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-blue-600 text-white shadow-lg">
+      <header className="sticky top-0 z-40 bg-blue-800 text-white shadow-lg">
         <div className="w-full pl-2 pr-4 py-4 flex justify-between items-center sm:pl-3">
           {/* Logo and Title - Left Side */}
           <div className="flex items-center space-x-3 ml-2 sm:ml-3">
             <img
               src="/images/CampusCalcu.png"
               alt="Campus Companion PH"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white/20"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
             />
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold font-display leading-tight">
-                Campus Companion PH
-              </h1>
-              <p className="text-xs text-blue-100 hidden sm:block">
-                Your Grade Calculation Companion 🇵🇭
-              </p>
-            </div>
+            <h1 className="text-xl sm:text-2xl font-bold font-heading leading-tight">
+              Campus Companion PH
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => setCurrentView("calculator")}
-              className={`px-4 py-2 font-medium transition-all relative ${
+              className={`font-heading transition-colors ${
                 currentView === "calculator"
-                  ? "text-white"
-                  : "text-blue-100 hover:text-white"
+                  ? "font-bold text-white"
+                  : "font-normal text-blue-100 hover:text-white"
               }`}
             >
               Calculator
-              {currentView === "calculator" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"></span>
-              )}
             </button>
             <button
               onClick={() => setCurrentView("about")}
-              className={`px-4 py-2 font-medium transition-all relative ${
+              className={`font-heading transition-colors ${
                 currentView === "about"
-                  ? "text-white"
-                  : "text-blue-100 hover:text-white"
+                  ? "font-bold text-white"
+                  : "font-normal text-blue-100 hover:text-white"
               }`}
             >
               About
-              {currentView === "about" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"></span>
-              )}
             </button>
             <button
               onClick={() => setCurrentView("faq")}
-              className={`px-4 py-2 font-medium transition-all relative ${
+              className={`font-heading transition-colors ${
                 currentView === "faq"
-                  ? "text-white"
-                  : "text-blue-100 hover:text-white"
+                  ? "font-bold text-white"
+                  : "font-normal text-blue-100 hover:text-white"
               }`}
             >
               FAQ
-              {currentView === "faq" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"></span>
-              )}
             </button>
             <button
               onClick={() => setCurrentView("support")}
-              className={`px-4 py-2 font-medium transition-all flex items-center relative ${
+              className={`font-heading transition-colors ${
                 currentView === "support"
-                  ? "text-white"
-                  : "text-blue-100 hover:text-white"
+                  ? "font-bold text-white"
+                  : "font-normal text-blue-100 hover:text-white"
               }`}
             >
               Support
-              {currentView === "support" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"></span>
-              )}
             </button>
           </nav>
 
@@ -3793,7 +3746,7 @@ function App() {
           </div>
 
           {mobileMenuOpen && (
-            <div className="absolute top-16 right-4 bg-white rounded-xl shadow-2xl py-2 z-50 min-w-[180px] md:hidden border border-gray-200">
+            <div className="absolute top-16 right-4 bg-white rounded-xl shadow-2xl py-2 z-50 min-w-[180px] md:hidden border border-slate-200">
               <button
                 onClick={() => {
                   setCurrentView("calculator");
@@ -3801,8 +3754,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "calculator"
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-blue-800 bg-blue-50 font-bold"
+                    : "text-slate-600 hover:text-blue-800"
                 }`}
               >
                 Calculator
@@ -3814,8 +3767,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "about"
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-blue-800 bg-blue-50 font-bold"
+                    : "text-slate-600 hover:text-blue-800"
                 }`}
               >
                 About
@@ -3827,8 +3780,8 @@ function App() {
                 }}
                 className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "faq"
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-blue-800 bg-blue-50 font-bold"
+                    : "text-slate-600 hover:text-blue-800"
                 }`}
               >
                 FAQ
@@ -3838,57 +3791,18 @@ function App() {
                   setCurrentView("support");
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full text-left px-4 py-2.5 transition-all font-medium flex items-center ${
+                className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
                   currentView === "support"
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-blue-800 bg-blue-50 font-bold"
+                    : "text-slate-600 hover:text-blue-800"
                 }`}
               >
-                ☕ Support
+                Support
               </button>
             </div>
           )}
         </div>
       </header>
-
-      {/* Sticky Calculator Switcher */}
-      {currentView === "calculator" && (
-        <div className="sticky top-[72px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-2 flex items-center gap-2 overflow-x-auto">
-            <span className="text-xs text-gray-500 font-medium whitespace-nowrap hidden sm:inline">Switch:</span>
-            <button
-              className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
-                activeTab === "k12"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={() => setActiveTab("k12")}
-            >
-              K-12
-            </button>
-            <button
-              className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
-                activeTab === "tertiary"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={() => setActiveTab("tertiary")}
-            >
-              Tertiary
-            </button>
-            <button
-              className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
-                activeTab === "term-based"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={() => setActiveTab("term-based")}
-            >
-              Term-Based
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Main Content - Flex grow to push footer down */}
       <main className="flex-1 w-full">
@@ -3907,143 +3821,52 @@ function App() {
         ) : (
           <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
             <>
-              {/* Hero Welcome Section */}
-              {showInstructions && (
-                <div className="mb-8 sm:mb-12 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
-                  <div className="p-6 sm:p-8 lg:p-10 text-white">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h2 className="text-3xl font-heading font-bold mb-2">
-                          Welcome to Campus Companion PH! 🎓
-                        </h2>
-                        <p className="text-blue-100 text-sm">
-                          The Philippines' most comprehensive grade calculator
-                        </p>
-                      </div>
-                      <button
-                        onClick={() => setShowInstructions(false)}
-                        className="text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
-                      >
-                        ✕
-                      </button>
-                    </div>
+              {/* Simple Header */}
+              <div className="mb-6 sm:mb-8">
+                <h2 className="text-slate-900">
+                  Compute your grades accurately.
+                </h2>
+                <p className="text-slate-500 mt-1 text-base">
+                  Select your education level below to get started.
+                </p>
+              </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                      {/* Left column */}
-                      <div className="space-y-4">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                          <h3 className="font-heading font-semibold text-lg mb-3">
-                            ✨ What You Can Do:
-                          </h3>
-                          <ul className="space-y-2 text-sm">
-                            <li className="flex items-start gap-2">
-                              <span className="text-yellow-300">📊</span>
-                              <span>
-                                Calculate K-12, SHS, and College GPA with
-                                DepEd-compliant formulas
-                              </span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-yellow-300">🎯</span>
-                              <span>
-                                Plan ahead with "What If" goal calculator
-                              </span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-yellow-300">📈</span>
-                              <span>
-                                Track your progress with beautiful charts
-                              </span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-yellow-300">🧠</span>
-                              <span>
-                                Get personalized study recommendations
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-
-                      {/* Right column */}
-                      <div className="space-y-4">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                          <h3 className="font-heading font-semibold text-lg mb-3">
-                            🚀 Quick Start:
-                          </h3>
-                          <ol className="list-decimal pl-5 space-y-2 text-sm">
-                            <li>
-                              Choose your calculator type (K-12, Tertiary, or
-                              Term-Based)
-                            </li>
-                            <li>Try Quick Templates for instant demo</li>
-                            <li>Enter your grades and see results</li>
-                            <li>Export, share, or save to history</li>
-                          </ol>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2">
-                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                            💾 Auto-Save
-                          </span>
-                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                            📱 Mobile Friendly
-                          </span>
-                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
-                            🆓 100% Free
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {!showInstructions && (
+              {/* Segmented Control Tabs */}
+              <div className="bg-slate-100 rounded-xl p-1 mb-6 sm:mb-8 inline-flex flex-wrap sm:flex-nowrap">
                 <button
-                  onClick={() => setShowInstructions(true)}
-                  className="mb-6 sm:mb-8 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
-                >
-                  Show Welcome Guide
-                </button>
-              )}
-
-              {/* Calculator Tabs - Better Design */}
-              <div className="bg-white rounded-xl shadow-md mb-6 sm:mb-8 p-1.5 flex flex-wrap gap-2">
-                <button
-                  className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
+                  className={`px-5 py-2.5 font-heading font-semibold text-sm rounded-lg transition-all ${
                     activeTab === "k12"
-                      ? "bg-blue-600 text-white shadow-md transform scale-105"
-                      : "text-gray-600 hover:bg-gray-100"
+                      ? "bg-white text-blue-800 shadow-sm"
+                      : "text-slate-600 hover:text-slate-800"
                   }`}
                   onClick={() => setActiveTab("k12")}
                 >
-                  📚 K-12 Calculator
+                  K-12
                 </button>
                 <button
-                  className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
+                  className={`px-5 py-2.5 font-heading font-semibold text-sm rounded-lg transition-all ${
                     activeTab === "tertiary"
-                      ? "bg-blue-600 text-white shadow-md transform scale-105"
-                      : "text-gray-600 hover:bg-gray-100"
+                      ? "bg-white text-blue-800 shadow-sm"
+                      : "text-slate-600 hover:text-slate-800"
                   }`}
                   onClick={() => setActiveTab("tertiary")}
                 >
-                  🎓 Tertiary (College)
+                  College
                 </button>
                 <button
-                  className={`flex-1 min-w-[150px] px-6 py-3 font-heading font-semibold rounded-lg transition-all ${
+                  className={`px-5 py-2.5 font-heading font-semibold text-sm rounded-lg transition-all ${
                     activeTab === "term-based"
-                      ? "bg-blue-600 text-white shadow-md transform scale-105"
-                      : "text-gray-600 hover:bg-gray-100"
+                      ? "bg-white text-blue-800 shadow-sm"
+                      : "text-slate-600 hover:text-slate-800"
                   }`}
                   onClick={() => setActiveTab("term-based")}
                 >
-                  📅 Term-Based
+                  Term-Based
                 </button>
               </div>
 
-              {/* Calculator Content with better padding */}
-              <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 min-h-[500px]">
+              {/* Calculator Content */}
+              <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 lg:p-8 min-h-[500px]">
                 {activeTab === "k12" ? (
                   <K12Calculator
                     getMotivationalMessage={getMotivationalMessage}
@@ -4063,63 +3886,48 @@ function App() {
         )}
       </main>
 
-      {/* Footer - Always at bottom */}
-      <footer className="mt-auto bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300 border-t-4 border-blue-600">
+      {/* Footer */}
+      <footer className="mt-auto bg-slate-900 text-slate-400 border-t border-slate-800">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
             {/* About Section */}
             <div>
-              <h3 className="text-white font-heading font-bold text-lg mb-3 flex items-center gap-2">
-                <img
-                  src="/images/CampusCalcu.png"
-                  alt="Campus Companion PH"
-                  className="w-8 h-8 rounded-full"
-                />
+              <h3 className="text-white font-heading font-bold text-lg mb-3">
                 Campus Companion PH
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Your comprehensive Philippine grade calculator designed for
-                K-12, SHS, and college students. Free, accurate, and easy to
-                use.
+              <p className="text-sm text-slate-400">
+                Philippine grade calculator for K-12, SHS, and college students.
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-white font-heading font-semibold mb-3">
+              <h4 className="text-white font-heading font-semibold mb-3 text-sm">
                 Quick Links
               </h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <button
                     onClick={() => setCurrentView("calculator")}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+                    className="text-slate-400 hover:text-blue-400 transition-colors"
                   >
-                    📊 Grade Calculator
+                    Grade Calculator
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={() => setCurrentView("about")}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+                    className="text-slate-400 hover:text-blue-400 transition-colors"
                   >
-                    ℹ️ About Us
+                    About
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={() => setCurrentView("faq")}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+                    className="text-slate-400 hover:text-blue-400 transition-colors"
                   >
-                    ❓ FAQ
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setCurrentView("support")}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    ☕ Support Us
+                    FAQ
                   </button>
                 </li>
               </ul>
@@ -4127,36 +3935,30 @@ function App() {
 
             {/* Developer Info */}
             <div>
-              <h4 className="text-white font-heading font-semibold mb-3">
+              <h4 className="text-white font-heading font-semibold mb-3 text-sm">
                 Developer
               </h4>
-              <p className="text-sm text-gray-400 mb-2">
-                Created with ❤️ by{" "}
-                <span className="text-blue-400 font-semibold">
+              <p className="text-sm text-slate-400 mb-2">
+                Developed by{" "}
+                <a
+                  href="https://codewithclarence.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                >
                   CodeWithClarence
-                </span>
+                </a>
               </p>
-              <a
-                href="https://codewithclarence.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-blue-400 hover:text-blue-300 transition-colors inline-block"
-              >
-                🌐 Visit Portfolio →
-              </a>
-              <p className="text-xs text-gray-500 mt-3">
+              <p className="text-xs text-slate-500 mt-3">
                 Based on DepEd Order No. 8, s. 2015
               </p>
             </div>
           </div>
 
           {/* Copyright Bar */}
-          <div className="border-t border-gray-700 pt-6 text-center">
-            <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Campus Companion PH. All rights
-              reserved.
-              <span className="mx-2">|</span>
-              Made for Filipino Students 🇵🇭
+          <div className="border-t border-slate-800 pt-6 text-center">
+            <p className="text-sm text-slate-500">
+              © {new Date().getFullYear()} Campus Companion PH
             </p>
           </div>
         </div>
