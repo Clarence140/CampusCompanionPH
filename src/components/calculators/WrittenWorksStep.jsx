@@ -74,7 +74,7 @@ export default function WrittenWorksStep({
   };
 
   return (
-    <ModernCard className="p-6" elevation="md">
+    <ModernCard className="p-4 sm:p-5" elevation="md">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-blue-100 rounded-xl">
           <FiBook className="w-6 h-6 text-blue-600" />
@@ -170,7 +170,7 @@ export default function WrittenWorksStep({
       </div>
 
       {/* Items List */}
-      <div className="space-y-3 mb-6">
+      <div className="space-y-2 mb-6">
         {writtenWorks.map((work, index) => (
           <ScoreItemCard
             key={index}

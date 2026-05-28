@@ -375,3 +375,16 @@ table tr {
 .stagger-item:nth-child(5) {
   animation-delay: 0.25s;
 }
+
+/* Hide number input spinners while keeping numeric keyboard functionality */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}

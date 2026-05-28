@@ -74,7 +74,7 @@ export default function PerformanceTasksStep({
   };
 
   return (
-    <ModernCard className="p-6" elevation="md">
+    <ModernCard className="p-4 sm:p-5" elevation="md">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-green-100 rounded-xl">
           <FiTarget className="w-6 h-6 text-green-600" />
@@ -175,7 +175,7 @@ export default function PerformanceTasksStep({
       </div>
 
       {/* Items List */}
-      <div className="space-y-3 mb-6">
+      <div className="space-y-2 mb-6">
         {performanceTasks.map((task, index) => (
           <ScoreItemCard
             key={index}

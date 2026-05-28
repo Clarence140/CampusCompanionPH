@@ -3843,15 +3843,15 @@ function App() {
       {/* Main Content - Flex grow to push footer down */}
       <main className="flex-1 w-full">
         {currentView === "about" ? (
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <About />
           </div>
         ) : currentView === "faq" ? (
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <FAQ />
           </div>
         ) : currentView === "support" ? (
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <Support />
           </div>
         ) : (

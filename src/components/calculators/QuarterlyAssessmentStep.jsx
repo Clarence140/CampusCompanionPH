@@ -25,7 +25,7 @@ export default function QuarterlyAssessmentStep({
       : 0;
 
   return (
-    <ModernCard className="p-6" elevation="md">
+    <ModernCard className="p-4 sm:p-5" elevation="md">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-purple-100 rounded-xl">
           <FiFileText className="w-6 h-6 text-purple-600" />
@@ -64,7 +64,7 @@ export default function QuarterlyAssessmentStep({
           type="number"
           value={quarterlyAssessment.score || ""}
           onChange={(e) => updateQA("score", e.target.value)}
-          placeholder="Enter your score"
+          placeholder="e.g., 45"
           helperText="Enter the score you received on your quarterly exam"
         />
 
@@ -73,7 +73,7 @@ export default function QuarterlyAssessmentStep({
           type="number"
           value={quarterlyAssessment.maxScore || ""}
           onChange={(e) => updateQA("maxScore", e.target.value)}
-          placeholder="Enter maximum score"
+          placeholder="e.g., 50"
           helperText="Enter the total possible points (e.g., 50, 100)"
         />
       </div>

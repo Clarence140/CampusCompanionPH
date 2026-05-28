@@ -42,7 +42,7 @@ export default function ScoreItemCard({
 
   return (
     <ModernCard
-      className={`p-4 mb-3 border-2 ${
+      className={`p-3 mb-2 border-2 ${
         isLowScore ? "border-danger-200 bg-danger-50/30" : colors.border
       }`}
     >
@@ -51,10 +51,10 @@ export default function ScoreItemCard({
         <div className="md:col-span-2">
           <input
             type="text"
-            placeholder="Item name"
+            placeholder="e.g., Quiz 1"
             value={item.name || ""}
             onChange={(e) => onUpdate({ name: e.target.value })}
-            className="w-full p-2.5 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+            className="w-full py-2 px-3 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
           />
         </div>
 
@@ -62,10 +62,10 @@ export default function ScoreItemCard({
         <div>
           <input
             type="number"
-            placeholder="Score"
+            placeholder="18"
             value={item.score || ""}
             onChange={(e) => onUpdate({ score: e.target.value })}
-            className="w-full p-2.5 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+            className="w-full py-2 px-3 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
           />
         </div>
 
@@ -73,10 +73,10 @@ export default function ScoreItemCard({
         <div>
           <input
             type="number"
-            placeholder="Out of"
+            placeholder="20"
             value={item.maxScore || ""}
             onChange={(e) => onUpdate({ maxScore: e.target.value })}
-            className="w-full p-2.5 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+            className="w-full py-2 px-3 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
           />
         </div>
 
