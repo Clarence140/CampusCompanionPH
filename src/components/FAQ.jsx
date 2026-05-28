@@ -125,20 +125,22 @@ const faqs = [
   {
     question: "What is the DepEd transmutation table and how does it work?",
     answer:
-      "The transmutation table converts percentage scores to the standard 75-100 grading scale used in the Philippines.",
+      "This calculator uses raw percentage scores (Score divided by Maximum Score multiplied by 100). It does not automatically apply transmutation tables.",
     details: (
       <div>
-        <p className="mb-2">The transmutation table ensures that:</p>
-        <ul className="list-disc pl-5 mb-3">
-          <li>A score of 0% becomes 75 (lowest passing grade)</li>
-          <li>A score of 100% remains 100 (highest grade)</li>
-          <li>Scores are proportionally distributed between 75-100</li>
-          <li>
-            The formula used is: Transmuted Grade = (Raw Score × 0.25) + 75
-          </li>
-        </ul>
         <p className="mb-2">
-          <strong>Grade Descriptors:</strong>
+          <strong>How this calculator works:</strong>
+        </p>
+        <p className="mb-3">
+          This calculator uses raw percentage scores (Score divided by Maximum
+          Score multiplied by 100). It does not automatically apply
+          transmutation tables like the DepEd 50% base formula, because many
+          schools and universities use different transmutation matrices. If
+          your teacher provides a transmuted grade, simply input that final
+          transmuted grade as the score over 100.
+        </p>
+        <p className="mb-2">
+          <strong>Grade Descriptors (DepEd Standard):</strong>
         </p>
         <ul className="list-disc pl-5">
           <li>90-100: Outstanding</li>

@@ -653,7 +653,7 @@ function K12Calculator({ getMotivationalMessage }) {
       qaScore: parseFloat(grades.qaScore),
     };
 
-    setGradeHistory([...gradeHistory, entry]);
+    setGradeHistory((prev) => [...prev.slice(-19), entry]);
     setHistoryEntryName("");
     showModal(
       "Grade Saved Successfully",
@@ -1751,6 +1751,18 @@ Calculate your grades too at Campus Companion PH!`;
             Final Grade: {grades.finalGrade}
           </h2>
 
+          {/* Empty Components Warning */}
+          {(writtenWorks.filter((w) => w.score && w.maxScore).length === 0 ||
+            performanceTasks.filter((p) => p.score && p.maxScore).length ===
+              0) && (
+            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg flex items-center gap-2">
+              <span className="text-yellow-600">⚠</span>
+              <p className="text-sm text-yellow-700">
+                Note: Empty components were calculated as 0%.
+              </p>
+            </div>
+          )}
+
           {/* Grade Breakdown Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
             <div className="p-3 bg-white rounded-lg shadow-sm">
@@ -2473,7 +2485,18 @@ function TertiaryCalculator({ getMotivationalMessage }) {
 
   const updateSubject = (index, field, value) => {
     const newSubjects = [...subjects];
-    newSubjects[index][field] = value;
+    // Round grade to nearest 0.25 increment for Philippine grading scale
+    if (field === "grade" && value !== "") {
+      const numValue = Number.parseFloat(value);
+      if (!isNaN(numValue)) {
+        const roundedGrade = Math.round(numValue * 4) / 4;
+        newSubjects[index][field] = roundedGrade.toFixed(2);
+      } else {
+        newSubjects[index][field] = value;
+      }
+    } else {
+      newSubjects[index][field] = value;
+    }
     setSubjects(newSubjects);
   };
 
@@ -2645,6 +2668,11 @@ function TertiaryCalculator({ getMotivationalMessage }) {
         >
           Add Subject
         </button>
+
+        <p className="text-xs text-gray-500 mt-2">
+          Note: INC, DRP, or W grades cannot be calculated. Please exclude them
+          from this projection.
+        </p>
       </div>
 
       {gpa > 0 && (
@@ -2926,7 +2954,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
     const total =
       weights.prelim + weights.midterm + weights.prefinal + weights.final;
 
-    if (total !== 100) {
+    if (Math.abs(total - 100) >= 0.01) {
       setWeightError(`Weights must sum to 100% (current: ${total}%)`);
     } else {
       setWeightError("");
@@ -3468,9 +3496,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                                 {requiredFinal.required.toFixed(2)}% in Final
                               </span>
                             ) : (
-                              <span className="text-red-500">
-                                Target not possible with current grades
-                              </span>
+                              <span className="text-red-500">Impossible</span>
                             )}
                           </p>
                           {!requiredFinal.isPossible && (
@@ -3496,7 +3522,7 @@ function TermBasedCalculator({ getMotivationalMessage }) {
                       Target: {subject.targetGrade}% | Need:{" "}
                       {requiredFinal.isPossible
                         ? `${requiredFinal.required.toFixed(2)}%`
-                        : "Not possible"}
+                        : "Impossible"}
                     </span>
                   )}
                 </div>
@@ -3630,7 +3656,7 @@ function App() {
       if (grade <= 2.5) return "Very Good! You're on the right track!";
       if (grade <= 3.0)
         return "Good! With a little more effort, you can reach even higher!";
-      if (grade <= 4.0)
+      if (grade > 3.0 && grade <= 4.0)
         return "Satisfactory. There's room for improvement - you can do it!";
       return "Don't give up! Every challenge is an opportunity to learn and grow.";
     } else {
@@ -3660,18 +3686,18 @@ function App() {
         <meta name="description" content="Free Philippine grade calculator for K-12, College, and Term-Based grading. DepEd-compliant formulas, GPA computation, and smart study recommendations." />
       </Helmet>
       {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-blue-800 text-white shadow-lg">
-        <div className="w-full pl-2 pr-4 py-4 flex justify-between items-center sm:pl-3">
+      <header className="sticky top-0 z-50 bg-blue-800 text-white shadow-lg h-16">
+        <div className="w-full h-full pl-2 pr-4 flex justify-between items-center sm:pl-3 max-w-7xl mx-auto">
           {/* Logo and Title - Left Side */}
-          <div className="flex items-center space-x-3 ml-2 sm:ml-3">
+          <div className="flex items-center gap-2 sm:gap-3 ml-2 sm:ml-3">
             <img
-              src="/images/CampusCalcu.png"
-              alt="Campus Companion PH"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
+              src="/images/campuscompanion.png"
+              alt="Campus Companion"
+              className="h-8 sm:h-10 w-auto object-contain"
             />
-            <h1 className="text-xl sm:text-2xl font-bold font-heading leading-tight">
-              Campus Companion PH
-            </h1>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold font-heading text-white leading-tight whitespace-nowrap">
+              Campus Companion
+            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -3746,60 +3772,70 @@ function App() {
           </div>
 
           {mobileMenuOpen && (
-            <div className="absolute top-16 right-4 bg-white rounded-xl shadow-2xl py-2 z-50 min-w-[180px] md:hidden border border-slate-200">
-              <button
-                onClick={() => {
-                  setCurrentView("calculator");
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
-                  currentView === "calculator"
-                    ? "text-blue-800 bg-blue-50 font-bold"
-                    : "text-slate-600 hover:text-blue-800"
-                }`}
-              >
-                Calculator
-              </button>
-              <button
-                onClick={() => {
-                  setCurrentView("about");
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
-                  currentView === "about"
-                    ? "text-blue-800 bg-blue-50 font-bold"
-                    : "text-slate-600 hover:text-blue-800"
-                }`}
-              >
-                About
-              </button>
-              <button
-                onClick={() => {
-                  setCurrentView("faq");
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
-                  currentView === "faq"
-                    ? "text-blue-800 bg-blue-50 font-bold"
-                    : "text-slate-600 hover:text-blue-800"
-                }`}
-              >
-                FAQ
-              </button>
-              <button
-                onClick={() => {
-                  setCurrentView("support");
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2.5 transition-all font-medium ${
-                  currentView === "support"
-                    ? "text-blue-800 bg-blue-50 font-bold"
-                    : "text-slate-600 hover:text-blue-800"
-                }`}
-              >
-                Support
-              </button>
+            <>
+              {/* Backdrop */}
+              <div
+                className="fixed inset-0 top-16 bg-black/20 z-30 md:hidden"
+                onClick={() => setMobileMenuOpen(false)}
+              />
+              {/* Menu */}
+              <div className="fixed top-16 left-0 right-0 bg-white shadow-xl py-2 z-40 md:hidden border-b border-slate-200">
+                <div className="max-w-7xl mx-auto">
+                <button
+                  onClick={() => {
+                    setCurrentView("calculator");
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-6 py-3 transition-all font-medium text-base ${
+                    currentView === "calculator"
+                      ? "text-blue-800 bg-blue-50 font-bold"
+                      : "text-slate-600 hover:text-blue-800"
+                  }`}
+                >
+                  Calculator
+                </button>
+                <button
+                  onClick={() => {
+                    setCurrentView("about");
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-6 py-3 transition-all font-medium text-base ${
+                    currentView === "about"
+                      ? "text-blue-800 bg-blue-50 font-bold"
+                      : "text-slate-600 hover:text-blue-800"
+                  }`}
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => {
+                    setCurrentView("faq");
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-6 py-3 transition-all font-medium text-base ${
+                    currentView === "faq"
+                      ? "text-blue-800 bg-blue-50 font-bold"
+                      : "text-slate-600 hover:text-blue-800"
+                  }`}
+                >
+                  FAQ
+                </button>
+                <button
+                  onClick={() => {
+                    setCurrentView("support");
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-6 py-3 transition-all font-medium text-base ${
+                    currentView === "support"
+                      ? "text-blue-800 bg-blue-50 font-bold"
+                      : "text-slate-600 hover:text-blue-800"
+                  }`}
+                >
+                  Support
+                </button>
+              </div>
             </div>
+          </>
           )}
         </div>
       </header>
@@ -3807,19 +3843,19 @@ function App() {
       {/* Main Content - Flex grow to push footer down */}
       <main className="flex-1 w-full">
         {currentView === "about" ? (
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <About />
           </div>
         ) : currentView === "faq" ? (
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <FAQ />
           </div>
         ) : currentView === "support" ? (
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <Support />
           </div>
         ) : (
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
             <>
               {/* Simple Header */}
               <div className="mb-6 sm:mb-8">
@@ -3865,8 +3901,8 @@ function App() {
                 </button>
               </div>
 
-              {/* Calculator Content */}
-              <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 lg:p-8 min-h-[500px]">
+              {/* Calculator Content - min-height prevents layout shift */}
+              <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 lg:p-8 min-h-[calc(100vh-16rem)]">
                 {activeTab === "k12" ? (
                   <K12Calculator
                     getMotivationalMessage={getMotivationalMessage}
